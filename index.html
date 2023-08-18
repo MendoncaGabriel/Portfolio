@@ -47,33 +47,42 @@
 
     <!-- APRESENTAÇÃO -->
     <header class="min-h-screen  p-5 pb-0 md:pt-24 " id="home">
+
         <div class="md:flex items-center justify-around w-full md:p-5 pt-16">
+
             <div class="container  md:w-1/2" >
+
                 <h1 class="impact font-black md:text-8xl text-6xl text-c1">FRONT-END </h1>
                 <h1 class="impact font-black md:text-9xl text-7xl text-c1">DEVELOPER</h1>
                 <p class="text-right text-2xl font-semibold  md:pr-12">Olá, eu sou Gabriel Andrade <br> Desenvolvedor Front-End a mais de 2 anos.</p>
-            
 
                 <div class="mt-10 md:w-1/2 m-auto flex justify-around">
+
                     <div class="border-black border-2 relative w-28 h-10 scale duration-200">
                         <a href="https://api.whatsapp.com/send/?phone=5592995238016&text&type=phone_number&app_absent=0" target="_blank" class="flex items-center justify-center bg-c1 border-black border-2 text-white w-28 h-10 absolute -top-2 -right-2 minecraft">Whatsapp</a>
                     </div>
-                    <div class="border-black border-2 relative w-28 h-10 scale duration-200">
+
+                    <div class="border-black border-2 relative w-28 h-10 scale duration-200 ">
                         <a href="https://www.linkedin.com/in/mendon%C3%A7agabriel97/"  target="_blank" class="flex items-center justify-center bg-c1 border-black border-2 text-white w-28 h-10 absolute -top-2 -right-2 minecraft">Linkedin</a>
                     </div>
 
-    
                 </div>
+
             </div>
-            <div class="flex md:block justify-end pt-8 md:pt-0">
-                <img src="img/eu.png" alt="minha foto de perfil" class="fperfil h-auto md:w-auto w-60 md:static md:right-auto md:bottom-auto absolute bottom-5 right-5 ">
-            </div>
+
+  
+            <!-- FOTO MOBILE -->
+            <img src="img/eu.png" alt=" minha foto de perfil" class="md:hidden fperfil  w-full md:w-auto  md:static m-auto mt-5">
+                
+            <!-- FOTO PC -->
+            <img src="img/eu.png" alt=" minha foto de perfil" class="fperfil hidden md:flex h-auto md:w-auto w-60 md:static md:right-auto md:bottom-auto absolute bottom-0 right-5 ">
+
         </div>
 
 
 
         <!-- CONTATOS -->
-        <div class="space-y-2 absolute bottom-5 items-center flex flex-col  " >
+        <div class="space-y-2 space-x-3 md:absolute bottom-5 items-center justify-center flex md:flex-col md:bg-transparent bg-white rounded-2xl mt-5" >
             <a href="https://github.com/MendoncaGabriel" target="_blank"><img src="icons/icons8-github-100.png"   alt="icone github"   class="w-9 scale duration-200 cursor-pointer"></a>
             <!-- <img src="icons/icons8-linkedin-100.png" alt="icone linkedin" class="w-9 scale duration-200 cursor-pointer"> -->
             <a href="https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=mendoncagabril@gmail.com" target="_blank"><img src="icons/icons8-gmail-100.png"    alt="icone gmail"    class="w-9 scale duration-200 cursor-pointer"></a>
@@ -100,9 +109,9 @@
         <div class="ancora  mt-16">
             <h2 class="minecraft text-c1 text-2xl text-center " >HABILIDADES</h2>
             
-            <div class=" md:p-10 grid grid-cols-2 ">
+            <div class=" md:p-10 grid grid-cols-2  items-center md:justify-start justify-center pl-3 md:pl-0">
 
-                <div class=" m-auto flex items-center justify-start  p-2 scale duration-200 md:w-1/2 w-full">
+                <div class=" m-auto flex items-center justify-start  p-2 scale duration-200 md:w-1/2 w-full ">
                     <img src="icons/icons8-html-5-100.png" alt="icone html5" class="w-10"><p class="font-medium text-xl md:text-3xl">HTML 5</p>
                 </div>
                 <div class=" m-auto flex items-center justify-start  p-2 scale duration-200 md:w-1/2 w-full">
@@ -125,7 +134,7 @@
                 </div>
                    
             </div>
-            <div class=" md:p-10 pt-0">
+            <div class=" md:p-10 pt-0 pl-3 md:pl-0">
                 <hr class="border-b-2 mt-3 mb-3">
                 <div class="grid grid-cols-2">
                     <div class=" m-auto flex items-center justify-start p-2 scale duration-200 md:w-1/2 w-full">
@@ -259,12 +268,12 @@
             
             <div class="md:p-10 pt-10 md:m-0 mb-10">
                 <h2 class="impact font-black md:text-8xl text-4xl text-5x1 text-c1">OBRIGADO  <br> POR CHEGAR ATE AQUI!</h2>
-                <p class="text-right text-2xl font-semibold  md:pr-12">Para contratar qual quer serviço basta entrar em contato comigo pelas <br> redes sociais abaixo ou pelo whatsapp!</p>
+                <p class="text-right md:text-2xl text-xl font-semibold  md:pr-12">Para contratar qualquer serviço basta entrar em contato comigo pelas redes sociais abaixo ou pelo whatsapp!</p>
             </div>
-            <p class="text-center text-2xl font-semibold md:mb-0 mb-10">Te vejo em breve!</p>
+            <p class="text-center text-xl font-semibold md:mb-0 mb-10">Te vejo em breve!</p>
 
            <!-- CONTATOS -->
-            <div class="flex m-auto  w-60 mt-2" >
+            <div class="flex m-auto  md:w-60 w-full justify-center  mt-5" >
                 
                 <button onclick="copyToClipboard(`github.com/MendoncaGabriel`, 'Link copiado!')">
                     <img src="icons/icons8-github-100.png"   alt="icone github"   class="w-9 scale duration-200 cursor-pointer m-auto">
@@ -287,8 +296,8 @@
                 </button>
 
             </div>
+            
             <p class="text-center">Clique nos icones para copiar o contato</p>
-
         </div>
         
     </section>
