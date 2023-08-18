@@ -12,9 +12,9 @@
     <link rel="stylesheet" href="tailwind.css">
     <link rel="stylesheet" href="style.css">
 
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <!-- FIREBASE -->
+    <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore-compat.js"></script>
 </head>
 <body>
     <!-- NAVEGAÇÃO -->
@@ -36,7 +36,7 @@
         <div class="flex justify-end  pr-15 p-5">
             <button onclick="menu()" class="border-white border-2 text-white minecraft text-4xl  rounded-full w-10 h-10 bg-center bg-no-repeat  " style="background-position-x: 40%; background-size: 45%; background-image: url('icons/voltar.png');">  </button>
         </div>
-        <nav class="text-white minecraft gap-3 text-lg  space-y-5 mt-10 md:hidden  grid grid-cols-1 text-center  w-full"  > 
+        <nav class="text-white minecraft gap-3 text-2xl  space-y-5 mt-10 md:hidden  grid grid-cols-1 text-center  w-full"  > 
             <a onclick="menu()" href="#home" class="hover:text-c4">HOME</a>
             <a onclick="menu()" href="#sobre" class="hover:text-c4">SOBRE</a>
             <a onclick="menu()" href="#habilidades" class="hover:text-c4">HABILIDADES</a>
@@ -56,17 +56,17 @@
 
                 <div class="mt-10 md:w-1/2 m-auto flex justify-around">
                     <div class="border-black border-2 relative w-28 h-10 scale duration-200">
-                        <button class="bg-c1 border-black border-2 text-white w-28 h-10 absolute -top-2 -right-2 minecraft">BUTTON</button>
+                        <a href="https://api.whatsapp.com/send/?phone=5592995238016&text&type=phone_number&app_absent=0" target="_blank" class="flex items-center justify-center bg-c1 border-black border-2 text-white w-28 h-10 absolute -top-2 -right-2 minecraft">Whatsapp</a>
                     </div>
                     <div class="border-black border-2 relative w-28 h-10 scale duration-200">
-                        <button class="bg-c1 border-black border-2 text-white w-28 h-10 absolute -top-2 -right-2 minecraft">BUTTON</button>
+                        <a href="https://www.linkedin.com/in/mendon%C3%A7agabriel97/"  target="_blank" class="flex items-center justify-center bg-c1 border-black border-2 text-white w-28 h-10 absolute -top-2 -right-2 minecraft">Linkedin</a>
                     </div>
 
     
                 </div>
             </div>
             <div class="flex md:block justify-end pt-8 md:pt-0">
-                <img src="img/eu.png" alt="minha foto de perfil" class="fperfil h-auto md:w-auto w-60">
+                <img src="img/eu.png" alt="minha foto de perfil" class="fperfil h-auto md:w-auto w-60 md:static md:right-auto md:bottom-auto absolute bottom-5 right-5 ">
             </div>
         </div>
 
@@ -74,11 +74,11 @@
 
         <!-- CONTATOS -->
         <div class="space-y-2 absolute bottom-5 items-center flex flex-col  " >
-            <img src="icons/icons8-github-100.png"   alt="icone github"   class="w-9 scale duration-200 cursor-pointer">
-            <img src="icons/icons8-linkedin-100.png" alt="icone linkedin" class="w-9 scale duration-200 cursor-pointer">
-            <img src="icons/icons8-gmail-100.png"    alt="icone gmail"    class="w-9 scale duration-200 cursor-pointer">
-            <img src="icons/icons8-telefone-100.png" alt="icone telefone" class="w-9 scale duration-200 cursor-pointer">
-            <img src="icons/icons8-whatsapp-100.png" alt="icone whatsapp" class="w-9 scale duration-200 cursor-pointer">
+            <a href="https://github.com/MendoncaGabriel" target="_blank"><img src="icons/icons8-github-100.png"   alt="icone github"   class="w-9 scale duration-200 cursor-pointer"></a>
+            <!-- <img src="icons/icons8-linkedin-100.png" alt="icone linkedin" class="w-9 scale duration-200 cursor-pointer"> -->
+            <a href="https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=mendoncagabril@gmail.com" target="_blank"><img src="icons/icons8-gmail-100.png"    alt="icone gmail"    class="w-9 scale duration-200 cursor-pointer"></a>
+            <a href="tel:+5592995238016" target="_blank"><img src="icons/icons8-telefone-100.png" alt="icone telefone" class="w-9 scale duration-200 cursor-pointer"></a>
+            <!-- <img src="icons/icons8-whatsapp-100.png" alt="icone whatsapp" class="w-9 scale duration-200 cursor-pointer"> -->
         </div>
     </header>
     
@@ -89,7 +89,7 @@
             <div class="md:flex items-center justify-around  md:space-x-20">
                 <img class="md:w-1/3  mb-5 md:mb-0" src="img/programador-e-processo-de-codificacao-e-conceito-de-programacao-vetor_272930-2.png" alt="imagem ilustrativa programador e processo de codificacao e conceito de programacao vetor">
                 <p class="  md:text-xl">
-                    Lorem voluptas a ut possimus vero consequatur necessitatibus ducimus odit, eligendi ullam. Atque mollitia quibusdam, id fuga non eaque dignissimos adipisci repellat repudiandae excepturi sed iste, in at corporis numquam quas quos praesentium alias? Ab, enim fugit consequatur voluptatem quasi quas nam corporis nesciunt ut exercitationem ipsum veritatis ipsa architecto alias provident neque magnam, ducimus vero a? Nesciunt, magni! Voluptate.
+                    Olá, eu me chamo Gabriel Andrade tenho 25 anos e sou desenvolvedor front-end apaixonado por criar experiências interativas e envolventes na web. Com uma paixão pela estética minimalista e atenção aos detalhes, busco combinar minha criatividade e habilidades técnicas para construir interfaces intuitivas e visualmente atraentes. Estou constantemente em busca de novos desafios para expandir meu conhecimento e contribuir para projetos inspiradores. Vamos transformar ideias em realidade juntos!
                 </p>
             </div>
         </div>
@@ -135,7 +135,7 @@
             </div>
 
             <img src="img/homem-que-trabalha-com-a-visao-traseira-do-programador-de-desenvolvimento-de-software-de-script_81894-7230.png" 
-            class="md:hidden w-72 m-auto h-auto" alt="">
+            class="md:hidden w-72 m-auto h-auto mt-2" alt="imagem ilustrativa">
 
 
         </div>
@@ -154,12 +154,38 @@
                         <img src="icons/html.png" alt="icone html" class="w-10 h-10">
                         <img src="icons/icons8-css-48.png" alt="icone html" class="w-10 h-10">
                         <img src="icons/icons8-js-48.png" alt="icone html" class="w-10 h-10">
+                        <img src="icons/icons8-tailwindcss-100.png" alt="icone html" class="w-10 h-10">
                     </div>
                     <div class="bg-c1 w-56 h-72  rounded-lg relative  ">
                         <div class="bg-white w-56 h-72    rounded-lg border-black border-2 absolute -top-2 -right-2 p-2">
                             <div class="">
-                                <img src="img/capa-blog-2.webp" alt="imagem do projeto" class="border-2 border-black object-cover w-full max-h-40">
-                                <h2 class="text-xl font-bold text-c1  mt-2">Nome do projeto [PROJETO] aqui</h2>
+                                <img src="img/p1.png" alt="imagem do projeto" class="border-2 border-black object-cover w-full max-h-40">
+                                <h2 class="text-xl font-bold text-c1  mt-2">Pagina de capitura de leeds E-Book</h2>
+                            </div>
+                            <div class=" flex items-center justify-around h-auto absolute bottom-5 w-52">
+                                <div class="border-black border-2 bg-white w-32 h-9 scale duration-200 relative">
+                                    <a href="https://mendoncagabriel.github.io/Meus-Projetos/PaginaCaputuraEbook/" target="_blank" class="bg-c1 border-black border-2 text-white w-32 h-9 absolute -top-2 -right-2 minecraft items-center flex justify-center" title="ir para o projeto">VER PROJETO</a>
+                                </div>
+                                <a href="#"><img src="icons/icons8-github-100.png" alt="" class="w-10 scale" title="ver codigo do projeto"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projeto -->
+                <div class="w-60 scale duration-200 m-auto " >
+                    <div class="mb-3 flex">
+                        <img src="icons/html.png" alt="icone html" class="w-10 h-10">
+                        <img src="icons/icons8-css-48.png" alt="icone html" class="w-10 h-10">
+                        <img src="icons/icons8-js-48.png" alt="icone html" class="w-10 h-10">
+                        <img src="icons/icons8-nodejs-48.png" alt="icone html" class="w-10 h-10">
+                        <img src="icons/puppeteer.png" alt="icone html" class="w-10 h-10">
+                    </div>
+                    <div class="bg-c1 w-56 h-72  rounded-lg relative  ">
+                        <div class="bg-white w-56 h-72    rounded-lg border-black border-2 absolute -top-2 -right-2 p-2">
+                            <div class="">
+                                <img src="img/p2.png" alt="imagem do projeto" class="border-2 border-black object-cover w-full max-h-40">
+                                <h2 class="text-xl font-bold text-c1  mt-2">Pagina de vagas online automatica</h2>
                             </div>
                             <div class=" flex items-center justify-around h-auto absolute bottom-5 w-52">
                                 <div class="border-black border-2 bg-white w-32 h-9 scale duration-200 relative">
@@ -170,18 +196,21 @@
                         </div>
                     </div>
                 </div>
+
                 <!-- Projeto -->
                 <div class="w-60 scale duration-200 m-auto " >
                     <div class="mb-3 flex">
                         <img src="icons/html.png" alt="icone html" class="w-10 h-10">
                         <img src="icons/icons8-css-48.png" alt="icone html" class="w-10 h-10">
                         <img src="icons/icons8-js-48.png" alt="icone html" class="w-10 h-10">
+                        <img src="icons/icons8-tailwindcss-100.png" alt="icone html" class="w-10 h-10">
+             
                     </div>
                     <div class="bg-c1 w-56 h-72  rounded-lg relative  ">
                         <div class="bg-white w-56 h-72    rounded-lg border-black border-2 absolute -top-2 -right-2 p-2">
                             <div class="">
-                                <img src="img/capa-blog-2.webp" alt="imagem do projeto" class="border-2 border-black object-cover w-full max-h-40">
-                                <h2 class="text-xl font-bold text-c1  mt-2">Nome do projeto [PROJETO] aqui</h2>
+                                <img src="img/p3.png" alt="imagem do projeto" class="border-2 border-black object-cover w-full max-h-40">
+                                <h2 class="text-xl font-bold text-c1  mt-2">Site de download de jogos</h2>
                             </div>
                             <div class=" flex items-center justify-around h-auto absolute bottom-5 w-52">
                                 <div class="border-black border-2 bg-white w-32 h-9 scale duration-200 relative">
@@ -192,6 +221,7 @@
                         </div>
                     </div>
                 </div>
+                
                 <!-- Projeto -->
                 <div class="w-60 scale duration-200 m-auto " >
                     <div class="mb-3 flex">
@@ -202,30 +232,8 @@
                     <div class="bg-c1 w-56 h-72  rounded-lg relative  ">
                         <div class="bg-white w-56 h-72    rounded-lg border-black border-2 absolute -top-2 -right-2 p-2">
                             <div class="">
-                                <img src="img/capa-blog-2.webp" alt="imagem do projeto" class="border-2 border-black object-cover w-full max-h-40">
-                                <h2 class="text-xl font-bold text-c1  mt-2">Nome do projeto [PROJETO] aqui</h2>
-                            </div>
-                            <div class=" flex items-center justify-around h-auto absolute bottom-5 w-52">
-                                <div class="border-black border-2 bg-white w-32 h-9 scale duration-200 relative">
-                                    <a class="bg-c1 border-black border-2 text-white w-32 h-9 absolute -top-2 -right-2 minecraft items-center flex justify-center" title="ir para o projeto">VER PROJETO</a>
-                                </div>
-                                <a href="#"><img src="icons/icons8-github-100.png" alt="" class="w-10 scale" title="ver codigo do projeto"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Projeto -->
-                <div class="w-60 scale duration-200 m-auto " >
-                    <div class="mb-3 flex">
-                        <img src="icons/html.png" alt="icone html" class="w-10 h-10">
-                        <img src="icons/icons8-css-48.png" alt="icone html" class="w-10 h-10">
-                        <img src="icons/icons8-js-48.png" alt="icone html" class="w-10 h-10">
-                    </div>
-                    <div class="bg-c1 w-56 h-72  rounded-lg relative  ">
-                        <div class="bg-white w-56 h-72    rounded-lg border-black border-2 absolute -top-2 -right-2 p-2">
-                            <div class="">
-                                <img src="img/capa-blog-2.webp" alt="imagem do projeto" class="border-2 border-black object-cover w-full max-h-40">
-                                <h2 class="text-xl font-bold text-c1  mt-2">Nome do projeto [PROJETO] aqui</h2>
+                                <img src="img/p4.png" alt="imagem do projeto" class="border-2 border-black object-cover w-full max-h-40">
+                                <h2 class="text-xl font-bold text-c1  mt-2"> Site institucional.  [em construção]</h2>
                             </div>
                             <div class=" flex items-center justify-around h-auto absolute bottom-5 w-52">
                                 <div class="border-black border-2 bg-white w-32 h-9 scale duration-200 relative">
@@ -257,11 +265,27 @@
 
            <!-- CONTATOS -->
             <div class="flex m-auto  w-60 mt-2" >
-                <img src="icons/icons8-github-100.png"   alt="icone github"   class="w-9 scale duration-200 cursor-pointer m-auto">
-                <img src="icons/icons8-linkedin-100.png" alt="icone linkedin" class="w-9 scale duration-200 cursor-pointer m-auto">
-                <img src="icons/icons8-gmail-100.png"    alt="icone gmail"    class="w-9 scale duration-200 cursor-pointer m-auto">
-                <img src="icons/icons8-telefone-100.png" alt="icone telefone" class="w-9 scale duration-200 cursor-pointer m-auto">
-                <img src="icons/icons8-whatsapp-100.png" alt="icone whatsapp" class="w-9 scale duration-200 cursor-pointer m-auto">
+                
+                <button onclick="copyToClipboard(`github.com/MendoncaGabriel`, 'Link copiado!')">
+                    <img src="icons/icons8-github-100.png"   alt="icone github"   class="w-9 scale duration-200 cursor-pointer m-auto">
+                </button>
+
+                <button onclick="copyToClipboard('mendonçagabriel97', 'Perfil linkedin copiado!')">
+                    <img src="icons/icons8-linkedin-100.png" alt="icone linkedin" class="w-9 scale duration-200 cursor-pointer m-auto">
+                </button>
+
+                <button onclick="copyToClipboard('mendoncagabriel1997@gmail.com', 'E-mail copiado!')">
+                    <img src="icons/icons8-gmail-100.png"    alt="icone gmail"    class="w-9 scale duration-200 cursor-pointer m-auto">
+                </button>
+
+                <button onclick="copyToClipboard('92995238016', 'Telefone copiado!')">
+                    <img src="icons/icons8-telefone-100.png" alt="icone telefone" class="w-9 scale duration-200 cursor-pointer m-auto">
+                </button>
+
+                <button onclick="copyToClipboard('92995238016', 'Whatsapp copiado!')">
+                    <img src="icons/icons8-whatsapp-100.png" alt="icone whatsapp" class="w-9 scale duration-200 cursor-pointer m-auto">
+                </button>
+
             </div>
             <p class="text-center">Clique nos icones para copiar o contato</p>
 
