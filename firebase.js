@@ -17,7 +17,7 @@
     const docRef = db.collection('analise').doc('impressoes')
     docRef.get()
     .then((e)=>{
-      console.log(e.data().impressao)
+      
       let i = e.data().impressao+=1
       docRef.update({
         impressao: i
@@ -30,7 +30,6 @@
     const docRef = db.collection('analise').doc('visualizacao')
     docRef.get()
     .then((e)=>{
-      console.log(e.data().visualizacao)
       let i = e.data().visualizacao+=1
       docRef.update({
         visualizacao: i

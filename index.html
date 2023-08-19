@@ -1,28 +1,33 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explore meu portfólio front-end e descubra projetos criativos e interativos que transformam designs em código, proporcionando experiências de usuário responsivas e modernas.">
-    <meta name="keywords" content="Desenvolvedor front-end, programação front-end, Programador web front-end, HTML/CSS/Javascript, Front-end responsivo, design de site, Desenvolvedor front-end freelancer, web responsivo, ">
-    <meta name="author" content="Gabriel Andrade">
-    <meta name="robots" content="index, follow">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Explore meu portfólio front-end e descubra projetos criativos e interativos que transformam designs em código, proporcionando experiências de usuário responsivas e modernas." />
+    <meta name="keywords"
+        content="Desenvolvedor front-end, programação front-end, Programador web front-end, HTML/CSS/Javascript, Front-end responsivo, design de site, Desenvolvedor front-end freelancer, web responsivo, " />
+    <meta name="author" content="Gabriel Andrade" />
+    <meta name="robots" content="index, follow" />
     <title>Portfólio || Gabriel Andrade</title>
-    <link rel="shortcut icon" href="icons/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="tailwind.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="icons/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="tailwind.css" />
+    <link rel="stylesheet" href="style.css" />
 
     <!-- FIREBASE -->
     <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore-compat.js"></script>
 </head>
+
 <body>
     <!-- NAVEGAÇÃO -->
     <section class="bg-c1 flex items-center md:justify-between justify-around p-3 fixed w-full z-10">
-        <h1 class="text-white minecraft text-2xl "> GABRIEL ANDRADE</h1>
-        <button onclick="menu()" class="w-10 h-10 bg-center bg-cover md:hidden " style="background-image: url('icons/icons8-cardápio-100.png');"></button>
-        
-        <nav class="text-white minecraft gap-3 text-lg hidden md:flex"  > 
+        <h1 class="text-white minecraft text-2xl">GABRIEL ANDRADE</h1>
+        <span onclick="menu()" class="w-10 h-10 bg-center bg-cover md:hidden"
+            style="background-image: url('icons/icons8-cardápio-100.png')"></span>
+
+        <nav class="text-white minecraft gap-3 text-lg hidden md:flex">
             <a href="#home" class="hover:text-c4">HOME</a>
             <a href="#sobre" class="hover:text-c4">SOBRE</a>
             <a href="#habilidades" class="hover:text-c4">HABILIDADES</a>
@@ -33,10 +38,16 @@
 
     <!-- MENU MOBILE -->
     <section class="w-full h-full bg-c1 fixed hidden z-50" id="menuMobile">
-        <div class="flex justify-end  pr-15 p-5">
-            <button onclick="menu()" class="border-white border-2 text-white minecraft text-4xl  rounded-full w-10 h-10 bg-center bg-no-repeat  " style="background-position-x: 40%; background-size: 45%; background-image: url('icons/voltar.png');">  </button>
+        <div class="flex justify-end pr-15 p-5">
+            <button onclick="menu()"
+                class="border-white border-2 text-white minecraft text-4xl rounded-full w-10 h-10 bg-center bg-no-repeat"
+                style="
+            background-position-x: 40%;
+            background-size: 45%;
+            background-image: url('icons/voltar.png');
+          "></button>
         </div>
-        <nav class="text-white minecraft gap-3 text-2xl  space-y-5 mt-10 md:hidden  grid grid-cols-1 text-center  w-full"  > 
+        <nav class="text-white minecraft gap-3 text-2xl space-y-5 mt-10 md:hidden grid grid-cols-1 text-center w-full">
             <a onclick="menu()" href="#home" class="hover:text-c4">HOME</a>
             <a onclick="menu()" href="#sobre" class="hover:text-c4">SOBRE</a>
             <a onclick="menu()" href="#habilidades" class="hover:text-c4">HABILIDADES</a>
@@ -46,267 +57,348 @@
     </section>
 
     <!-- APRESENTAÇÃO -->
-    <header class="min-h-screen  p-5 pb-0 md:pt-24 " id="home">
-
+    <header class="min-h-screen p-5 pb-0 md:pt-24" id="home">
         <div class="md:flex items-center justify-around w-full md:p-5 pt-16">
-
-            <div class="container  md:w-1/2" >
-
-                <h1 class="impact font-black md:text-8xl text-6xl text-c1">FRONT-END </h1>
-                <h1 class="impact font-black md:text-9xl text-7xl text-c1">DEVELOPER</h1>
-                <p class="text-right text-2xl font-semibold  md:pr-12">Olá, eu sou Gabriel Andrade <br> Desenvolvedor Front-End a mais de 2 anos.</p>
+            <div class="container md:w-1/2">
+                <h1 class="impact font-black md:text-8xl text-6xl text-c1">
+                    FRONT-END
+                </h1>
+                <h1 class="impact font-black md:text-9xl text-7xl text-c1">
+                    DEVELOPER
+                </h1>
+                <p class="text-right text-2xl font-semibold md:pr-12">
+                    Olá, eu sou Gabriel Andrade <br />
+                    Desenvolvedor Front-End a mais de 2 anos.
+                </p>
 
                 <div class="mt-10 md:w-1/2 m-auto flex justify-around">
+                    <div class="border-black border-2 relative w-28 h-10 scale duration-200">
+                        <a href="https://api.whatsapp.com/send/?phone=5592995238016&text&type=phone_number&app_absent=0"
+                            target="_blank"
+                            class="flex items-center justify-center bg-c1 border-black border-2 text-white w-28 h-10 absolute -top-2 -right-2 minecraft">Whatsapp</a>
+                    </div>
 
                     <div class="border-black border-2 relative w-28 h-10 scale duration-200">
-                        <a href="https://api.whatsapp.com/send/?phone=5592995238016&text&type=phone_number&app_absent=0" target="_blank" class="flex items-center justify-center bg-c1 border-black border-2 text-white w-28 h-10 absolute -top-2 -right-2 minecraft">Whatsapp</a>
+                        <a href="https://www.linkedin.com/in/mendon%C3%A7agabriel97/" target="_blank"
+                            class="flex items-center justify-center bg-c1 border-black border-2 text-white w-28 h-10 absolute -top-2 -right-2 minecraft">Linkedin</a>
                     </div>
-
-                    <div class="border-black border-2 relative w-28 h-10 scale duration-200 ">
-                        <a href="https://www.linkedin.com/in/mendon%C3%A7agabriel97/"  target="_blank" class="flex items-center justify-center bg-c1 border-black border-2 text-white w-28 h-10 absolute -top-2 -right-2 minecraft">Linkedin</a>
-                    </div>
-
                 </div>
-
             </div>
 
-  
             <!-- FOTO MOBILE -->
-            <img src="img/eu.png" alt=" minha foto de perfil" class="md:hidden fperfil  w-full md:w-auto  md:static m-auto mt-5">
-                
-            <!-- FOTO PC -->
-            <img src="img/eu.png" alt=" minha foto de perfil" class="fperfil hidden md:flex h-auto md:w-auto w-60 md:static md:right-auto md:bottom-auto absolute bottom-0 right-5 ">
+            <img src="img/eu.png" alt=" minha foto de perfil"
+                class="md:hidden fperfil h-auto w-auto md:static m-auto mt-5" />
 
+            <!-- FOTO PC -->
+            <img src="img/eu.png" alt=" minha foto de perfil"
+                class="fperfil hidden md:flex h-auto md:w-auto w-60 md:static md:right-auto md:bottom-auto absolute bottom-0 right-5" />
         </div>
 
-
-
         <!-- CONTATOS -->
-        <div class="space-y-2 space-x-3 md:absolute bottom-5 items-center justify-center flex md:flex-col md:bg-transparent bg-white rounded-2xl mt-5" >
-            <a href="https://github.com/MendoncaGabriel" target="_blank"><img src="icons/icons8-github-100.png"   alt="icone github"   class="w-9 scale duration-200 cursor-pointer"></a>
+        <div
+            class="space-y-2 space-x-3 md:absolute bottom-5 items-center justify-center flex md:flex-col md:bg-transparent bg-white rounded-2xl mt-5">
+            <a href="https://github.com/MendoncaGabriel" target="_blank"><img src="icons/icons8-github-100.png"
+                    alt="icone github" class="w-9 scale duration-200 cursor-pointer" /></a>
             <!-- <img src="icons/icons8-linkedin-100.png" alt="icone linkedin" class="w-9 scale duration-200 cursor-pointer"> -->
-            <a href="https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=mendoncagabril@gmail.com" target="_blank"><img src="icons/icons8-gmail-100.png"    alt="icone gmail"    class="w-9 scale duration-200 cursor-pointer"></a>
-            <a href="tel:+5592995238016" target="_blank"><img src="icons/icons8-telefone-100.png" alt="icone telefone" class="w-9 scale duration-200 cursor-pointer"></a>
+            <a href="https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=mendoncagabril@gmail.com"
+                target="_blank"><img src="icons/icons8-gmail-100.png" alt="icone gmail"
+                    class="w-9 scale duration-200 cursor-pointer" /></a>
+            <a href="tel:+5592995238016" target="_blank"><img src="icons/icons8-telefone-100.png" alt="icone telefone"
+                    class="w-9 scale duration-200 cursor-pointer" /></a>
             <!-- <img src="icons/icons8-whatsapp-100.png" alt="icone whatsapp" class="w-9 scale duration-200 cursor-pointer"> -->
         </div>
     </header>
-    
+
     <!-- SOBRE MIM -->
-    <section class="p-5 md:p-20 md:pt-5  " id="sobre">
-        <div class="ancora  mt-16">
-            <h2 class="minecraft text-c1 text-2xl text-center md:mb-20" >SOBRE MIM</h2>
-            <div class="md:flex items-center justify-around  md:space-x-20">
-                <img class="md:w-1/3  mb-5 md:mb-0" src="img/programador-e-processo-de-codificacao-e-conceito-de-programacao-vetor_272930-2.png" alt="imagem ilustrativa programador e processo de codificacao e conceito de programacao vetor">
-                <p class="  md:text-xl">
-                    Olá, eu me chamo Gabriel Andrade tenho 25 anos e sou desenvolvedor front-end apaixonado por criar experiências interativas e envolventes na web. Com uma paixão pela estética minimalista e atenção aos detalhes, busco combinar minha criatividade e habilidades técnicas para construir interfaces intuitivas e visualmente atraentes. Estou constantemente em busca de novos desafios para expandir meu conhecimento e contribuir para projetos inspiradores. Vamos transformar ideias em realidade juntos!
+    <section class="p-5 md:p-20 md:pt-5" id="sobre">
+        <div class="ancora mt-16">
+            <h2 class="minecraft text-c1 text-2xl text-center md:mb-20">
+                SOBRE MIM
+            </h2>
+            <div class="md:flex items-center justify-around md:space-x-20">
+                <img class="md:w-1/3 mb-5 md:mb-0"
+                    src="img/programador-e-processo-de-codificacao-e-conceito-de-programacao-vetor_272930-2.png"
+                    alt="imagem ilustrativa programador e processo de codificacao e conceito de programacao vetor" />
+                <p class="md:text-xl">
+                    Olá, eu me chamo Gabriel Andrade tenho 25 anos e sou desenvolvedor
+                    front-end apaixonado por criar experiências interativas e
+                    envolventes na web. Com uma paixão pela estética minimalista e
+                    atenção aos detalhes, busco combinar minha criatividade e
+                    habilidades técnicas para construir interfaces intuitivas e
+                    visualmente atraentes. Estou constantemente em busca de novos
+                    desafios para expandir meu conhecimento e contribuir para projetos
+                    inspiradores. Vamos transformar ideias em realidade juntos!
                 </p>
             </div>
         </div>
     </section>
 
     <!-- HABILIDADES -->
-    <section class=" p-5 " id="habilidades">
-        <div class="ancora  mt-16">
-            <h2 class="minecraft text-c1 text-2xl text-center " >HABILIDADES</h2>
-            
-            <div class=" md:p-10 grid grid-cols-2  items-center md:justify-start justify-center pl-3 md:pl-0">
+    <section class="p-5" id="habilidades">
+        <div class="ancora mt-16">
+            <h2 class="minecraft text-c1 text-2xl text-center">HABILIDADES</h2>
 
-                <div class=" m-auto flex items-center justify-start  p-2 scale duration-200 md:w-1/2 w-full ">
-                    <img src="icons/icons8-html-5-100.png" alt="icone html5" class="w-10"><p class="font-medium text-xl md:text-3xl">HTML 5</p>
+            <div class="md:p-10 grid grid-cols-2 items-center md:justify-start justify-center pl-3 md:pl-0">
+                <div class="m-auto flex items-center justify-start p-2 scale duration-200 md:w-1/2 w-full">
+                    <img src="icons/icons8-html-5-100.png" alt="icone html5" class="w-10" />
+                    <p class="font-medium text-xl md:text-3xl">HTML 5</p>
                 </div>
-                <div class=" m-auto flex items-center justify-start  p-2 scale duration-200 md:w-1/2 w-full">
-                    <img src="icons/icons8-reagir-100.png" alt="icone html5" class="w-10"><p class="font-medium text-xl md:text-3xl">REACT</p>
+                <div class="m-auto flex items-center justify-start p-2 scale duration-200 md:w-1/2 w-full">
+                    <img src="icons/icons8-reagir-100.png" alt="icone html5" class="w-10" />
+                    <p class="font-medium text-xl md:text-3xl">REACT</p>
                 </div>
-                <div class=" m-auto flex items-center justify-start  p-2 scale duration-200 md:w-1/2 w-full">
-                    <img src="icons/icons8-css-100.png" alt="icone html5" class="w-10 pl-0"><p class="font-medium text-xl md:text-3xl">CSS 3</p>
+                <div class="m-auto flex items-center justify-start p-2 scale duration-200 md:w-1/2 w-full">
+                    <img src="icons/icons8-css-100.png" alt="icone html5" class="w-10 pl-0" />
+                    <p class="font-medium text-xl md:text-3xl">CSS 3</p>
                 </div>
-                <div class=" m-auto flex items-center justify-start  p-2 scale duration-200 md:w-1/2 w-full">
-                    <img src="icons/icons8-tailwindcss-100.png" alt="icone html5" class="w-9 mr-1"><p class="font-medium text-xl md:text-3xl"> TAILWIND</p>
+                <div class="m-auto flex items-center justify-start p-2 scale duration-200 md:w-1/2 w-full">
+                    <img src="icons/icons8-tailwindcss-100.png" alt="icone html5" class="w-9 mr-1" />
+                    <p class="font-medium text-xl md:text-3xl">TAILWIND</p>
                 </div>
-                <div class=" m-auto flex items-center justify-start  p-2 scale duration-200 md:w-1/2 w-full">
-                    <img src="icons/icons8-javascript-100.png" alt="icone html5" class="w-10"><p class="font-medium text-xl md:text-3xl">JAVASCRIPT</p>
+                <div class="m-auto flex items-center justify-start p-2 scale duration-200 md:w-1/2 w-full">
+                    <img src="icons/icons8-javascript-100.png" alt="icone html5" class="w-10" />
+                    <p class="font-medium text-xl md:text-3xl">JAVASCRIPT</p>
                 </div>
-                <div class=" m-auto flex items-center justify-start  p-2 scale duration-200 md:w-1/2 w-full">
-                    <img src="icons/icons8-firebase-100.png" alt="icone html5" class="w-10"><p class="font-medium text-xl md:text-3xl">FIREBASE</p>
+                <div class="m-auto flex items-center justify-start p-2 scale duration-200 md:w-1/2 w-full">
+                    <img src="icons/icons8-firebase-100.png" alt="icone html5" class="w-10" />
+                    <p class="font-medium text-xl md:text-3xl">FIREBASE</p>
                 </div>
-                <div class=" m-auto flex items-center justify-start  p-2 scale duration-200 md:w-1/2 w-full">
-                    <img src="icons/icons8-configurações-de-api-100.png" alt="icone html5" class="w-10"><p class="font-medium text-xl md:text-3xl">API REST</p>
+                <div class="m-auto flex items-center justify-start p-2 scale duration-200 md:w-1/2 w-full">
+                    <img src="icons/icons8-configurações-de-api-100.png" alt="icone html5" class="w-10" />
+                    <p class="font-medium text-xl md:text-3xl">API REST</p>
                 </div>
-                   
             </div>
-            <div class=" md:p-10 pt-0 pl-3 md:pl-0">
-                <hr class="border-b-2 mt-3 mb-3">
+            <div class="md:p-10 pt-0 pl-3 md:pl-0">
+                <hr class="border-b-2 mt-3 mb-3" />
                 <div class="grid grid-cols-2">
-                    <div class=" m-auto flex items-center justify-start p-2 scale duration-200 md:w-1/2 w-full">
-                        <img src="icons/icons8-corel-draw-100.png" alt="icone html5" class="w-10"><p class="font-medium text-xl md:text-3xl">CORELDRAW</p>
+                    <div class="m-auto flex items-center justify-start p-2 scale duration-200 md:w-1/2 w-full">
+                        <img src="icons/icons8-corel-draw-100.png" alt="icone html5" class="w-10" />
+                        <p class="font-medium text-xl md:text-3xl">CORELDRAW</p>
                     </div>
                 </div>
             </div>
 
-            <img src="img/homem-que-trabalha-com-a-visao-traseira-do-programador-de-desenvolvimento-de-software-de-script_81894-7230.png" 
-            class="md:hidden w-72 m-auto h-auto mt-2" alt="imagem ilustrativa">
-
-
+            <img src="img/homem-que-trabalha-com-a-visao-traseira-do-programador-de-desenvolvimento-de-software-de-script_81894-7230.png"
+                class="md:hidden w-72 m-auto h-auto mt-2" alt="imagem ilustrativa" />
         </div>
     </section>
 
     <!-- PROJETOS -->
-    <section class="    p-5 " id="projetos">
+    <section class="p-5" id="projetos">
         <div class="ancora mt-16">
-            <h2 class="minecraft text-c1 text-2xl text-center " >PROJETOS</h2>
-            
-            <div class=" grid md:grid-cols-4 grid-cols-1 p-10 space-y-5 md:scale-y-0">
+            <h2 class="minecraft text-c1 text-2xl text-center">PROJETOS</h2>
 
+            <div class="grid md:grid-cols-4 grid-cols-1 p-10 space-y-5 md:scale-y-0">
                 <!-- Projeto -->
-                <div class="w-60 scale duration-200 m-auto " >
+                <div class="w-60 scale duration-200 m-auto">
                     <div class="mb-3 flex">
-                        <img src="icons/html.png" alt="icone html" class="w-10 h-10">
-                        <img src="icons/icons8-css-48.png" alt="icone html" class="w-10 h-10">
-                        <img src="icons/icons8-js-48.png" alt="icone html" class="w-10 h-10">
-                        <img src="icons/icons8-tailwindcss-100.png" alt="icone html" class="w-10 h-10">
+                        <img src="icons/html.png" alt="icone html" class="w-10 h-10" />
+                        <img src="icons/icons8-css-48.png" alt="icone html" class="w-10 h-10" />
+                        <img src="icons/icons8-js-48.png" alt="icone html" class="w-10 h-10" />
+                        <img src="icons/icons8-tailwindcss-100.png" alt="icone html" class="w-10 h-10" />
                     </div>
-                    <div class="bg-c1 w-56 h-72  rounded-lg relative  ">
-                        <div class="bg-white w-56 h-72    rounded-lg border-black border-2 absolute -top-2 -right-2 p-2">
+                    <div class="bg-c1 w-56 h-72 rounded-lg relative">
+                        <div class="bg-white w-56 h-72 rounded-lg border-black border-2 absolute -top-2 -right-2 p-2">
                             <div class="">
-                                <img src="img/p1.png" alt="imagem do projeto" class="border-2 border-black object-cover w-full max-h-40">
-                                <h2 class="text-xl font-bold text-c1  mt-2">Pagina de capitura de leeds E-Book</h2>
+                                <img src="img/p1.png" alt="imagem do projeto"
+                                    class="border-2 border-black object-cover w-full max-h-40" />
+                                <h2 class="text-xl font-bold text-c1 mt-2">
+                                    Pagina de capitura de leeds E-Book
+                                </h2>
                             </div>
-                            <div class=" flex items-center justify-around h-auto absolute bottom-5 w-52">
+                            <div class="flex items-center justify-around h-auto absolute bottom-5 w-52">
+                                <!-- ver projeto -->
                                 <div class="border-black border-2 bg-white w-32 h-9 scale duration-200 relative">
-                                    <a href="https://mendoncagabriel.github.io/Meus-Projetos/PaginaCaputuraEbook/" target="_blank" class="bg-c1 border-black border-2 text-white w-32 h-9 absolute -top-2 -right-2 minecraft items-center flex justify-center" title="ir para o projeto">VER PROJETO</a>
+                                    <a href="https://mendoncagabriel.github.io/Meus-Projetos/PaginaCaputuraEbook/"
+                                        target="_blank"
+                                        class="bg-c1 border-black border-2 text-white w-32 h-9 absolute -top-2 -right-2 minecraft items-center flex justify-center"
+                                        title="ir para o projeto" aria-label="ver pagina do projeto">VER PROJETO</a>
                                 </div>
-                                <a href="https://github.com/MendoncaGabriel/Meus-Projetos/tree/main/PaginaCaputuraEbook" target="_blank"><img src="icons/icons8-github-100.png" alt="" class="w-10 scale" title="ver codigo do projeto"></a>
+
+                                <!-- github -->
+                                <a href="https://github.com/MendoncaGabriel/Meus-Projetos/tree/main/PaginaCaputuraEbook"
+                                    target="_blank" aria-label="Ver código do projeto no github">
+                                    <img src="icons/icons8-github-100.png" alt="" class="w-10 scale"
+                                        title="ver código do projeto" />
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Projeto -->
-                <div class="w-60 scale duration-200 m-auto " >
+                <div class="w-60 scale duration-200 m-auto">
                     <div class="mb-3 flex">
-                        <img src="icons/html.png" alt="icone html" class="w-10 h-10">
-                        <img src="icons/icons8-css-48.png" alt="icone html" class="w-10 h-10">
-                        <img src="icons/icons8-js-48.png" alt="icone html" class="w-10 h-10">
-                        <img src="icons/icons8-nodejs-48.png" alt="icone html" class="w-10 h-10">
-                        <img src="icons/puppeteer.png" alt="icone html" class="w-10 h-10">
+                        <img src="icons/html.png" alt="icone html" class="w-10 h-10" />
+                        <img src="icons/icons8-css-48.png" alt="icone html" class="w-10 h-10" />
+                        <img src="icons/icons8-js-48.png" alt="icone html" class="w-10 h-10" />
+                        <img src="icons/icons8-nodejs-48.png" alt="icone html" class="w-10 h-10" />
+                        <img src="icons/puppeteer.png" alt="icone html" class="w-10 h-10" />
                     </div>
-                    <div class="bg-c1 w-56 h-72  rounded-lg relative  ">
-                        <div class="bg-white w-56 h-72    rounded-lg border-black border-2 absolute -top-2 -right-2 p-2">
+                    <div class="bg-c1 w-56 h-72 rounded-lg relative">
+                        <div class="bg-white w-56 h-72 rounded-lg border-black border-2 absolute -top-2 -right-2 p-2">
                             <div class="">
-                                <img src="img/p2.png" alt="imagem do projeto" class="border-2 border-black object-cover w-full max-h-40">
-                                <h2 class="text-xl font-bold text-c1  mt-2">Pagina de vagas online automatica</h2>
+                                <img src="img/p2.png" alt="imagem do projeto"
+                                    class="border-2 border-black object-cover w-full max-h-40" />
+                                <h2 class="text-xl font-bold text-c1 mt-2">
+                                    Pagina de vagas online automatica
+                                </h2>
                             </div>
-                            <div class=" flex items-center justify-around h-auto absolute bottom-5 w-52">
+                            <div class="flex items-center justify-around h-auto absolute bottom-5 w-52">
+                                <!-- ver projeto -->
                                 <div class="border-black border-2 bg-white w-32 h-9 scale duration-200 relative">
-                                    <a href="https://mendoncagabriel.github.io/Meus-Projetos/Auto-Vagas/" target="_blank" class="bg-c1 border-black border-2 text-white w-32 h-9 absolute -top-2 -right-2 minecraft items-center flex justify-center" title="ir para o projeto">VER PROJETO</a>
+                                    <a href="https://mendoncagabriel.github.io/Meus-Projetos/Auto-Vagas/"
+                                        target="_blank"
+                                        class="bg-c1 border-black border-2 text-white w-32 h-9 absolute -top-2 -right-2 minecraft items-center flex justify-center"
+                                        title="ir para o projeto" aria-label="ver pagina do projeto">VER PROJETO</a>
                                 </div>
-                                <a href="https://github.com/MendoncaGabriel/Meus-Projetos/tree/main/Auto-Vagas" target="_blank"><img src="icons/icons8-github-100.png" alt="" class="w-10 scale" title="ver codigo do projeto"></a>
+
+                                <!-- github  -->
+                                <a href="https://github.com/MendoncaGabriel/Meus-Projetos/tree/main/Auto-Vagas"
+                                    target="_blank" aria-label="Ver código do projeto no github">
+                                    <img src="icons/icons8-github-100.png" alt="" class="w-10 scale"
+                                        title="ver codigo do projeto" />
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Projeto -->
-                <div class="w-60 scale duration-200 m-auto " >
+                <div class="w-60 scale duration-200 m-auto">
                     <div class="mb-3 flex">
-                        <img src="icons/html.png" alt="icone html" class="w-10 h-10">
-                        <img src="icons/icons8-css-48.png" alt="icone html" class="w-10 h-10">
-                        <img src="icons/icons8-js-48.png" alt="icone html" class="w-10 h-10">
-                        <img src="icons/icons8-tailwindcss-100.png" alt="icone html" class="w-10 h-10">
-             
+                        <img src="icons/html.png" alt="icone html" class="w-10 h-10" />
+                        <img src="icons/icons8-css-48.png" alt="icone html" class="w-10 h-10" />
+                        <img src="icons/icons8-js-48.png" alt="icone html" class="w-10 h-10" />
+                        <img src="icons/icons8-tailwindcss-100.png" alt="icone html" class="w-10 h-10" />
                     </div>
-                    <div class="bg-c1 w-56 h-72  rounded-lg relative  ">
-                        <div class="bg-white w-56 h-72    rounded-lg border-black border-2 absolute -top-2 -right-2 p-2">
+                    <div class="bg-c1 w-56 h-72 rounded-lg relative">
+                        <div class="bg-white w-56 h-72 rounded-lg border-black border-2 absolute -top-2 -right-2 p-2">
                             <div class="">
-                                <img src="img/p3.png" alt="imagem do projeto" class="border-2 border-black object-cover w-full max-h-40">
-                                <h2 class="text-xl font-bold text-c1  mt-2">Site de download de jogos</h2>
+                                <img src="img/p3.png" alt="imagem do projeto"
+                                    class="border-2 border-black object-cover w-full max-h-40" />
+                                <h2 class="text-xl font-bold text-c1 mt-2">
+                                    Site de download de jogos
+                                </h2>
                             </div>
-                            <div class=" flex items-center justify-around h-auto absolute bottom-5 w-52">
+
+                            <div class="flex items-center justify-around h-auto absolute bottom-5 w-52">
+                                <!-- ver projeto -->
                                 <div class="border-black border-2 bg-white w-32 h-9 scale duration-200 relative">
-                                    <a href="https://mendoncagabriel.github.io/CapitaoTorrent/" target="_blank" class="bg-c1 border-black border-2 text-white w-32 h-9 absolute -top-2 -right-2 minecraft items-center flex justify-center" title="ir para o projeto">VER PROJETO</a>
+                                    <a href="https://mendoncagabriel.github.io/CapitaoTorrent/" target="_blank"
+                                        class="bg-c1 border-black border-2 text-white w-32 h-9 absolute -top-2 -right-2 minecraft items-center flex justify-center"
+                                        title="ir para o projeto" aria-label="ver pagina do projeto">VER PROJETO</a>
                                 </div>
-                                <a href="https://github.com/MendoncaGabriel/CapitaoTorrent" target="_blank"><img src="icons/icons8-github-100.png" alt="" class="w-10 scale" title="ver codigo do projeto"></a>
+
+                                <!-- github -->
+                                <a href="https://github.com/MendoncaGabriel/CapitaoTorrent" target="_blank"
+                                    aria-label="Ver código do projeto no github">
+                                    <img src="icons/icons8-github-100.png" alt="" class="w-10 scale"
+                                        title="ver codigo do projeto" />
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Projeto -->
-                <div class="w-60 scale duration-200 m-auto " >
+                <div class="w-60 scale duration-200 m-auto">
                     <div class="mb-3 flex">
-                        <img src="icons/html.png" alt="icone html" class="w-10 h-10">
-                        <img src="icons/icons8-css-48.png" alt="icone html" class="w-10 h-10">
-                        <img src="icons/icons8-js-48.png" alt="icone html" class="w-10 h-10">
+                        <img src="icons/html.png" alt="icone html" class="w-10 h-10" />
+                        <img src="icons/icons8-css-48.png" alt="icone html" class="w-10 h-10" />
+                        <img src="icons/icons8-js-48.png" alt="icone html" class="w-10 h-10" />
                     </div>
-                    <div class="bg-c1 w-56 h-72  rounded-lg relative  ">
-                        <div class="bg-white w-56 h-72    rounded-lg border-black border-2 absolute -top-2 -right-2 p-2">
+                    <div class="bg-c1 w-56 h-72 rounded-lg relative">
+                        <div class="bg-white w-56 h-72 rounded-lg border-black border-2 absolute -top-2 -right-2 p-2">
                             <div class="">
-                                <img src="img/p4.png" alt="imagem do projeto" class="border-2 border-black object-cover w-full max-h-40">
-                                <h2 class="text-xl font-bold text-c1  mt-2"> Site institucional.  [em construção]</h2>
+                                <img src="img/p4.png" alt="imagem do projeto"
+                                    class="border-2 border-black object-cover w-full max-h-40" />
+                                <h2 class="text-xl font-bold text-c1 mt-2">
+                                    Site institucional. [em construção]
+                                </h2>
                             </div>
-                            <div class=" flex items-center justify-around h-auto absolute bottom-5 w-52">
+                            <div class="flex items-center justify-around h-auto absolute bottom-5 w-52">
+                                <!-- ver projeto -->
                                 <div class="border-black border-2 bg-white w-32 h-9 scale duration-200 relative">
-                                    <a href="https://mendoncagabriel.github.io/Meus-Projetos/Site-Institucional/" target="_blank" class="bg-c1 border-black border-2 text-white w-32 h-9 absolute -top-2 -right-2 minecraft items-center flex justify-center" title="ir para o projeto">VER PROJETO</a>
+                                    <a href="https://mendoncagabriel.github.io/Meus-Projetos/Site-Institucional/"
+                                        target="_blank"
+                                        class="bg-c1 border-black border-2 text-white w-32 h-9 absolute -top-2 -right-2 minecraft items-center flex justify-center"
+                                        title="ir para o projeto" aria-label="ver pagina do projeto">VER PROJETO</a>
                                 </div>
-                                <a href="https://github.com/MendoncaGabriel/Meus-Projetos/tree/main/Site-Institucional" target="_blank"><img src="icons/icons8-github-100.png" alt="" class="w-10 scale" title="ver codigo do projeto"></a>
+
+                                <!-- github -->
+                                <a href="https://github.com/MendoncaGabriel/Meus-Projetos/tree/main/Site-Institucional"
+                                    target="_blank" aria-label="Ver código do projeto no github">
+                                    <img src="icons/icons8-github-100.png" alt="" class="w-10 scale"
+                                        title="ver codigo do projeto" />
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
-
-       
-
             </div>
-
         </div>
     </section>
 
     <!-- CONTATO -->
-    <section class=" min-h-screen   p-5 " id="contato">
+    <section class="min-h-screen p-5" id="contato">
         <div class="ancora">
-            <h2 class="minecraft text-c1 text-2xl text-center " >CONTATO</h2>
-            
-            <div class="md:p-10 pt-10 md:m-0 mb-10">
-                <h2 class="impact font-black md:text-8xl text-4xl text-5x1 text-c1">OBRIGADO  <br> POR CHEGAR ATE AQUI!</h2>
-                <p class="text-right md:text-2xl text-xl font-semibold  md:pr-12">Para contratar qualquer serviço basta entrar em contato comigo pelas redes sociais abaixo ou pelo whatsapp!</p>
-            </div>
-            <p class="text-center text-xl font-semibold md:mb-0 mb-10">Te vejo em breve!</p>
+            <h2 class="minecraft text-c1 text-2xl text-center">CONTATO</h2>
 
-           <!-- CONTATOS -->
-            <div class="flex m-auto  md:w-60 w-full justify-center  mt-5" >
-                
+            <div class="md:p-10 pt-10 md:m-0 mb-10">
+                <h2 class="impact font-black md:text-8xl text-4xl text-5x1 text-c1">
+                    OBRIGADO <br />
+                    POR CHEGAR ATE AQUI!
+                </h2>
+                <p class="text-right md:text-2xl text-xl font-semibold md:pr-12">
+                    Para contratar qualquer serviço basta entrar em contato comigo pelas
+                    redes sociais abaixo ou pelo whatsapp!
+                </p>
+            </div>
+            <p class="text-center text-xl font-semibold md:mb-0 mb-10">
+                Te vejo em breve!
+            </p>
+
+            <!-- CONTATOS -->
+            <div class="flex m-auto md:w-60 w-full justify-center mt-5">
                 <button onclick="copyToClipboard(`github.com/MendoncaGabriel`, 'Link copiado!')">
-                    <img src="icons/icons8-github-100.png"   alt="icone github"   class="w-9 scale duration-200 cursor-pointer m-auto">
+                    <img src="icons/icons8-github-100.png" alt="icone github"
+                        class="w-9 scale duration-200 cursor-pointer m-auto" />
                 </button>
 
                 <button onclick="copyToClipboard('mendonçagabriel97', 'Perfil linkedin copiado!')">
-                    <img src="icons/icons8-linkedin-100.png" alt="icone linkedin" class="w-9 scale duration-200 cursor-pointer m-auto">
+                    <img src="icons/icons8-linkedin-100.png" alt="icone linkedin"
+                        class="w-9 scale duration-200 cursor-pointer m-auto" />
                 </button>
 
                 <button onclick="copyToClipboard('mendoncagabriel1997@gmail.com', 'E-mail copiado!')">
-                    <img src="icons/icons8-gmail-100.png"    alt="icone gmail"    class="w-9 scale duration-200 cursor-pointer m-auto">
+                    <img src="icons/icons8-gmail-100.png" alt="icone gmail"
+                        class="w-9 scale duration-200 cursor-pointer m-auto" />
                 </button>
 
                 <button onclick="copyToClipboard('92995238016', 'Telefone copiado!')">
-                    <img src="icons/icons8-telefone-100.png" alt="icone telefone" class="w-9 scale duration-200 cursor-pointer m-auto">
+                    <img src="icons/icons8-telefone-100.png" alt="icone telefone"
+                        class="w-9 scale duration-200 cursor-pointer m-auto" />
                 </button>
 
                 <button onclick="copyToClipboard('92995238016', 'Whatsapp copiado!')">
-                    <img src="icons/icons8-whatsapp-100.png" alt="icone whatsapp" class="w-9 scale duration-200 cursor-pointer m-auto">
+                    <img src="icons/icons8-whatsapp-100.png" alt="icone whatsapp"
+                        class="w-9 scale duration-200 cursor-pointer m-auto" />
                 </button>
-
             </div>
-            
+
             <p class="text-center">Clique nos icones para copiar o contato</p>
         </div>
-        
     </section>
 
-    <footer><h3 class="text-center">© Todos os direitos reservados a Gabriel Andrade.</h3></footer>
-    
-
+    <!-- RODAPÉ -->
+    <footer>
+        <h3 class="text-center">
+            © Todos os direitos reservados a Gabriel Andrade.
+        </h3>
+    </footer>
 </body>
+
 </html>
 <script src="firebase.js"></script>
 <script src="script.js"></script>
-
