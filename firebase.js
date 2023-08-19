@@ -24,7 +24,7 @@
       })
     })
 
-  }impressao()
+  }
 
   function visualizacao(){
     const docRef = db.collection('analise').doc('visualizacao')
@@ -38,7 +38,12 @@
 
   }
 
-  if(!localStorage.g){
-    localStorage.g = true
-    visualizacao()
-  }
+
+
+  setTimeout(() => {
+    if(!localStorage.g){
+      localStorage.g = true
+      visualizacao()
+    }
+    impressao()
+  }, 5000);
