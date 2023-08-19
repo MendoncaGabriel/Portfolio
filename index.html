@@ -12,8 +12,13 @@
     <meta name="robots" content="index, follow" />
     <title>Portfólio || Gabriel Andrade</title>
     <link rel="shortcut icon" href="icons/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="styles.pure.css" />
 
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="tailwind.css" />
+    
+    <!-- Animate On Scroll Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <!-- FIREBASE -->
     <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-app-compat.js"></script>
@@ -22,7 +27,7 @@
 
 <body>
     <!-- NAVEGAÇÃO -->
-    <section class="bg-c1 flex items-center md:justify-between justify-around p-3 fixed w-full z-10">
+    <section class="overflow-x-hidden bg-c1 flex items-center md:justify-between justify-around p-3 fixed w-full z-10">
         <h1 class="text-white minecraft text-2xl">GABRIEL ANDRADE</h1>
         <span onclick="menu()" class="w-10 h-10 bg-center bg-cover md:hidden"
             style="background-image: url('icons/icons8-cardápio-100.png')"></span>
@@ -37,7 +42,7 @@
     </section>
 
     <!-- MENU MOBILE -->
-    <section class="w-full h-full bg-c1 fixed hidden z-50" id="menuMobile">
+    <section class="overflow-x-hidden w-full h-full bg-c1 fixed hidden z-50" id="menuMobile">
         <div class="flex justify-end pr-15 p-5">
             <button onclick="menu()"
                 class="border-white border-2 text-white minecraft text-4xl rounded-full w-10 h-10 bg-center bg-no-repeat"
@@ -57,7 +62,7 @@
     </section>
 
     <!-- APRESENTAÇÃO -->
-    <header class="min-h-screen p-5 pb-0 md:pt-24" id="home">
+    <header class="overflow-x-hidden min-h-screen p-5 pb-0 md:pt-24" id="home">
         <div class="md:flex items-center justify-around w-full md:p-5 pt-16">
             <div class="container md:w-1/2">
                 <h1 class="impact font-black md:text-8xl text-6xl text-c1">
@@ -113,16 +118,17 @@
     </header>
 
     <!-- SOBRE MIM -->
-    <section class="p-5 md:p-20 md:pt-5" id="sobre">
+    <section class="overflow-x-hidden p-5 md:p-20 md:pt-5" id="sobre">
         <div class="ancora mt-16">
             <h2 class="minecraft text-c1 text-2xl text-center md:mb-20">
                 SOBRE MIM
             </h2>
             <div class="md:flex items-center justify-around md:space-x-20">
-                <img class="md:w-1/3 mb-5 md:mb-0"
+                <img class=" md:w-1/3 mb-5 md:mb-0"
+                    data-aos="fade-right"
                     src="img/programador-e-processo-de-codificacao-e-conceito-de-programacao-vetor_272930-2.png"
                     alt="imagem ilustrativa programador e processo de codificacao e conceito de programacao vetor" />
-                <p class="md:text-xl">
+                <p data-aos="fade-left" class="md:text-xl">
                     Olá, eu me chamo Gabriel Andrade tenho 25 anos e sou desenvolvedor
                     front-end apaixonado por criar experiências interativas e
                     envolventes na web. Com uma paixão pela estética minimalista e
@@ -137,41 +143,41 @@
     </section>
 
     <!-- HABILIDADES -->
-    <section class="p-5" id="habilidades">
+    <section class="overflow-x-hidden p-5" id="habilidades">
         <div class="ancora mt-16">
             <h2 class="minecraft text-c1 text-2xl text-center">HABILIDADES</h2>
 
             <div class="md:p-10 grid grid-cols-2 items-center md:justify-start justify-center pl-3 md:pl-0">
-                <div class="m-auto flex items-center justify-start p-2 scale duration-200 md:w-1/2 w-full">
+                <div data-aos="fade-right" class="m-auto flex items-center justify-start p-2 scale duration-200 md:w-1/2 w-full">
                     <img src="icons/icons8-html-5-100.png" alt="icone html5" class="w-10" />
                     <p class="font-medium text-xl md:text-3xl">HTML 5</p>
                 </div>
-                <div class="m-auto flex items-center justify-start p-2 scale duration-200 md:w-1/2 w-full">
+                <div data-aos="fade-left" class="m-auto flex items-center justify-start p-2 scale duration-200 md:w-1/2 w-full">
                     <img src="icons/icons8-reagir-100.png" alt="icone html5" class="w-10" />
                     <p class="font-medium text-xl md:text-3xl">REACT</p>
                 </div>
-                <div class="m-auto flex items-center justify-start p-2 scale duration-200 md:w-1/2 w-full">
+                <div data-aos="fade-right" class="m-auto flex items-center justify-start p-2 scale duration-200 md:w-1/2 w-full">
                     <img src="icons/icons8-css-100.png" alt="icone html5" class="w-10 pl-0" />
                     <p class="font-medium text-xl md:text-3xl">CSS 3</p>
                 </div>
-                <div class="m-auto flex items-center justify-start p-2 scale duration-200 md:w-1/2 w-full">
+                <div data-aos="fade-left" class="m-auto flex items-center justify-start p-2 scale duration-200 md:w-1/2 w-full">
                     <img src="icons/icons8-tailwindcss-100.png" alt="icone html5" class="w-9 mr-1" />
                     <p class="font-medium text-xl md:text-3xl">TAILWIND</p>
                 </div>
-                <div class="m-auto flex items-center justify-start p-2 scale duration-200 md:w-1/2 w-full">
+                <div data-aos="fade-right" class="m-auto flex items-center justify-start p-2 scale duration-200 md:w-1/2 w-full">
                     <img src="icons/icons8-javascript-100.png" alt="icone html5" class="w-10" />
                     <p class="font-medium text-xl md:text-3xl">JAVASCRIPT</p>
                 </div>
-                <div class="m-auto flex items-center justify-start p-2 scale duration-200 md:w-1/2 w-full">
+                <div data-aos="fade-left" class="m-auto flex items-center justify-start p-2 scale duration-200 md:w-1/2 w-full">
                     <img src="icons/icons8-firebase-100.png" alt="icone html5" class="w-10" />
                     <p class="font-medium text-xl md:text-3xl">FIREBASE</p>
                 </div>
-                <div class="m-auto flex items-center justify-start p-2 scale duration-200 md:w-1/2 w-full">
+                <div data-aos="fade-right" class="m-auto flex items-center justify-start p-2 scale duration-200 md:w-1/2 w-full">
                     <img src="icons/icons8-configurações-de-api-100.png" alt="icone html5" class="w-10" />
                     <p class="font-medium text-xl md:text-3xl">API REST</p>
                 </div>
             </div>
-            <div class="md:p-10 pt-0 pl-3 md:pl-0">
+            <div data-aos="fade-right" class="md:p-10 pt-0 pl-3 md:pl-0">
                 <hr class="border-b-2 mt-3 mb-3" />
                 <div class="grid grid-cols-2">
                     <div class="m-auto flex items-center justify-start p-2 scale duration-200 md:w-1/2 w-full">
@@ -187,13 +193,13 @@
     </section>
 
     <!-- PROJETOS -->
-    <section class="p-5" id="projetos">
+    <section class="overflow-x-hidden p-5" id="projetos">
         <div class="ancora mt-16">
             <h2 class="minecraft text-c1 text-2xl text-center">PROJETOS</h2>
 
             <div class="grid md:grid-cols-4 grid-cols-1 p-10 space-y-5 md:scale-y-0">
                 <!-- Projeto -->
-                <div class="w-60 scale duration-200 m-auto">
+                <div data-aos="fade-right" class="w-60 scale duration-200 m-auto">
                     <div class="mb-3 flex">
                         <img src="icons/html.png" alt="icone html" class="w-10 h-10" />
                         <img src="icons/icons8-css-48.png" alt="icone html" class="w-10 h-10" />
@@ -230,7 +236,7 @@
                 </div>
 
                 <!-- Projeto -->
-                <div class="w-60 scale duration-200 m-auto">
+                <div data-aos="fade-right" class="w-60 scale duration-200 m-auto">
                     <div class="mb-3 flex">
                         <img src="icons/html.png" alt="icone html" class="w-10 h-10" />
                         <img src="icons/icons8-css-48.png" alt="icone html" class="w-10 h-10" />
@@ -268,7 +274,7 @@
                 </div>
 
                 <!-- Projeto -->
-                <div class="w-60 scale duration-200 m-auto">
+                <div data-aos="fade-left" class="w-60 scale duration-200 m-auto">
                     <div class="mb-3 flex">
                         <img src="icons/html.png" alt="icone html" class="w-10 h-10" />
                         <img src="icons/icons8-css-48.png" alt="icone html" class="w-10 h-10" />
@@ -305,7 +311,7 @@
                 </div>
 
                 <!-- Projeto -->
-                <div class="w-60 scale duration-200 m-auto">
+                <div data-aos="fade-left" class="w-60 scale duration-200 m-auto">
                     <div class="mb-3 flex">
                         <img src="icons/html.png" alt="icone html" class="w-10 h-10" />
                         <img src="icons/icons8-css-48.png" alt="icone html" class="w-10 h-10" />
@@ -347,16 +353,16 @@
     </section>
 
     <!-- CONTATO -->
-    <section class="min-h-screen p-5" id="contato">
+    <section class="overflow-x-hidden min-h-screen p-5" id="contato">
         <div class="ancora">
             <h2 class="minecraft text-c1 text-2xl text-center">CONTATO</h2>
 
             <div class="md:p-10 pt-10 md:m-0 mb-10">
-                <h2 class="impact font-black md:text-8xl text-4xl text-5x1 text-c1">
+                <h2 data-aos="fade-right" class="impact font-black md:text-8xl text-4xl text-5x1 text-c1">
                     OBRIGADO <br />
                     POR CHEGAR ATE AQUI!
                 </h2>
-                <p class="text-right md:text-2xl text-xl font-semibold md:pr-12">
+                <p data-aos="fade-left" class="text-right md:text-2xl text-xl font-semibold md:pr-12">
                     Para contratar qualquer serviço basta entrar em contato comigo pelas
                     redes sociais abaixo ou pelo whatsapp!
                 </p>
@@ -366,7 +372,7 @@
             </p>
 
             <!-- CONTATOS -->
-            <div class="flex m-auto md:w-60 w-full justify-center mt-5 space-x-5">
+            <div data-aos="fade-up" class="flex m-auto md:w-60 w-full justify-center mt-5 space-x-5">
                 <button onclick="copyToClipboard(`github.com/MendoncaGabriel`, 'Link copiado!')">
                     <img src="icons/icons8-github-100.png" alt="icone github"
                         class="w-9 scale duration-200 cursor-pointer m-auto" />
@@ -408,3 +414,7 @@
 </html>
 <script src="firebase.js"></script>
 <script src="script.js"></script>
+
+<script>
+    AOS.init();
+  </script>
