@@ -23,4 +23,4 @@ function copyToClipboard(text, alerta) {
     document.body.removeChild(textArea);
 
     alert(alerta)
-  }
+}
