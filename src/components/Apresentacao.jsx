@@ -3,19 +3,20 @@ import MinhaFoto from '../images/eu.png'
 export default function Apresentacao() {
     return (
 
-        <div class="md:flex items-center justify-around w-full  bg-white border border-red-500 py-20">
+        <div class="md:flex items-center justify-around w-full  bg-white  lg:py-20 py-10" id='apresentacao'>
             <div class="container md:w-1/2">
 
-                <div className='text-blue-800'>
+                <div className='text-blue-800 m-auto ml-5'>
 
-                    <h1 class="impact font-black md:text-8xl  text-6xl text-c1">
+                    <h1 class="impact font-black md:text-8xl  text-4xl ">
                         Deselvolvedor web
                     </h1>
-                    <h1 class="impact font-black md:text-9xl  text-7xl text-c1">
+
+                    <h1 class="impact font-black md:text-9xl  text-5xl ">
                         FULL STACK
                     </h1>
 
-                    <p class="text-right text-2xl font-semibold md:pr-12 text-gray-700 my-10">
+                    <p class="text-right lg:text-2xl text-lg font-semibold pr-12 text-gray-700 lg:my-10 my-5">
                         Olá, eu sou Gabriel Andrade <br />
                         Desenvolvedor web a mais de 2 anos.
                     </p>
@@ -33,7 +34,7 @@ export default function Apresentacao() {
 
                     <div class="border-black border-2 relative w-28 h-10 scale duration-200 hover:scale-110">
                         <a 
-                            href="https://www.linkedin.com/in/mendon%C3%A7agabriel97/" 
+                            href="http://www.linkedin.com/in/mendonçagabriel" 
                             target="_blank"
                             class="flex items-center justify-center bg-blue-800 font-semibold   border-black border-2 text-white w-28 h-10 absolute -top-2 -right-2 "
                         >Linkedin</a>

@@ -14,12 +14,12 @@ export default function SobreMin(){
 
     return(
         <>
-            <section class=" p-5 md:p-20 md:pt-5 border border-red-500 text-gray-700" >
+            <section class=" p-5 md:p-20 md:pt-5  text-gray-700" id="sobre" >
                 <div class=" mt-16">
 
                     <Titulo text="SOBRE MIN" />
 
-                    <div class="md:flex items-center justify-around md:space-x-20">
+                    <div class="md:flex items-center justify-around md:space-x-20 mt-10">
                         <img 
                             class=" md:w-1/3 mb-5 md:mb-0"
                             src={VetorIlustrativos}

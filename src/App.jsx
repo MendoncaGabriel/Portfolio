@@ -1,7 +1,9 @@
 import Apresentacao from "./components/Apresentacao";
 import Contatos from "./components/Contatos";
+import Footer from "./components/Footer";
 import Habilidades from "./components/Habilidades";
 import Navbar from "./components/Navbar";
+import Projetos from "./components/Projetos";
 import SobreMin from "./components/SobreMin";
 
 function App() {
@@ -13,6 +15,8 @@ function App() {
         <Contatos/>
         <SobreMin/>
         <Habilidades />
+        <Projetos />
+        <Footer />
 
       </main>
 

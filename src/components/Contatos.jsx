@@ -1,22 +1,17 @@
-import iconGitHub from '../icons/icons8-github-100.png'
-import iconGmail from '../icons/icons8-gmail-100.png'
-import iconTelefone from '../icons/icons8-telefone-100.png'
+import { FaPhone } from "react-icons/fa6";
+import { IoLogoWhatsapp } from "react-icons/io";
+
 
 export default function Contatos(){
     return(
 
-        <div class="space-y-4 space-x-5 md:space-x-0  md:fixed bottom-5 right-5 items-center justify-center  flex md:flex-col md:bg-transparent bg-white rounded-2xl mt-5">
-
-            <a href="https://github.com/MendoncaGabriel" target="_blank" className='duration-200 hover:scale-110'>
-                <img src={iconGitHub} alt="icone github" class="w-9 scale duration-200 cursor-pointer " />
+        <div class="space-y-7  fixed top-1/2 tranform -translate-y-1/2 lg:right-5 right-2 items-center justify-center  flex flex-col z-50">
+            <a href="https://wa.me/5592995238016" target="_blank">
+                <IoLogoWhatsapp  class="lg:text-5xl text-4xl text-blue-700 duration-200 hover:scale-110 cursor-pointer" />
             </a>
 
-            <a href="https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=mendoncagabril@gmail.com" target="_blank" className='duration-200 hover:scale-110'>
-                <img src={iconGmail} alt="icone gmail" class="w-9 scale duration-200 cursor-pointer" />
-            </a>
-
-            <a href="tel:+5592995238016" target="_blank" className='duration-200 hover:scale-110'>
-                <img src={iconTelefone} alt="icone telefone" class="w-9 scale duration-200 cursor-pointer" />
+            <a href="tel:+5592995238016" target="_blank" >
+                <FaPhone  class="lg:text-5xl text-4xl text-blue-700 duration-200 hover:scale-110 cursor-pointer m-auto" />
             </a>
 
         </div>
