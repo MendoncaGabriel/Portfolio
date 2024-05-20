@@ -3,7 +3,7 @@ import MinhaFoto from '../images/eu.png'
 export default function Apresentacao() {
     return (
 
-        <div class="md:flex items-center justify-around w-full  bg-white  lg:py-20 py-10" id='apresentacao'>
+        <div class="md:flex items-center justify-around w-full  bg-white  lg:py-20 py-10 min-h-screen" id='apresentacao'>
             <div class="container md:w-1/2">
 
                 <div className='text-blue-800 m-auto ml-5'>

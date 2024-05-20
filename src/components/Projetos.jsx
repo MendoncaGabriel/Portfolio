@@ -10,7 +10,7 @@ export default function Projetos(){
     return(
 
         <>
-            <section class="overflow-x-hidden p-5" id="projetos">
+            <section class="overflow-x-hidden p-5  min-h-screen flex items-center justify-center" id="projetos">
                 <div class="ancora mt-10">
                     <Titulo text={'PROJETOS'} />
            

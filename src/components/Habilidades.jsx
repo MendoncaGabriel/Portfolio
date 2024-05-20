@@ -16,14 +16,14 @@ import { SiExpress } from "react-icons/si";
 import { LuFileJson2 } from "react-icons/lu";
 import { MdDraw } from "react-icons/md";
 import { LuFigma } from "react-icons/lu";
-
-
+import { SiMysql } from "react-icons/si";
+import { SiMongodb } from "react-icons/si";
 
 
 export default function Habilidades(){
     return(
-        <section class="overflow-x-hidden p-5 " id='habilidades'>
-            <div class="ancora mt-10">
+        <section class="overflow-x-hidden p-5   min-h-screen flex  items-center justify-center" id='habilidades'>
+            <div class="ancora mt-10  w-full">
                 <Titulo text={'MINHAS HABILIDADES TÉCNICAS:'}/>
 
             
@@ -55,6 +55,14 @@ export default function Habilidades(){
                     <div class="m-auto flex items-center justify-start p-2 space-x-4 duration-200 md:w-1/2 w-full">
                         <AiOutlineApi  className='text-4xl lg:text-5xl text-blue-800'  />
                         <p class="font-medium lg:text-xl text-md md:text-3xl">API</p>
+                    </div>
+                    <div class="m-auto flex items-center justify-start p-2 space-x-4 duration-200 md:w-1/2 w-full">
+                        <SiMysql   className='text-4xl lg:text-5xl text-blue-800'  />
+                        <p class="font-medium lg:text-xl text-md md:text-4xl">MySql</p>
+                    </div>
+                    <div class="m-auto flex items-center justify-start p-2 space-x-4 duration-200 md:w-1/2 w-full">
+                        <SiMongodb   className='text-4xl lg:text-5xl text-blue-800'  />
+                        <p class="font-medium lg:text-xl text-md md:text-4xl">MongoDB</p>
                     </div>
                     <div class="m-auto flex items-center justify-start p-2 space-x-4 duration-200 md:w-1/2 w-full">
                         <FaBootstrap  className='text-4xl lg:text-5xl text-blue-800'  />

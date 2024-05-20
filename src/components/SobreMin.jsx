@@ -14,7 +14,7 @@ export default function SobreMin(){
 
     return(
         <>
-            <section class=" p-5 md:p-20 md:pt-5  text-gray-700" id="sobre" >
+            <section class=" p-5 md:p-20 md:pt-5  text-gray-700 min-h-screen flex justify-center items-center" id="sobre" >
                 <div class=" mt-16">
 
                     <Titulo text="SOBRE MIN" />
