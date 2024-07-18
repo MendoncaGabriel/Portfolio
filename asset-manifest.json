@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.200a0769.css",
-    "main.js": "/static/js/main.8f2692b3.js",
-    "static/js/453.1407b060.chunk.js": "/static/js/453.1407b060.chunk.js",
-    "static/media/playtorrent.png": "/static/media/playtorrent.f07ad685443300f1ef6b.png",
-    "static/media/p2.webp": "/static/media/p2.5f8073cc18b880dc1e3c.webp",
-    "static/media/compactarImagens.png": "/static/media/compactarImagens.e675dc231a0a23a2cc35.png",
-    "static/media/p1.webp": "/static/media/p1.0d03650d6be549517d49.webp",
-    "static/media/p4.webp": "/static/media/p4.66a290df698e7a3d2c5a.webp",
-    "static/media/programador-e-processo-de-codificacao-e-conceito-de-programacao-vetor_272930-2.png": "/static/media/programador-e-processo-de-codificacao-e-conceito-de-programacao-vetor_272930-2.aba2a19345d2b7ae715c.png",
-    "static/media/bingo.png": "/static/media/bingo.9950ceecbc02f2b281bc.png",
-    "static/media/eu.png": "/static/media/eu.f9f83e1b5dada8fc2d32.png",
-    "index.html": "/index.html",
-    "main.200a0769.css.map": "/static/css/main.200a0769.css.map",
-    "main.8f2692b3.js.map": "/static/js/main.8f2692b3.js.map",
-    "453.1407b060.chunk.js.map": "/static/js/453.1407b060.chunk.js.map"
+    "main.css": "/Portfolio/static/css/main.200a0769.css",
+    "main.js": "/Portfolio/static/js/main.0e7465cc.js",
+    "static/js/453.1407b060.chunk.js": "/Portfolio/static/js/453.1407b060.chunk.js",
+    "static/media/playtorrent.png": "/Portfolio/static/media/playtorrent.f07ad685443300f1ef6b.png",
+    "static/media/p2.webp": "/Portfolio/static/media/p2.5f8073cc18b880dc1e3c.webp",
+    "static/media/compactarImagens.png": "/Portfolio/static/media/compactarImagens.e675dc231a0a23a2cc35.png",
+    "static/media/p1.webp": "/Portfolio/static/media/p1.0d03650d6be549517d49.webp",
+    "static/media/p4.webp": "/Portfolio/static/media/p4.66a290df698e7a3d2c5a.webp",
+    "static/media/programador-e-processo-de-codificacao-e-conceito-de-programacao-vetor_272930-2.png": "/Portfolio/static/media/programador-e-processo-de-codificacao-e-conceito-de-programacao-vetor_272930-2.aba2a19345d2b7ae715c.png",
+    "static/media/bingo.png": "/Portfolio/static/media/bingo.9950ceecbc02f2b281bc.png",
+    "static/media/eu.png": "/Portfolio/static/media/eu.f9f83e1b5dada8fc2d32.png",
+    "index.html": "/Portfolio/index.html",
+    "main.200a0769.css.map": "/Portfolio/static/css/main.200a0769.css.map",
+    "main.0e7465cc.js.map": "/Portfolio/static/js/main.0e7465cc.js.map",
+    "453.1407b060.chunk.js.map": "/Portfolio/static/js/453.1407b060.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.200a0769.css",
-    "static/js/main.8f2692b3.js"
+    "static/js/main.0e7465cc.js"
   ]
 }
