@@ -21,7 +21,7 @@ export default function Footer(){
                         </h2>
                         <br />
                         <p class="text-right md:text-2xl text-lg  font-semibold md:pr-12">
-                            Para contratar qualquer serviço basta entrar em contato comigo pelas
+                            Para mais informações, basta entrar em contato comigo pelas
                             redes sociais abaixo ou pelo whatsapp!
                         </p>
                     </div>
@@ -34,25 +34,25 @@ export default function Footer(){
                 <div class="my-10" id="contato">
 
                     <div data-aos="fade-up" class="flex m-auto md:w-60 w-full justify-center mt-5 space-x-5">
-                        <button onclick="copyToClipboard(`github.com/MendoncaGabriel`, 'Link copiado!')">
+                        <a href="https://github.com/MendoncaGabriel" target="_blank">
                             <FaGithub className="text-5xl text-blue-700 duration-200 hover:scale-110 " />
-                        </button>
+                        </a>
                         
-                        <button onclick="copyToClipboard('http://www.linkedin.com/in/mendonçagabriel', 'Perfil linkedin copiado!')">
+                        <a target="_blank" href="http://www.linkedin.com/in/mendonçagabriel">
                             <FaLinkedin className="text-5xl text-blue-700 duration-200 hover:scale-110 " />
-                        </button>
+                        </a>
                         
-                        <button onclick="copyToClipboard('mendoncagabriel1997@gmail.com', 'E-mail copiado!')">
+                        <a href="mailto:mendoncagabriel1997@gmail.com" target="_blank">
                             <BiLogoGmail className="text-5xl text-blue-700 duration-200 hover:scale-110 " />
-                        </button>
+                        </a>
                         
-                        <button onclick="copyToClipboard('92995238016', 'Telefone copiado!')">
+                        <a href="tel:+5592995238016" target="_blank">
                             <FaPhone className="text-5xl text-blue-700 duration-200 hover:scale-110 " />
-                        </button>
+                        </a>
                         
-                        <button onclick="copyToClipboard('92995238016', 'Whatsapp copiado!')">
+                        <a href="https://wa.me/5592995238016?text=Olá%20vim%20pelo%20portfolio!" target="_blank">
                             <IoLogoWhatsapp className="text-5xl text-blue-700 duration-200 hover:scale-110 " />
-                        </button>
+                        </a>
                     </div>
                     <p class="text-center text-lg mt-2">Clique nos icones para copiar o contato</p>
                 </div>

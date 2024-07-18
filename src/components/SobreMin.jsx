@@ -42,20 +42,19 @@ export default function SobreMin() {
                             alt="imagem ilustrativa programador e processo de codificacao e conceito de programacao vetor"
                         />
                         <div className="md:text-xl">
+
                             <p>
-                                Com {idade} anos e {experiencia.years} anos e {experiencia.months} meses de experiência como desenvolvedor web Full Stack, trago comigo uma paixão contagiante por criar <b>experiências interativas e envolventes na web</b>. Guiado por uma estética minimalista, <b>princípios de design sólido, código limpo</b> e atenção aos detalhes, me dedico a combinar criatividade e habilidades técnicas para construir interfaces intuitivas e visualmente atraentes.
-                                Minha busca incessante por novos desafios me impulsiona a expandir meu conhecimento e contribuir para projetos inspiradores. Acredito que a colaboração e a comunicação são essenciais para o sucesso de qualquer projeto, e estou sempre disposto a aprender e compartilhar minhas habilidades.
+                                Com {experiencia.years} anos e {experiencia.months} meses de experiência, dedico-me diariamente a ser um excelente profissional, aprendendo constantemente e enfrentando novos desafios. Ao longo da minha trajetória, desenvolvi minhas habilidades autodidatas, absorvendo conceitos importantes para a resolução de problemas em projetos de freelancer. <br /><br />
+
+                                Tenho uma forte inclinação para o código limpo, orientação a objetos e design patterns, como <b>MVC, Observer, Factory, programação modular e DDD.</b> Acredito que essas práticas são aliadas valiosas no desenvolvimento ágil de software. <br /><br />
+
+                                Particularmente, aprecio não apenas o clean code, mas também interfaces limpas e eficientes. Em meus <b>mais de 100 repositórios no GitHub</b>, busco constantemente aprimorar o desenvolvimento de interfaces objetivas, robustas e intuitivas. <br /><br />
+
+                                No lado backend, <b>costumo desenvolver em Node.js e Express, criando APIs RESTful utilizando o modelo MVC.</b> Em relação a bancos de dados, utilizo <b>Firebase, MongoDB e MySQL</b>, dependendo dos requisitos do sistema. <br /><br />
+
+                                Este é um breve resumo sobre mim e meus interesses no desenvolvimento web. Se você quiser saber mais, entre em contato! Até mais!
                             </p>
-                            <br />
-                            <h2><b>O que me motiva:</b></h2>
-                            <ul className="pl-10">
-                                <li className="list-disc">Criar interfaces intuitivas e visualmente atraentes.</li>
-                                <li className="list-disc">Resolver problemas complexos com soluções inovadoras.</li>
-                                <li className="list-disc">Aprender e crescer como desenvolvedor.</li>
-                                <li className="list-disc">Colaborar em projetos inspiradores com pessoas talentosas.</li>
-                            </ul>
-                            <br />
-                            <b>Estou sempre buscando novos desafios e oportunidades para aplicar minhas habilidades e conhecimentos.</b> Acredito na <b>colaboração como chave para o sucesso,</b> e estou sempre disposto a aprender e compartilhar ideias com outros desenvolvedores.
+                            
                         </div>
                     </div>
                 </div>
