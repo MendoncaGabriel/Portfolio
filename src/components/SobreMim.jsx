@@ -34,7 +34,7 @@ export default function SobreMin() {
         <>
             <section className="p-5 md:p-20 md:pt-5 text-gray-700 min-h-screen flex justify-center items-center" id="sobre">
                 <div className="mt-16">
-                    <Titulo text="SOBRE MIN" />
+                    <Titulo text="SOBRE MIM" />
                     <div className="md:flex items-center justify-around md:space-x-20 mt-10">
                         <img
                             className="md:w-1/3 mb-5 md:mb-0"

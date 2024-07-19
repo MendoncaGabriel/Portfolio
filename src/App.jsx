@@ -4,7 +4,7 @@ import Footer from "./components/Footer";
 import Habilidades from "./components/Habilidades";
 import Navbar from "./components/Navbar";
 import Projetos from "./components/Projetos";
-import SobreMin from "./components/SobreMin";
+import SobreMim from "./components/SobreMim";
 import './index.css'
 
 import React, { useEffect } from 'react';
@@ -21,7 +21,7 @@ function App() {
         <Navbar/>
         <Apresentacao/><hr />
         <Contatos/><hr />
-        <SobreMin/><hr />
+        <SobreMim/><hr />
         <Habilidades /><hr />
         <Projetos /><hr />
         <Footer />
