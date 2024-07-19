@@ -14,6 +14,7 @@ function App() {
     document.title = "Gabriel Andrade - Programador";
   }, []);
 
+
   return (
     <>
       <main className="mt-[64px]">

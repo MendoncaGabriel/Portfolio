@@ -25,10 +25,10 @@ export default function Apresentacao() {
         <div className="md:flex items-center justify-around w-full bg-white lg:py-20 py-10 min-h-screen" id='apresentacao'>
             <div className="container md:w-1/2">
                 <div className='text-blue-800 m-auto ml-5'>
-                    <h1 className="impact font-black md:text-8xl text-4xl">
+                    <h1 className="impact font-black md:text-7xl text-4xl">
                         Desenvolvedor web
                     </h1>
-                    <h1 className="impact font-black md:text-9xl text-5xl">
+                    <h1 className="impact font-black md:text-8xl text-5xl">
                         FULL STACK
                     </h1>
                     <p className="text-right lg:text-2xl text-lg font-semibold pr-12 text-gray-700 lg:my-10 my-5">
@@ -57,13 +57,13 @@ export default function Apresentacao() {
             <img 
                 src={MinhaFoto} 
                 alt="minha foto de perfil"
-                className="md:hidden fperfil h-auto w-auto md:static m-auto mt-5" 
+                className="md:hidden drop-shadow-xl fperfil h-auto w-auto md:static m-auto mt-5" 
             />
             {/* FOTO PC */}
             <img 
                 src={MinhaFoto} 
                 alt="minha foto de perfil"
-                className="fperfil hidden md:flex h-auto md:w-auto w-60 lg:w-96 md:static md:right-auto md:bottom-auto absolute bottom-0 right-5" 
+                className="fperfil drop-shadow-xl hidden md:flex h-auto md:w-auto w-60 lg:w-96 md:static md:right-auto md:bottom-auto absolute bottom-0 right-5" 
             />
         </div>
     );
