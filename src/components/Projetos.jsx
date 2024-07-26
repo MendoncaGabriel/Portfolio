@@ -16,7 +16,7 @@ export default function Projetos(){
                 <div class="ancora mt-10">
                     <Titulo text={'PROJETOS'} />
 
-                    <div class="border grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 md:gap-4 space-y-4 md:space-y-0">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 md:gap-4 space-y-4 md:space-y-0">
                         <ProjetoItem descricao={'Sistema de cadastro com administrador master, usuários registradores e cadastro de pessoas. Inclui link de cadastro público com referência do usuário registrador e vários filtros de busca.'} img={projetoCadastraAi} titulo={'Cadastra AI!'} gitHubProjeto={'https://github.com/MendoncaGabriel/Cadastra_AI'} verProjeto={'https://www.playtorrent.com.br'} />
                         <ProjetoItem descricao={'Galeria de jogos e emuladores para PC com descrições, mídias e requisitos, tudo em um só lugar para download via torrent.'} img={projetoPlayTorrent} titulo={'Site de Downloads'} gitHubProjeto={'https://github.com/MendoncaGabriel/playtorrent'} verProjeto={'https://cadastro-cadastro1.m3blox.easypanel.host/'} />
                         <ProjetoItem descricao={'Sistema de gerenciamento de eventos de bingo, com cadastro de participantes, geração de cartões em PDF e sorteio automático.'} img={projetoBingo} titulo={'Sistema de Bingos Online'} gitHubProjeto={'https://github.com/MendoncaGabriel/Bingo-Management-System'} verProjeto={'https://youtu.be/0818QKHj9gs'} />
