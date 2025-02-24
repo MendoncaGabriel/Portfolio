@@ -63,7 +63,7 @@ export const AboutMe: React.FC = () => {
           <h2 className="text-3xl font-semibold  text-center">Professional Experience</h2>
           
           <div className="border-t-2 border-gray-400 pt-4">
-            <h3 className="text-xl font-semibold ">CliqIP – Backend Developer</h3>
+            <h3 className="text-xl font-semibold ">ClicIP – Backend Developer</h3>
             <p className="text-gray-300 font-light mt-2">
               <b>05/08/2024 to 18/02/2025</b>
             </p>
