@@ -12,7 +12,7 @@ function App() {
       <div className="flex flex-col min-h-screen bg-black">
         <Navbar />
 
-        <div className="flex-grow h-full">
+        <div className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/contact" element={<Contact />} />
