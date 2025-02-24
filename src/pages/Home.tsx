@@ -4,23 +4,22 @@ import { FaGithub, FaLinkedin, FaFileAlt } from "react-icons/fa";
 export const Home: React.FC = () => {
   return (
     <div className="text-gray-50 h-full p-6 sm:p-10">
-      <section className="h-full grid grid-cols-1 md:grid-cols-2 flex-grow gap-6 space-y-5 md:space-y-0">
+      <section className="h-full grid grid-cols-1 md:grid-cols-2 gap-6 space-y-5 md:space-y-0">
 
         {/* Primeira coluna */}
         <div className="flex flex-col items-center md:items-start justify-between h-full py-6 sm:py-10">
-          <div className="text-center md:text-right text-3xl sm:text-4xl font-bold">
-            <h1 className="text-5xl sm:text-6xl">GABRIEL ANDRADE</h1>
-            <p className="text-lg sm:text-4xl">BACKEND DEVELOPER</p>
+          <div className="text-center md:text-left text-3xl sm:text-4xl font-bold">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl">GABRIEL ANDRADE</h1>
+            <p className="text-lg sm:text-2xl">BACKEND DEVELOPER</p>
           </div>
 
-          <p className="text-gray-300 font-light text-center text-sm sm:text-base px-4">
+          <p className="text-gray-300 font-light text-center sm:text-left text-base sm:text-lg px-4">
             <b>Backend Developer specialized in Node.js and TypeScript.</b>
             Focused on building scalable and efficient APIs, applying good software architecture practices to ensure performance and security.
             I constantly seek to improve my skills and deliver high-level solutions.
           </p>
 
-
-          <div className="flex  border-gray-50  w-full flex-wrap justify-center gap-4 text-black font-semibold">
+          <div className="flex flex-wrap justify-center md:justify-start gap-4 text-black font-semibold">
             <a 
               href="https://github.com/MendoncaGabriel"
               target="_blank"
@@ -47,10 +46,7 @@ export const Home: React.FC = () => {
               <FaFileAlt />
               <span>Resume</span>
             </a>
-
-
           </div>
-
         </div>
 
         {/* Segunda coluna com imagem */}
@@ -58,7 +54,7 @@ export const Home: React.FC = () => {
           <img 
             src={IImg} 
             alt="my image" 
-            className="rounded-md shadow-md h-full max-w-xs sm:max-w-sm md:max-w-md aspect-square"
+            className="rounded-md shadow-md h-auto max-w-xs sm:max-w-sm md:max-w-md aspect-square"
           />
         </div>
 
