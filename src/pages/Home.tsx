@@ -1,5 +1,6 @@
 import IImg from "../../public/images/138128244.png";
 import { FaGithub, FaLinkedin, FaFileAlt } from "react-icons/fa";
+import ScrollingLogoAnimation from "../components/TechLogos";
 
 export const Home: React.FC = () => {
   return (
@@ -48,6 +49,8 @@ export const Home: React.FC = () => {
               <span className="text-lg sm:text-xl">Resume</span>
             </a>
           </div>
+
+
         </div>
 
 
@@ -60,7 +63,13 @@ export const Home: React.FC = () => {
         </div>
 
 
+
       </section>
+
+      
+        <ScrollingLogoAnimation /> 
+  
+
     </div>
   );
 };
