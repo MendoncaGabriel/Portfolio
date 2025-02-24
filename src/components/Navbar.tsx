@@ -7,6 +7,7 @@ export const Navbar: React.FC = () => {
       <Link to="/about" className="hover:text-gray-50 duration-200">ABOUT</Link>
       <Link to="/articles" className="hover:text-gray-50 duration-200">ARTICLES</Link>
       <Link to="/contact" className="hover:text-gray-50 duration-200">CONTACT</Link>
+      <Link to="/projects" className="hover:text-gray-50 duration-200">PROJECTS</Link>
     </nav>
   )
 }

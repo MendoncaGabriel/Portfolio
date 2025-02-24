@@ -6,8 +6,8 @@ export const AboutMe: React.FC = () => {
       <section className="h-full space-y-8">
         {/* Título e Introdução */}
         <div className="text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold ">About Gabriel Andrade Mendonça</h1>
-          <p className="text-xl sm:text-2xl text-gray-400 mt-2">
+          <h1 className="text-xl sm:text-5xl font-bold ">About Gabriel Andrade Mendonça</h1>
+          <p className=" sm:text-2xl text-gray-400 mt-2">
             Backend Developer | Node.js | TypeScript | Scalable APIs | Microservices
           </p>
         </div>
@@ -89,25 +89,23 @@ export const AboutMe: React.FC = () => {
         </div>
 
         {/* Contato e Links */}
-        <div className="text-center mt-8">
-          <h3 className="text-2xl  font-semibold">Get in Touch</h3>
-          <div className="flex justify-center gap-6 mt-4 text-black font-semibold">
-            <a
+        <div className="flex  border-gray-50  w-full flex-wrap justify-center gap-4 text-black font-semibold">
+            <a 
               href="https://github.com/MendoncaGabriel"
               target="_blank"
               className="px-4 py-2 rounded-sm bg-gray-300 flex items-center space-x-2 justify-center hover:shadow-md shadow-purple-800 duration-200 hover:-translate-y-1 hover:border-purple-500 border-2"
             >
               <FaGithub />
-              <span>GitHub</span>
+              <span>Github</span>
             </a>
 
-            <a
+            <a 
               href="https://www.linkedin.com/in/mendon%C3%A7agabriel/"
               target="_blank"
               className="px-4 py-2 rounded-sm bg-gray-300 flex items-center space-x-2 justify-center hover:shadow-md shadow-purple-800 duration-200 hover:-translate-y-1 hover:border-purple-500 border-2"
             >
               <FaLinkedin />
-              <span>LinkedIn</span>
+              <span>Linkedin</span>
             </a>
 
             <a
@@ -118,8 +116,9 @@ export const AboutMe: React.FC = () => {
               <FaFileAlt />
               <span>Resume</span>
             </a>
+
+
           </div>
-        </div>
       </section>
     </div>
   );
