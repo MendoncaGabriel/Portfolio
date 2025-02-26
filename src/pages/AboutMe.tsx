@@ -28,35 +28,36 @@ export const AboutMe: React.FC = () => {
         </div>
 
         {/* Tecnologias que uso */}
-        <div className="text-center space-y-4">
-          <h2 className="text-3xl font-semibold ">Technologies & Tools</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 mt-4">
-            <div className="flex flex-col items-center space-y-2">
-              <div className="text-4xl text-gray-400">Node.js</div>
-              <span className="text-gray-500">Backend Framework</span>
-            </div>
-            <div className="flex flex-col items-center space-y-2">
-              <div className="text-4xl text-gray-400">TypeScript</div>
-              <span className="text-gray-500">Strongly Typed Language</span>
-            </div>
-            <div className="flex flex-col items-center space-y-2">
-              <div className="text-4xl text-gray-400">Express.js</div>
-              <span className="text-gray-500">Web Framework</span>
-            </div>
-            <div className="flex flex-col items-center space-y-2">
-              <div className="text-4xl text-gray-400">Fastify</div>
-              <span className="text-gray-500">Web Framework</span>
-            </div>
-            <div className="flex flex-col items-center space-y-2">
-              <div className="text-4xl text-gray-400">MySQL</div>
-              <span className="text-gray-500">Relational Database</span>
-            </div>
-            <div className="flex flex-col items-center space-y-2">
-              <div className="text-4xl text-gray-400">MongoDB</div>
-              <span className="text-gray-500">NoSQL Database</span>
-            </div>
+        <div className="text-center space-y-6">
+          <h2 className="text-3xl font-semibold">Technologies & Tools</h2>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 mt-4">
+            {[
+              { name: "Node.js", description: "Backend Runtime" },
+              { name: "TypeScript", description: "Strongly Typed Language" },
+              { name: "Express.js", description: "Web Framework" },
+              { name: "Fastify", description: "Web Framework" },
+              { name: "MySQL", description: "Relational Database" },
+              { name: "PostgreSQL", description: "Relational Database" },
+              { name: "MongoDB", description: "NoSQL Database" },
+              { name: "Redis", description: "Caching & Messaging" },
+              { name: "Prisma", description: "ORM & Query Builder" },
+              { name: "Knex", description: "Query Builder" },
+              { name: "RabbitMQ", description: "Message Broker" },
+              { name: "BullMQ", description: "Job Queue" },
+              { name: "Docker", description: "Containerization" },
+              { name: "Linux", description: "Operating System" },
+              { name: "Git & GitHub", description: "Version Control" },
+              { name: "JWT & OAuth 2.0", description: "Authentication & Security" },
+            ].map((tech, index) => (
+              <div key={index} className="flex flex-col items-center space-y-2">
+                <div className="text-xl font-medium text-gray-700">{tech.name}</div>
+                <span className="text-gray-500 text-sm">{tech.description}</span>
+              </div>
+            ))}
           </div>
         </div>
+
 
         {/* Experiência profissional */}
         <div className="space-y-6">
