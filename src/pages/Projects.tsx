@@ -1,28 +1,14 @@
-import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
 
 export const Projects: React.FC = () => {
   const projetos = [
     {
-      nome: "API de E-commerce",
-      descricao: "Uma API RESTful de e-commerce que gerencia produtos, usuários, e pedidos, utilizando Node.js, Express.js e MongoDB.",
-      tecnologias: ["Node.js", "Express.js", "MongoDB"],
-      github: "https://github.com/MendoncaGabriel/ecommerce-api",
-      link: "https://ecommerce-api.example.com",
+      nome: "Product Manager",
+      descricao: "API for managing users, products, and categories with authentication and CRUD operations, using Repository and Factory Pattern for a modular architecture.",
+      tecnologias: ["Node.js", "Typescript", "Fastify.js", "PostgreSql", "Prisma.js", "Docker", "Zod"],
+      github: "https://github.com/MendoncaGabriel/product-manager",
     },
-    {
-      nome: "Sistema de Gestão de Tarefas",
-      descricao: "Sistema simples para gerenciar tarefas, com autenticação de usuário e integração com banco de dados MySQL.",
-      tecnologias: ["Node.js", "MySQL", "JWT"],
-      github: "https://github.com/MendoncaGabriel/task-manager",
-      link: "https://task-manager.example.com",
-    },
-    {
-      nome: "Chat em Tempo Real",
-      descricao: "Aplicação de chat em tempo real utilizando WebSockets, Node.js e Redis para comunicação eficiente entre os usuários.",
-      tecnologias: ["Node.js", "WebSocket", "Redis"],
-      github: "https://github.com/MendoncaGabriel/real-time-chat",
-      link: "https://real-time-chat.example.com",
-    },
+
   ];
 
   return (
@@ -46,7 +32,7 @@ export const Projects: React.FC = () => {
               <h2 className="text-2xl font-semibold text-gray-50">{projeto.nome}</h2>
               <p className="text-gray-300 mt-2">{projeto.descricao}</p>
               <p className="text-sm text-gray-400 mt-2">
-                <b>Technologies:</b> {projeto.tecnologias.join(", ")}
+                <b className="text-purple-500 text-lg">Technologies:</b> {projeto.tecnologias.join(", ")}
               </p>
 
               <div className="mt-4 flex space-x-4">
@@ -54,17 +40,9 @@ export const Projects: React.FC = () => {
                   href={projeto.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-gray-50"
+                  className="text-gray-400 hover:text-gray-50 ml-auto"
                 >
-                  <FaGithub className="text-2xl" />
-                </a>
-                <a
-                  href={projeto.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-gray-50"
-                >
-                  <FaExternalLinkAlt className="text-2xl" />
+                  <FaGithub className="text-4xl" />
                 </a>
               </div>
             </div>
