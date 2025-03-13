@@ -2,12 +2,12 @@ import { FaGithub } from "react-icons/fa";
 
 export const Projects: React.FC = () => {
   const projetos = [
-    {
-      nome: "Product Manager",
-      descricao: "API for managing users, products, and categories with authentication and CRUD operations, using Repository and Factory Pattern for a modular architecture.",
-      tecnologias: ["Node.js", "Typescript", "Fastify.js", "PostgreSql", "Prisma.js", "Docker", "Zod"],
-      github: "https://github.com/MendoncaGabriel/product-manager",
-    },
+    // {
+    //   nome: "Product Manager",
+    //   descricao: "API for managing users, products, and categories with authentication and CRUD operations, using Repository and Factory Pattern for a modular architecture.",
+    //   tecnologias: ["Node.js", "Typescript", "Fastify.js", "PostgreSql", "Prisma.js", "Docker", "Zod"],
+    //   github: "https://github.com/MendoncaGabriel/product-manager",
+    // },
 
   ];
 
@@ -24,29 +24,33 @@ export const Projects: React.FC = () => {
 
         {/* Projetos */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projetos.map((projeto, index) => (
-            <div
-              key={index}
-              className="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 flex flex-col justify-between"
-            >
-              <h2 className="text-2xl font-semibold text-gray-50">{projeto.nome}</h2>
-              <p className="text-gray-300 mt-2">{projeto.descricao}</p>
-              <p className="text-sm text-gray-400 mt-2">
-                <b className="text-purple-500 text-lg">Technologies:</b> {projeto.tecnologias.join(", ")}
-              </p>
+          {
+            projetos.length !== 0 ?
+            (projetos.map((projeto, index) => (
+              <div
+                key={index}
+                className="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 flex flex-col justify-between"
+              >
+                <h2 className="text-2xl font-semibold text-gray-50">{projeto.nome}</h2>
+                <p className="text-gray-300 mt-2">{projeto.descricao}</p>
+                <p className="text-sm text-gray-400 mt-2">
+                  <b className="text-purple-500 text-lg">Technologies:</b> {projeto.tecnologias.join(", ")}
+                </p>
 
-              <div className="mt-4 flex space-x-4">
-                <a
-                  href={projeto.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-gray-50 ml-auto"
-                >
-                  <FaGithub className="text-4xl" />
-                </a>
+                <div className="mt-4 flex space-x-4">
+                  <a
+                    href={projeto.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 hover:text-gray-50 ml-auto"
+                  >
+                    <FaGithub className="text-4xl" />
+                  </a>
+                </div>
               </div>
-            </div>
-          ))}
+            )))
+            : (<p className="text-center">Sorry I'm still working on it, projects I've already worked on will be posted soon.</p>)
+          }
         </div>
       </section>
     </div>
