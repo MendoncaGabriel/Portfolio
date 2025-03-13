@@ -1,14 +1,20 @@
 import { FaGithub } from "react-icons/fa";
 
+interface Projeto {
+  nome: string;
+  descricao: string;
+  tecnologias: string[];
+  github: string;
+}
+
 export const Projects: React.FC = () => {
-  const projetos = [
+  const projetos: Projeto[] = [
     // {
     //   nome: "Product Manager",
     //   descricao: "API for managing users, products, and categories with authentication and CRUD operations, using Repository and Factory Pattern for a modular architecture.",
     //   tecnologias: ["Node.js", "Typescript", "Fastify.js", "PostgreSql", "Prisma.js", "Docker", "Zod"],
     //   github: "https://github.com/MendoncaGabriel/product-manager",
     // },
-
   ];
 
   return (
@@ -24,9 +30,8 @@ export const Projects: React.FC = () => {
 
         {/* Projetos */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {
-            projetos.length !== 0 ?
-            (projetos.map((projeto, index) => (
+          {projetos.length !== 0 ? (
+            projetos.map((projeto, index) => (
               <div
                 key={index}
                 className="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 flex flex-col justify-between"
@@ -48,9 +53,12 @@ export const Projects: React.FC = () => {
                   </a>
                 </div>
               </div>
-            )))
-            : (<p className="text-center">Sorry I'm still working on it, projects I've already worked on will be posted soon.</p>)
-          }
+            ))
+          ) : (
+            <p className="text-center">
+              Sorry I'm still working on it, projects I've already worked on will be posted soon.
+            </p>
+          )}
         </div>
       </section>
     </div>
