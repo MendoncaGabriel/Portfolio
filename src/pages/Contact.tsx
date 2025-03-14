@@ -1,4 +1,4 @@
-import { FaGithub, FaLinkedin, FaFileAlt, FaEnvelope } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
 export const Contact: React.FC = () => {
   return (
@@ -34,14 +34,14 @@ export const Contact: React.FC = () => {
             <span>Linkedin</span>
           </a>
 
-          <a
+          {/* <a
             href="/public/docs/Gabriel Andrade Mendonça - Programador FullStack.pdf"
             target="_blank"
             className="px-4 py-2 rounded-sm bg-gray-300 flex items-center space-x-2 justify-center hover:shadow-md shadow-purple-800 duration-200 hover:-translate-y-1 hover:border-purple-500 border-2"
           >
             <FaFileAlt />
             <span>Currículo</span>
-          </a>
+          </a> */}
 
           <a
             href="mailto:mendoncagabriel1997@gmail.com"

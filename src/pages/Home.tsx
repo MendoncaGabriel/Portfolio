@@ -1,5 +1,5 @@
 import IImg from "../../public/images/138128244.png";
-import { FaGithub, FaLinkedin, FaFileAlt } from "react-icons/fa";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import ScrollingLogoAnimation from "../components/TechLogos";
 import KeywordsSection from "../components/KeywordsSection";
 
@@ -51,7 +51,7 @@ export const Home: React.FC = () => {
               <FaLinkedin size={24} />
               <span className="text-lg sm:text-xl">Linkedin</span>
             </a>
-
+{/* 
             <a
               href="/public/docs/Gabriel Andrade Mendonça - Programador FullStack.pdf"
               target="_blank"
@@ -59,7 +59,7 @@ export const Home: React.FC = () => {
             >
               <FaFileAlt size={24} />
               <span className="text-lg sm:text-xl">Resume</span>
-            </a>
+            </a> */}
           </div>
         </div>
 
