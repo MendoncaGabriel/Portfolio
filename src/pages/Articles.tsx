@@ -4,9 +4,9 @@ export const Articles: React.FC = () => {
       <section className="h-full flex flex-col items-center justify-center gap-6">
         {/* Título da seção */}
         <div className="text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold">Articles Coming Soon!</h1>
+          <h1 className="text-4xl sm:text-5xl font-bold">Artigos em Breve!</h1>
           <p className="text-lg sm:text-xl text-gray-300 font-light mt-2">
-            I'm currently working on writing some technical articles. Stay tuned!
+            Estou atualmente trabalhando na escrita de alguns artigos técnicos. Fique ligado!
           </p>
         </div>
         

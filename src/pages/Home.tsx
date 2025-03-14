@@ -1,28 +1,40 @@
 import IImg from "../../public/images/138128244.png";
 import { FaGithub, FaLinkedin, FaFileAlt } from "react-icons/fa";
 import ScrollingLogoAnimation from "../components/TechLogos";
+import KeywordsSection from "../components/KeywordsSection";
 
 export const Home: React.FC = () => {
+  const currentDate = new Date();
+  const currentYear = currentDate.getFullYear();
+
   return (
     <div className="text-gray-50 h-full sm:p-12 lg:p-16 ">
       <section className="h-full  flex-col sm:flex-row flex items-center justify-center">
-
         {/* Primeira coluna */}
         <div className="flex flex-col items-center md:items-start justify-between h-full  sm:py-10 space-y-6 md:space-y-8  md:w-1/2">
-
           <div className="text-center md:text-right text-4xl sm:text-5xl md:text-6xl font-extrabold  w-full">
-            <h1 className="text-5xl sm:text-6xl md:text-7xl">GABRIEL ANDRADE</h1>
-            <p className="text-xl sm:text-3xl font-semibold text-gray-300 mt-2">BACKEND DEVELOPER</p>
+            <h1 className="text-5xl sm:text-6xl md:text-7xl">
+              GABRIEL ANDRADE
+            </h1>
+            <p className="text-xl sm:text-3xl font-semibold text-gray-300 mt-2">
+              FULLSTACK DEVELOPER
+            </p>
           </div>
 
           <p className="text-gray-300  font-light text-center sm:text-left text-base sm:text-lg md:text-xl px-6 sm:px-10 md:px-12">
-            <b>Backend Developer specialized in Node.js and TypeScript.</b>
-            Focused on building scalable and efficient APIs, applying good software architecture practices to ensure performance and security.
-            I constantly seek to improve my skills and deliver high-level solutions.
+            <strong>
+              Desenvolvedor Fullstack especializado em Node.js e TypeScript.{" "}
+            </strong>
+            Focado na criação de <strong>APIs escaláveis e eficientes</strong> e
+            no desenvolvimento de <strong>interfaces modernas</strong>. Aplico
+            boas práticas de <strong>arquitetura de software</strong> para
+            garantir <strong>performance, segurança e usabilidade</strong>.
+            Estou sempre em busca de aprimorar minhas habilidades e entregar
+            soluções de alto nível.
           </p>
 
           <div className="flex flex-wrap justify-center md:justify-center sm:gap-6  text-black font-semibold w-full">
-            <a 
+            <a
               href="https://github.com/MendoncaGabriel"
               target="_blank"
               className="px-6 py-3 rounded-lg bg-gray-300 flex items-center space-x-3 justify-center hover:shadow-xl shadow-purple-800 duration-300 hover:-translate-y-1 hover:border-purple-500 border-2"
@@ -31,7 +43,7 @@ export const Home: React.FC = () => {
               <span className="text-lg sm:text-xl">Github</span>
             </a>
 
-            <a 
+            <a
               href="https://www.linkedin.com/in/mendon%C3%A7agabriel/"
               target="_blank"
               className="px-6 py-3 rounded-lg bg-gray-300 flex items-center space-x-3 justify-center hover:shadow-xl shadow-purple-800 duration-300 hover:-translate-y-1 hover:border-purple-500 border-2"
@@ -41,7 +53,7 @@ export const Home: React.FC = () => {
             </a>
 
             <a
-              href="/public/docs/Gabriel Andrade Mendonça - Programador Backend.pdf"
+              href="/public/docs/Gabriel Andrade Mendonça - Programador FullStack.pdf"
               target="_blank"
               className="px-6 py-3 rounded-lg bg-gray-300 flex items-center space-x-3 justify-center hover:shadow-xl shadow-purple-800 duration-300 hover:-translate-y-1 hover:border-purple-500 border-2"
             >
@@ -49,27 +61,62 @@ export const Home: React.FC = () => {
               <span className="text-lg sm:text-xl">Resume</span>
             </a>
           </div>
-
-
         </div>
 
-
         <div className="flex items-center justify-center p-8 sm:p-12 md:p-16">
-          <img 
-            src={IImg} 
-            alt="my image" 
+          <img
+            src={IImg}
+            alt="Gabriel Mendonça - Desenvolvedor Fullstack em Manaus"
+            title="Desenvolvedor de Software"
             className="rounded-lg shadow-xl w-full max-w-md sm:max-w-lg md:max-w-2xl lg:max-w-3xl xl:max-w-4xl"
           />
         </div>
-
-
-
       </section>
 
-      
-        <ScrollingLogoAnimation /> 
-  
+      <ScrollingLogoAnimation />
+      <KeywordsSection />
 
+      <section className="md:mt-10 mt-5 p-10">
+        <hr className="border-gray-700 mb-2" />
+
+        <h1>Gabriel Mendonça - Desenvolvedor Fullstack em Manaus</h1>
+        <h2>Programador de software | Node.js | React | APIs escaláveis</h2>
+        <br />
+        <p>
+          Olá! Meu nome é Gabriel Mendonça e sou{" "}
+          <strong>desenvolvedor Fullstack</strong> especializado em{" "}
+          <strong>Node.js, React e TypeScript</strong>. Trabalho na criação de{" "}
+          <strong>
+            APIs escaláveis, sistemas robustos e aplicações web modernas
+          </strong>
+          . Atualmente, estou disponível para oportunidades em{" "}
+          <strong>Manaus e remoto</strong>.
+        </p>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-gray-300 py-8 mt-10">
+        <div className="container mx-auto text-center">
+          <div className="flex justify-center gap-6 mb-4">
+            <a
+              href="https://github.com/MendoncaGabriel"
+              target="_blank"
+              className="text-gray-300 hover:text-gray-50 transition-colors duration-300"
+            >
+              <FaGithub size={30} />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/mendon%C3%A7agabriel/"
+              target="_blank"
+              className="text-gray-300 hover:text-gray-50 transition-colors duration-300"
+            >
+              <FaLinkedin size={30} />
+            </a>
+          </div>
+          <p className="text-sm mb-2">&copy; {currentYear} Gabriel Andrade. Todos os direitos reservados.</p>
+          <p className="text-sm">Desenvolvedor Fullstack | Manaus, AM</p>
+        </div>
+      </footer>
     </div>
   );
 };
