@@ -5,8 +5,8 @@ import { Contact } from "./pages/Contact";
 import { AboutMe } from "./pages/AboutMe";
 import { Articles } from "./pages/Articles";
 import { Projects } from "./pages/Projects";
-import { Footer } from "./components/footer";
 import { Article } from "./pages/Article";
+import { Footer } from "./components/Footer";
 
 function App() {
   return (
