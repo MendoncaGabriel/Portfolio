@@ -1,5 +1,0 @@
-User-agent: *
-Disallow: /admin/
-Disallow: /private/
-Allow: /
-Sitemap: https://mendoncagabriel.github.io/Portfolio/sitemap.xml

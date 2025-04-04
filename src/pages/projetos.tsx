@@ -7,7 +7,7 @@ interface Projeto {
   github: string;
 }
 
-export const Projects: React.FC = () => {
+export default function projetos (){
   const projetos: Projeto[] = [
     // {
     //   nome: "Product Manager",

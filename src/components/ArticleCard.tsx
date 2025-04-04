@@ -1,5 +1,8 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+import Image from "next/image";
 import React from "react";
-import { useNavigate } from "react-router-dom";
 
 type ArticleCardProps = {
   title: string;
@@ -16,7 +19,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
   author,
   date,
 }) => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const slugify = (text: string) =>
     text
@@ -28,7 +31,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
       .replace(/\s+/g, "-"); // espaços viram hífens
 
   const handleClick = () => {
-    navigate(`/articles/${slugify(title)}`);
+    router.push(`/artigo/${slugify(title)}`);
   };
 
   return (
@@ -37,11 +40,15 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
       className="cursor-pointer max-w-md bg-white rounded-sm shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
     >
       {imageUrl && (
-        <img
-          src={imageUrl}
-          alt={title}
-          className="w-full h-48 object-cover"
-        />
+        <div className="w-full h-48 relative">
+          <Image
+            src={imageUrl}
+            alt={title}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
+        </div>
       )}
       <div className="p-2">
         <h2 className="text-xl font-semibold text-gray-800 mb-2">{title}</h2>

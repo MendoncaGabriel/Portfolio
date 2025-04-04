@@ -1,30 +1,32 @@
-import { Link, useLocation } from "react-router-dom";
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export const Navbar: React.FC = () => {
-  const location = useLocation(); // Obtém a URL atual
+  const pathname = usePathname();
 
-  // Lista de rotas definidas na navbar
-  const routes = ["/about", "/articles", "/contact", "/projects"];
+  const routes = ["/sobre", "/artigos", "/contato", "/projeto"];
+
+  const navItems = [
+    { path: "/", label: "INÍCIO" },
+    { path: "/sobre", label: "SOBRE" },
+    { path: "/artigos", label: "ARTIGOS" },
+    { path: "/contato", label: "CONTATO" },
+    { path: "/projetos", label: "PROJETOS" },
+  ];
 
   return (
-    <nav className="z-50 bg-black shadow-black shadow-2xl fixed top-0 left-0 w-full p-4 flex sm:space-x-4 space-x-2 items-center justify-center text-gray-500 border-b-1">
-      {[
-        { path: "/", label: "INÍCIO" },
-        { path: "/about", label: "SOBRE" },
-        { path: "/articles", label: "ARTIGOS" },
-        { path: "/contact", label: "CONTATO" },
-        { path: "/projects", label: "PROJETOS" },
-      ].map(({ path, label }) => {
-        // "INÍCIO" será marcado por padrão se a URL atual não estiver na lista de rotas específicas
+    <nav className="z-50 bg-black shadow-black shadow-2xl fixed top-0 left-0 w-full p-4 flex sm:space-x-4 space-x-2 items-center justify-center text-gray-500 border-b">
+      {navItems.map(({ path, label }) => {
         const isActive =
-          location.pathname === path ||
-          (path === "/" && !routes.includes(location.pathname));
+          pathname === path || (path === "/" && !routes.includes(pathname));
 
         return (
           <Link
             key={path}
-            to={path}
-            className={`hover:text-gray-50 duration-100 ${
+            href={path}
+            className={`hover:text-gray-50 transition-colors duration-200 ${
               isActive ? "text-gray-100 font-bold" : ""
             }`}
           >

@@ -1,4 +1,4 @@
-export const AboutMe: React.FC = () => {
+export default function sobre(){
   return (
     <div className="text-gray-50 h-full p-6 sm:p-10">
       <section className="h-full space-y-10">

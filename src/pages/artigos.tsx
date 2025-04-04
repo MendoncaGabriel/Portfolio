@@ -1,6 +1,6 @@
 import { ArticleCard } from "../components/ArticleCard";
 
-export const Articles: React.FC = () => {
+export default function artigos(){
   return (
     <div className="text-gray-50 h-full p-6 sm:p-10">
       <section className="h-full flex flex-col items-center justify-center gap-6">

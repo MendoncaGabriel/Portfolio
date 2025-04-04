@@ -1,6 +1,6 @@
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
-export const Contact: React.FC = () => {
+export default function contato (){
   return (
     <div className="text-gray-50 h-full p-6 sm:p-10 flex-grow">
       <section className="h-full flex flex-col justify-center items-center gap-6 space-y-5">

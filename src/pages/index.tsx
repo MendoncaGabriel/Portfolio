@@ -1,11 +1,12 @@
+// pages/index.tsx
+import ScrollingLogoAnimation from "components/TechLogos";
 import IImg from "../../public/images/138128244.png";
+
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import ScrollingLogoAnimation from "../components/TechLogos";
-import KeywordsSection from "../components/KeywordsSection";
+import KeywordsSection from "components/KeywordsSection";
+import Image from "next/image";
 
-export const Home: React.FC = () => {
-
-
+export default function HomePage() {
   return (
     <div className="text-gray-50 h-full sm:p-12 lg:p-16 ">
       <section className="h-full  flex-col sm:flex-row flex items-center justify-center">
@@ -63,7 +64,7 @@ export const Home: React.FC = () => {
         </div>
 
         <div className="flex items-center justify-center p-8 sm:p-12 md:p-16">
-          <img
+          <Image
             src={IImg}
             alt="Gabriel Mendonça - Desenvolvedor Fullstack em Manaus"
             title="Desenvolvedor de Software"
@@ -95,4 +96,4 @@ export const Home: React.FC = () => {
 
     </div>
   );
-};
+}
