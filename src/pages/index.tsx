@@ -13,9 +13,10 @@ export default function HomePage() {
         {/* Primeira coluna */}
         <div className="flex flex-col items-center md:items-start justify-between h-full  sm:py-10 space-y-6 md:space-y-8  md:w-1/2">
           <div className="text-center md:text-right text-4xl sm:text-5xl md:text-6xl font-extrabold  w-full">
-            <h1 className="text-5xl sm:text-6xl md:text-7xl">
+            <h1 className="text-3xl sm:text-5xl md:text-5xl truncate whitespace-nowrap overflow-hidden text-ellipsis">
               GABRIEL ANDRADE
             </h1>
+
             <p className="text-xl sm:text-3xl font-semibold text-gray-300 mt-2">
               FULLSTACK DEVELOPER
             </p>
@@ -51,7 +52,7 @@ export default function HomePage() {
               <FaLinkedin size={24} />
               <span className="text-lg sm:text-xl">Linkedin</span>
             </a>
-{/* 
+            {/* 
             <a
               href="/public/docs/Gabriel Andrade Mendonça - Programador FullStack.pdf"
               target="_blank"
@@ -93,7 +94,6 @@ export default function HomePage() {
           <strong>Manaus e remoto</strong>.
         </p>
       </section>
-
     </div>
   );
 }

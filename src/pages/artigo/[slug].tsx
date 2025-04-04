@@ -33,13 +33,12 @@ export default function ArticlePage({ data }: Props) {
   }
 
   return (
-
-    <div className="max-w-3xl mx-auto px-4 py-10">
-    <Head>
-    {/* Adicione o CDN apenas nesta página */}
-    <script src="https://cdn.tailwindcss.com?plugins=typography" />
-  </Head>
-      <h1 className="text-4xl font-extrabold text-gray-100 leading-tight mb-4">
+    <div className="max-w-3xl mx-auto px-4 py-10 pt-0">
+      <Head>
+        {/* Adicione o CDN apenas nesta página */}
+        <script src="https://cdn.tailwindcss.com?plugins=typography" />
+      </Head>
+      <h1 className="text-2xl md:text-4xl font-extrabold text-gray-100 leading-tight mb-4">
         {data.title}
       </h1>
 
