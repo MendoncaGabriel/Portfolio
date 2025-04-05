@@ -15,6 +15,7 @@
   };
 
   export default function ArticlePage({ data }: Props) {
+    console.log(">>> data: ", data)
     if (!data) {
       return (
         <div className="text-center text-red-500 py-10">
@@ -52,6 +53,7 @@
 
   export const getServerSideProps: GetServerSideProps = async (context) => {
     const slug = context.params?.slug as string;
+    console.log(">>> SLUG: ", slug)
   
     try {
       const result = await GETByURLTitle(slug);
@@ -66,8 +68,6 @@
                 : result.date,
           }
         : null;
-
-      console.log(data?.content)
   
       return {
         props: {
