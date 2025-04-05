@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   reactStrictMode: true,
   images: {
-    domains: ['media.licdn.com'], // ← adiciona aqui
+    domains: ['media.licdn.com', 'sdmntpritalynorth.oaiusercontent.com', "sdmntprwestus.oaiusercontent.com"], // ← adiciona aqui
   },
 };
 
