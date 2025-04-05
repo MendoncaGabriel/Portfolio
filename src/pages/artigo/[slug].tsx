@@ -14,6 +14,18 @@
     data: ArticleProps | null;
   };
 
+  function formatDate(dataISO: string): string {
+    const data = new Date(dataISO);
+  
+    const opcoes: Intl.DateTimeFormatOptions = {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+    };
+  
+    return data.toLocaleDateString('pt-BR', opcoes);
+  }
+
   export default function ArticlePage({ data }: Props) {
     console.log(">>> data: ", data)
     if (!data) {
@@ -41,7 +53,7 @@
         <div className="text-sm text-gray-400 mb-10 flex items-center gap-2">
           {data.author && <span>Por {data.author}</span>}
           {data.author && data.date && <span className="text-gray-400">•</span>}
-          {data.date && <span>{data.date}</span>}
+          {data.date && <span>{formatDate(data.date)}</span>}
         </div>
 
         <article className="prose prose-invert prose-slate max-w-none text-gray-300">
