@@ -1,6 +1,8 @@
   import { GetServerSideProps } from "next";
   import { GETByURLTitle } from "pages/api/post";
   import Markdown from "react-markdown";
+  import Head from 'next/head';
+
 
   type ArticleProps = {
     title: string;
@@ -27,7 +29,6 @@
   }
 
   export default function ArticlePage({ data }: Props) {
-    console.log(">>> data: ", data)
     if (!data) {
       return (
         <div className="text-center text-red-500 py-10">
@@ -38,6 +39,17 @@
 
     return (
       <div className="max-w-3xl mx-auto px-4 py-10 pt-0 md:pt-10">
+        <Head>
+          <title>{data.title}</title>
+          <meta property="og:title" content={data.title} />
+          <meta property="og:description" content={data.title} />
+          <meta property="og:image" content={data.coverImage || "default-image-url"} />
+          <meta property="og:type" content="article" />
+          {/* <meta property="og:url" content={`https://portfolio-mendoncagabriels-projects.vercel.app/artigo/${data.title}`} /> */}
+          <meta property="og:locale" content="pt_BR" />
+          <meta property="og:author" content={data.author || "Desconhecido"} />
+        </Head>
+
         <h1 className="text-2xl md:text-4xl font-extrabold text-gray-100 leading-tight mb-4">
           {data.title}
         </h1>
