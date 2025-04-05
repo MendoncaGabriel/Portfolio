@@ -68,6 +68,7 @@ export default function HomePage() {
       <div className="py-4">
         <ScrollingLogoAnimation />
       </div>
+      
       <div className="py-4">
         <TechStackShowcase />
       </div>
