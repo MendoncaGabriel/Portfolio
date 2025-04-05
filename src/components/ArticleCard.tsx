@@ -1,8 +1,5 @@
-"use client";
-
-import { useRouter } from "next/navigation";
 import Image from "next/image";
-import React from "react";
+import Link from "next/link";
 
 type ArticleCardProps = {
   title: string;
@@ -12,31 +9,27 @@ type ArticleCardProps = {
   date?: string;
 };
 
-export const ArticleCard: React.FC<ArticleCardProps> = ({
+export function ArticleCard({
   title,
   description,
   imageUrl,
   author,
   date,
-}) => {
-  const router = useRouter();
-
+}: ArticleCardProps) {
   const slugify = (text: string) =>
     text
       .toLowerCase()
       .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "") // remove acentos
-      .replace(/[^\w\s-]/g, "") // remove caracteres especiais
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^\w\s-]/g, "")
       .trim()
-      .replace(/\s+/g, "-"); // espaços viram hífens
+      .replace(/\s+/g, "-");
 
-  const handleClick = () => {
-    router.push(`/artigo/${slugify(title)}`);
-  };
+  const slug = slugify(title);
 
   return (
-    <div
-      onClick={handleClick}
+    <Link
+      href={`/artigo/${slug}`}
       className="cursor-pointer max-w-md bg-white rounded-sm shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
     >
       {imageUrl && (
@@ -62,6 +55,6 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
           </div>
         )}
       </div>
-    </div>
+    </Link>
   );
-};
+}

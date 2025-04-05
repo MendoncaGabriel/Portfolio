@@ -1,84 +1,86 @@
-import { GetStaticPaths, GetStaticProps } from "next";
-import { useRouter } from "next/router";
-import Markdown from "react-markdown";
-import { articles } from "../../articles";
+  import { GetServerSideProps } from "next";
+  import { GETByURLTitle } from "pages/api/post";
+  import Markdown from "react-markdown";
 
-type ArticleProps = {
-  title: string;
-  content: string;
-  coverImage?: string;
-  author?: string;
-  date?: string;
-};
+  type ArticleProps = {
+    title: string;
+    content: string;
+    coverImage?: string;
+    author?: string;
+    date?: string;
+  };
 
-type Props = {
-  data: ArticleProps | null;
-};
+  type Props = {
+    data: ArticleProps | null;
+  };
 
-export default function ArticlePage({ data }: Props) {
-  const router = useRouter();
+  export default function ArticlePage({ data }: Props) {
+    if (!data) {
+      return (
+        <div className="text-center text-red-500 py-10">
+          Artigo não encontrado.
+        </div>
+      );
+    }
 
-  // loading fallback (caso esteja usando fallback: true)
-  if (router.isFallback) {
-    return <div className="text-center text-gray-100 py-10">Carregando...</div>;
-  }
-
-  if (!data) {
     return (
-      <div className="text-center text-red-500 py-10">
-        Artigo não encontrado.
+      <div className="max-w-3xl mx-auto px-4 py-10 pt-0 md:pt-10">
+        <h1 className="text-2xl md:text-4xl font-extrabold text-gray-100 leading-tight mb-4">
+          {data.title}
+        </h1>
+
+        {data.coverImage && (
+          <img
+            src={data.coverImage}
+            alt={data.title}
+            className="w-full object-cover rounded-2xl shadow mb-6"
+          />
+        )}
+
+        <div className="text-sm text-gray-400 mb-10 flex items-center gap-2">
+          {data.author && <span>Por {data.author}</span>}
+          {data.author && data.date && <span className="text-gray-400">•</span>}
+          {data.date && <span>{data.date}</span>}
+        </div>
+
+        <article className="prose prose-invert prose-slate max-w-none text-gray-300">
+          <Markdown>{data.content}</Markdown>
+        </article>
       </div>
     );
   }
 
-  return (
-    <div className="max-w-3xl mx-auto px-4 py-10 pt-0 md:pt-10">
+  export const getServerSideProps: GetServerSideProps = async (context) => {
+    const slug = context.params?.slug as string;
+  
+    try {
+      const result = await GETByURLTitle(slug);
+  
+      const data = result
+        ? {
+            ...result,
+            content: result.content.replace(/\\n/g, '\n'), // aqui está o replace certo
+            date:
+              result.date instanceof Date
+                ? result.date.toISOString()
+                : result.date,
+          }
+        : null;
 
-      <h1 className="text-2xl md:text-4xl font-extrabold text-gray-100 leading-tight mb-4">
-        {data.title}
-      </h1>
-
-      {data.coverImage && (
-        <img
-          src={data.coverImage}
-          alt={data.title}
-          className="w-full object-cover rounded-2xl shadow mb-6"
-        />
-      )}
-
-      <div className="text-sm text-gray-400 mb-10 flex items-center gap-2">
-        {data.author && <span>Por {data.author}</span>}
-        {data.author && data.date && <span className="text-gray-400">•</span>}
-        {data.date && <span>{data.date}</span>}
-      </div>
-
-      <article className="prose prose-invert prose-slate max-w-none text-gray-300">
-        <Markdown>{data.content}</Markdown>
-      </article>
-    </div>
-  );
-}
-
-// Gera os paths baseados nos slugs dos artigos
-export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = Object.keys(articles).map((slug) => ({
-    params: { slug },
-  }));
-
-  return {
-    paths,
-    fallback: false, // pode usar true se quiser fallback loading
+      console.log(data?.content)
+  
+      return {
+        props: {
+          data,
+        },
+      };
+    } catch (error) {
+      console.error("Erro ao buscar artigo:", error);
+      return {
+        props: {
+          data: null,
+        },
+      };
+    }
   };
-};
-
-// Pega os dados do artigo com base no slug
-export const getStaticProps: GetStaticProps = async (context) => {
-  const slug = context.params?.slug as string;
-  const data = articles[slug as keyof typeof articles] || null;
-
-  return {
-    props: {
-      data,
-    },
-  };
-};
+  
