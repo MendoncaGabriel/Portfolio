@@ -32,7 +32,7 @@ export default function ArticlePage({ data }: Props) {
   }
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-10 pt-0">
+    <div className="max-w-3xl mx-auto px-4 py-10 pt-0 md:pt-10">
 
       <h1 className="text-2xl md:text-4xl font-extrabold text-gray-100 leading-tight mb-4">
         {data.title}
