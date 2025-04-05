@@ -11,8 +11,8 @@ export default function HomePage() {
     <div className="text-gray-50 h-full sm:p-12 lg:p-16 ">
       <section className="h-full  flex-col sm:flex-row flex items-center justify-center">
         {/* Primeira coluna */}
-        <div className="flex flex-col items-center md:items-start justify-between h-full  sm:py-10 space-y-6 md:space-y-8  md:w-1/2">
-          <div className="text-center md:text-right text-4xl sm:text-5xl md:text-6xl font-extrabold  w-full">
+        <div className="flex flex-col items-center md:items-start justify-between h-full  sm:py-10 space-y-2 md:space-y-8  md:w-1/2">
+          <div className="text-center md:text-right text-4xl sm:text-5xl md:text-6xl font-extrabold  w-full ">
             <h1 className="text-3xl sm:text-5xl md:text-5xl truncate whitespace-nowrap overflow-hidden text-ellipsis">
               GABRIEL ANDRADE
             </h1>
@@ -27,7 +27,7 @@ export default function HomePage() {
           </p>
 
 
-          <div className="flex flex-wrap justify-center md:justify-center space-x-2  text-black font-semibold w-full">
+          <div className="flex flex-wrap justify-center md:justify-center space-x-2  text-black font-semibold w-full py-2">
             <a
               href="https://github.com/MendoncaGabriel"
               target="_blank"
@@ -48,7 +48,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="flex items-center justify-center md:my-0 my-5">
+        <div className="flex items-center justify-center md:my-0 my-2">
           <Image
             src={IImg}
             alt="Gabriel Mendonça - Desenvolvedor Fullstack em Manaus"
@@ -58,8 +58,12 @@ export default function HomePage() {
         </div>
       </section>
 
+    <div className="py-4">
       <ScrollingLogoAnimation />
+    </div>
+    <div className="py-4">
       <TechStackShowcase />
+    </div>
 
     </div>
   );

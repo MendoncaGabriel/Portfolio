@@ -1,205 +1,147 @@
-Prisma é um ORM (Object-Relational Mapping) moderno para Node.js e TypeScript que oferece uma maneira segura, intuitiva e eficiente de interagir com bancos de dados relacionais. Com uma abordagem baseada em **tipagem estática**, **autocompletar inteligente** e **migrações controladas por código**, o Prisma tem se destacado como uma das melhores ferramentas para quem busca produtividade e confiança no desenvolvimento de APIs e aplicações back-end.
+**Testes Unitários e de Integração no Backend com Vitest e Supertest**
 
-## Por que usar o Prisma?
+No desenvolvimento de aplicações robustas, garantir que cada parte do código funcione corretamente é essencial. Testes são fundamentais para assegurar que o comportamento da aplicação seja consistente e livre de erros. Neste artigo, vamos explorar como implementar testes unitários e de integração no backend utilizando duas ferramentas poderosas: **Vitest** e **Supertest**. Essas ferramentas são ideais para garantir a qualidade e a confiabilidade do seu código, proporcionando uma experiência de desenvolvimento mais fluida e segura.
 
-A proposta do Prisma é oferecer uma experiência de desenvolvimento superior ao lidar com bancos de dados, trazendo:
+### O que são Testes Unitários e Testes de Integração?
 
-- 🔐 **Segurança de tipo**: você escreve menos testes e evita bugs antes mesmo de rodar a aplicação.
-- ⚡ **Performance**: queries otimizadas e integração com cache, pooling e transactions.
-- 🧠 **Developer Experience**: autocompletar avançado e validação em tempo de escrita no seu editor.
-- ⏱️ **Agilidade**: migrações rápidas, simples e rastreáveis com histórico em código.
+Antes de mergulharmos nas ferramentas, é importante entender os tipos de testes que estamos discutindo:
 
----
+- **Testes Unitários**: O objetivo dos testes unitários é verificar o funcionamento de unidades específicas do código, como funções ou métodos. Esses testes isolam a lógica, garantindo que uma determinada unidade funcione como esperado, sem depender de outras partes do sistema. Eles são rápidos e focam na precisão de pequenas partes da aplicação.
 
-## Como o Prisma funciona?
+- **Testes de Integração**: Ao contrário dos testes unitários, os testes de integração verificam a interação entre diferentes partes do sistema. Eles garantem que módulos e componentes do sistema funcionem corretamente juntos. Esses testes são mais complexos, pois envolvem dependências externas, como bancos de dados ou APIs.
 
-O Prisma se divide em três componentes principais:
+Agora, vamos explorar como podemos usar **Vitest** e **Supertest** para realizar esses testes no backend.
 
-1. **Prisma Client** – O cliente gerado automaticamente a partir do seu schema, com tipagem estática.
-2. **Prisma Migrate** – Ferramenta para gerenciar e aplicar migrações no banco de dados.
-3. **Prisma Studio** – Interface visual para explorar e editar os dados do banco de forma segura.
+### O que é o Vitest?
 
----
+**Vitest** é uma ferramenta de testes de JavaScript/TypeScript focada em desempenho e simplicidade. Ele oferece uma experiência similar ao Jest, mas com a vantagem de ser mais rápido e com menor consumo de memória. Com suporte nativo para TypeScript, Vitest permite que você escreva testes de forma simples e direta, utilizando uma sintaxe familiar para quem já está acostumado com frameworks como o Jest.
 
-## Instalando o Prisma
+#### Configuração Básica do Vitest
+
+Primeiramente, você precisa instalar o **Vitest** no seu projeto. Para isso, execute o seguinte comando:
 
 ```bash
-npm install prisma --save-dev
-npx prisma init
+npm install --save-dev vitest
 ```
 
-Esse comando criará a estrutura base do Prisma no seu projeto:
+Em seguida, crie ou edite o arquivo `vitest.config.ts` na raiz do projeto, caso seja necessário. Para a maioria dos casos, a configuração padrão já é suficiente.
 
-```
-📁 prisma/
-  └── schema.prisma
-📁 node_modules/
-📄 package.json
-```
+Agora, vamos criar um simples teste unitário. Suponha que você tenha a seguinte função no seu backend:
 
----
-
-## Estrutura do `schema.prisma`
-
-O arquivo `schema.prisma` define o modelo de dados da sua aplicação:
-
-```prisma
-generator client {
-  provider = "prisma-client-js"
-}
-
-datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
-}
-
-model Usuario {
-  id        Int      @id @default(autoincrement())
-  nome      String
-  email     String   @unique
-  criadoEm  DateTime @default(now())
+```ts
+function soma(a: number, b: number): number {
+  return a + b;
 }
 ```
 
-Esse modelo será usado para gerar o **Prisma Client**, a ponte entre sua aplicação e o banco de dados.
+O teste para essa função ficaria assim:
 
----
+```ts
+import { describe, it, expect } from 'vitest';
+import { soma } from './soma';
 
-## Gerando o Prisma Client
+describe('Função soma', () => {
+  it('deve somar dois números corretamente', () => {
+    expect(soma(2, 3)).toBe(5);
+  });
+});
+```
 
-Após definir os modelos, você precisa gerar o client:
+Este é um teste simples que verifica se a função `soma` está retornando o resultado esperado. Com o Vitest, o processo é direto e eficiente, permitindo que você escreva testes de unidade rapidamente.
+
+### O que é o Supertest?
+
+**Supertest** é uma biblioteca que facilita a realização de testes de integração em APIs HTTP. Ela permite que você simule requisições HTTP, como `GET`, `POST`, `PUT` e `DELETE`, e verifique se as respostas da API estão corretas. Com o Supertest, você pode testar endpoints RESTful de forma simples e eficaz, garantindo que sua API esteja funcionando corretamente.
+
+#### Configuração do Supertest
+
+Para utilizar o Supertest, você precisa instalá-lo:
 
 ```bash
-npx prisma generate
+npm install --save-dev supertest
 ```
 
-Para criar as tabelas com base no schema, use:
-
-```bash
-npx prisma migrate dev --name inicial
-```
-
----
-
-## Usando o Prisma Client
-
-Com o client gerado, você pode começar a fazer queries com total segurança de tipos:
+Com o Supertest instalado, você pode testar os endpoints da sua API. Vamos supor que você tenha um endpoint `/api/usuario` que retorna os dados de um usuário. A seguir, um exemplo de teste de integração utilizando o Supertest:
 
 ```ts
-import { PrismaClient } from '@prisma/client'
-const prisma = new PrismaClient()
+import request from 'supertest';
+import app from './app'; // Supondo que 'app' seja a instância do seu servidor
 
-const novoUsuario = await prisma.usuario.create({
-  data: {
-    nome: 'Gabriel Andrade',
-    email: 'gabriel@email.com',
-  },
-})
+describe('GET /api/usuario', () => {
+  it('deve retornar um status 200 e os dados do usuário', async () => {
+    const response = await request(app).get('/api/usuario/1');
 
-const usuarios = await prisma.usuario.findMany()
+    expect(response.status).toBe(200);
+    expect(response.body).toHaveProperty('id', 1);
+    expect(response.body).toHaveProperty('nome');
+  });
+});
 ```
 
----
+Neste exemplo, estamos simulando uma requisição `GET` para o endpoint `/api/usuario/1`. O teste verifica se o status da resposta é 200 e se o corpo da resposta contém os dados esperados.
 
-## Exemplos de Queries Comuns
+### Testes Unitários e de Integração Juntos
 
-### Buscar por ID
+A combinação de **Vitest** e **Supertest** oferece uma solução completa para testes no backend. Enquanto o Vitest é ideal para testar unidades isoladas de código, como funções e métodos, o Supertest brilha quando o objetivo é testar a interação entre o servidor e a API, simulando requisições HTTP reais.
+
+A prática comum em uma aplicação é escrever testes unitários para as funções de negócio e lógica, enquanto os testes de integração são usados para garantir que as rotas e endpoints da API respondam corretamente a diferentes cenários de requisição.
+
+### Exemplo Completo de Teste
+
+Vamos combinar ambos os tipos de teste em um único fluxo. Suponha que você tenha uma função que soma dois números e, ao ser chamada por um endpoint, retorna o resultado dessa soma. O código da função seria:
 
 ```ts
-const usuario = await prisma.usuario.findUnique({
-  where: { id: 1 }
-})
+function soma(a: number, b: number): number {
+  return a + b;
+}
+
+export function calcularSoma(req: Request, res: Response) {
+  const { a, b } = req.query;
+  if (typeof a === 'string' && typeof b === 'string') {
+    return res.status(400).send('Os parâmetros devem ser números');
+  }
+  return res.json({ resultado: soma(Number(a), Number(b)) });
+}
 ```
 
-### Atualizar usuário
+Agora, escrevemos os testes. O teste unitário para a função `soma` seria:
 
 ```ts
-await prisma.usuario.update({
-  where: { id: 1 },
-  data: { nome: 'Gabriel M.' }
-})
+import { describe, it, expect } from 'vitest';
+import { soma } from './soma';
+
+describe('Função soma', () => {
+  it('deve somar dois números corretamente', () => {
+    expect(soma(5, 3)).toBe(8);
+  });
+});
 ```
 
-### Deletar usuário
+E o teste de integração para o endpoint seria:
 
 ```ts
-await prisma.usuario.delete({
-  where: { id: 1 }
-})
+import request from 'supertest';
+import app from './app'; // Supondo que 'app' seja a instância do seu servidor
+
+describe('GET /api/soma', () => {
+  it('deve retornar o resultado da soma', async () => {
+    const response = await request(app).get('/api/soma?a=5&b=3');
+
+    expect(response.status).toBe(200);
+    expect(response.body).toHaveProperty('resultado', 8);
+  });
+
+  it('deve retornar 400 se os parâmetros não forem números', async () => {
+    const response = await request(app).get('/api/soma?a=abc&b=3');
+
+    expect(response.status).toBe(400);
+    expect(response.text).toBe('Os parâmetros devem ser números');
+  });
+});
 ```
 
----
+### Conclusão
 
-## Migrações com Prisma Migrate
+A combinação de **Vitest** para testes unitários e **Supertest** para testes de integração é uma solução poderosa para garantir a qualidade do seu backend. Com esses dois frameworks, você pode escrever testes de maneira simples e eficiente, tanto para unidades isoladas quanto para a interação completa da API. Isso melhora a confiabilidade do seu código e reduz a chance de erros, garantindo que sua aplicação funcione corretamente em produção.
 
-Cada mudança nos seus modelos requer uma nova migração. Exemplo:
-
-```bash
-npx prisma migrate dev --name adiciona-endereco
-```
-
-O Prisma irá:
-
-1. Criar um novo arquivo de migração com SQL.
-2. Aplicar as alterações no banco de dados.
-3. Atualizar o Prisma Client automaticamente.
-
----
-
-## Prisma Studio: Visualização de Dados
-
-Execute:
-
-```bash
-npx prisma studio
-```
-
-Você verá uma interface web onde pode visualizar, editar e deletar registros no banco de dados com facilidade, ideal para debug ou gerenciamento de dados em ambientes de desenvolvimento.
-
----
-
-## Integração com TypeScript
-
-O Prisma aproveita o TypeScript ao máximo. O client gerado é totalmente tipado, o que evita erros comuns e acelera o desenvolvimento. Você pode até extrair os tipos para usar em validações, DTOs e camadas de serviço:
-
-```ts
-import type { Usuario } from '@prisma/client'
-```
-
----
-
-## Vantagens sobre ORMs tradicionais
-
-| Prisma         | Sequelize/TypeORM        |
-|----------------|--------------------------|
-| Tipagem forte  | Tipagem fraca/dinâmica   |
-| Queries seguras e previsíveis | Queries manuais com risco de erro |
-| Migrations automatizadas por schema | Migrations manuais e verbosas |
-| Client gerado com autocompletar | Sem geração de código |
-
----
-
-## Quando **não** usar Prisma
-
-Apesar de ser uma ferramenta poderosa, o Prisma não é ideal em alguns cenários:
-
-- Ambientes com bancos de dados não relacionais (como MongoDB, que ainda está em preview).
-- Aplicações extremamente dinâmicas que exigem construção de queries complexas em tempo de execução.
-- Projetos legados com schemas complicados e mal definidos.
-
----
-
-## Conclusão
-
-O Prisma ORM é uma escolha moderna, produtiva e segura para quem desenvolve aplicações com Node.js e TypeScript. Ele reduz a complexidade do backend, acelera o desenvolvimento e diminui a margem de erro, principalmente em projetos de médio e grande porte.
-
-Se você ainda está usando um ORM tradicional ou escrevendo SQL puro, vale a pena experimentar o Prisma e sentir na prática a diferença que ele pode fazer no seu fluxo de trabalho.
-
----
-
-## Recursos oficiais
-
-- [Documentação do Prisma](https://www.prisma.io/docs)
-- [Playground interativo](https://www.prisma.io/playground)
-- [Repositório no GitHub](https://github.com/prisma/prisma)
-
+Investir em uma boa cobertura de testes pode ser desafiador no início, mas é um passo crucial para o sucesso de qualquer projeto a longo prazo. Com ferramentas como **Vitest** e **Supertest**, você tem o suporte necessário para criar aplicações mais robustas e seguras.

@@ -2,8 +2,8 @@ import { FaCode, FaServer, FaCloud } from "react-icons/fa";
 
 const TechStackShowcase = () => {
   return (
-    <section className="mt-20 px-6 sm:px-12 md:px-20 lg:px-32">
-      <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-200 mb-8">
+    <section className="px-6 sm:px-12 md:px-20 lg:px-32">
+      <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-200 mb-4">
         O que eu desenvolvo
       </h2>
 
