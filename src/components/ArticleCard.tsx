@@ -30,7 +30,7 @@ export function ArticleCard({
   return (
     <Link
       href={`/artigo/${slug}`}
-      className="cursor-pointer max-w-md bg-white rounded-md shadow-md overflow-hidden  duration-200 ease-in-out hover:scale-[102%] hover:border-2 border-gray-200"
+      className="cursor-pointer max-w-md bg-white rounded-md overflow-hidden  duration-200 ease-in-out hover:scale-[101%]"
     >
       {imageUrl && (
         <div className="w-full aspect-square relative">
