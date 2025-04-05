@@ -11,8 +11,8 @@ export default function HomePage() {
     <div className="text-gray-50 h-full sm:p-12 lg:p-16 ">
       <section className="h-full  flex-col sm:flex-row flex items-center justify-center">
         {/* Primeira coluna */}
-        <div className="flex flex-col items-center md:items-start justify-between h-full  sm:py-10 space-y-2 md:space-y-8  md:w-1/2">
-          <div className="text-center md:text-right text-4xl sm:text-5xl md:text-6xl font-extrabold  w-full ">
+        <div className="flex flex-col items-center justify-between h-full md:w-1/2">
+          <div className="text-center md:text-right text-4xl sm:text-5xl md:text-6xl font-extrabold  w-full py-4">
             <h1 className="text-3xl sm:text-5xl md:text-5xl truncate whitespace-nowrap overflow-hidden text-ellipsis">
               GABRIEL ANDRADE
             </h1>
@@ -22,12 +22,19 @@ export default function HomePage() {
             </p>
           </div>
 
-          <p className="text-gray-300 font-light text-center sm:text-left text-base sm:text-lg md:text-xl px-6 sm:px-10 md:px-12">
-            <strong>Desenvolvedor Fullstack</strong> com foco em <strong>Node.js</strong>, <strong>TypeScript</strong>, <strong>React</strong> e <strong>Next.js</strong>, atuando na criação de <strong>APIs escaláveis</strong> e no desenvolvimento de <strong>interfaces modernas</strong>. Prezo por boas práticas de <strong>arquitetura de software</strong>, priorizando <strong>performance</strong>, <strong>segurança</strong> e <strong>usabilidade</strong>. Estou em constante evolução, buscando sempre entregar <strong>soluções sólidas e de qualidade</strong>.
+          <p className="py-4 text-gray-300 font-light text-center sm:text-left text-base sm:text-lg md:text-xl px-6 sm:px-10 md:px-12">
+            <strong>Desenvolvedor Fullstack</strong> com foco em{" "}
+            <strong>Node.js</strong>, <strong>TypeScript</strong>,{" "}
+            <strong>React</strong> e <strong>Next.js</strong>, atuando na
+            criação de <strong>APIs escaláveis</strong> e no desenvolvimento de{" "}
+            <strong>interfaces modernas</strong>. Prezo por boas práticas de{" "}
+            <strong>arquitetura de software</strong>, priorizando{" "}
+            <strong>performance</strong>, <strong>segurança</strong> e{" "}
+            <strong>usabilidade</strong>. Estou em constante evolução, buscando
+            sempre entregar <strong>soluções sólidas e de qualidade</strong>.
           </p>
 
-
-          <div className="flex flex-wrap justify-center md:justify-center space-x-2  text-black font-semibold w-full py-2">
+          <div className="py-4 flex flex-wrap justify-center md:justify-center space-x-2  text-black font-semibold w-full">
             <a
               href="https://github.com/MendoncaGabriel"
               target="_blank"
@@ -48,7 +55,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="flex items-center justify-center md:my-0 my-2">
+        <div className="flex items-center justify-center md:my-0 my-4">
           <Image
             src={IImg}
             alt="Gabriel Mendonça - Desenvolvedor Fullstack em Manaus"
@@ -58,13 +65,12 @@ export default function HomePage() {
         </div>
       </section>
 
-    <div className="py-4">
-      <ScrollingLogoAnimation />
-    </div>
-    <div className="py-4">
-      <TechStackShowcase />
-    </div>
-
+      <div className="py-4">
+        <ScrollingLogoAnimation />
+      </div>
+      <div className="py-4">
+        <TechStackShowcase />
+      </div>
     </div>
   );
 }
