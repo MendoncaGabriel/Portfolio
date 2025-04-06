@@ -1,147 +1,286 @@
-**Testes Unitários e de Integração no Backend com Vitest e Supertest**
+A escrita de código limpo e sustentável é um desafio constante para quem trabalha com desenvolvimento de software. À medida que sistemas crescem, aumentam também a complexidade e a necessidade de manutenibilidade. Nesse cenário, os princípios **SOLID** surgem como uma bússola para orientar decisões arquitetônicas e promover a criação de softwares mais robustos, legíveis e fáceis de evoluir.
 
-No desenvolvimento de aplicações robustas, garantir que cada parte do código funcione corretamente é essencial. Testes são fundamentais para assegurar que o comportamento da aplicação seja consistente e livre de erros. Neste artigo, vamos explorar como implementar testes unitários e de integração no backend utilizando duas ferramentas poderosas: **Vitest** e **Supertest**. Essas ferramentas são ideais para garantir a qualidade e a confiabilidade do seu código, proporcionando uma experiência de desenvolvimento mais fluida e segura.
+Mas o que de fato são esses princípios? De onde vieram? E por que tantos desenvolvedores os consideram fundamentais? Vamos explorar em detalhes cada um dos cinco pilares do SOLID, com exemplos práticos, interpretações reais e armadilhas comuns.
 
-### O que são Testes Unitários e Testes de Integração?
+---
 
-Antes de mergulharmos nas ferramentas, é importante entender os tipos de testes que estamos discutindo:
+## O que é SOLID?
 
-- **Testes Unitários**: O objetivo dos testes unitários é verificar o funcionamento de unidades específicas do código, como funções ou métodos. Esses testes isolam a lógica, garantindo que uma determinada unidade funcione como esperado, sem depender de outras partes do sistema. Eles são rápidos e focam na precisão de pequenas partes da aplicação.
+**SOLID** é um acrônimo para cinco princípios da programação orientada a objetos. Foi popularizado por **Robert C. Martin (Uncle Bob)** e serve como base para um design de software mais limpo, modular e escalável. Esses princípios são:
 
-- **Testes de Integração**: Ao contrário dos testes unitários, os testes de integração verificam a interação entre diferentes partes do sistema. Eles garantem que módulos e componentes do sistema funcionem corretamente juntos. Esses testes são mais complexos, pois envolvem dependências externas, como bancos de dados ou APIs.
+- **S** – *Single Responsibility Principle* (Princípio da Responsabilidade Única)  
+- **O** – *Open/Closed Principle* (Princípio Aberto/Fechado)  
+- **L** – *Liskov Substitution Principle* (Princípio da Substituição de Liskov)  
+- **I** – *Interface Segregation Principle* (Princípio da Segregação de Interface)  
+- **D** – *Dependency Inversion Principle* (Princípio da Inversão de Dependência)
 
-Agora, vamos explorar como podemos usar **Vitest** e **Supertest** para realizar esses testes no backend.
+Vamos destrinchar cada um.
 
-### O que é o Vitest?
+---
 
-**Vitest** é uma ferramenta de testes de JavaScript/TypeScript focada em desempenho e simplicidade. Ele oferece uma experiência similar ao Jest, mas com a vantagem de ser mais rápido e com menor consumo de memória. Com suporte nativo para TypeScript, Vitest permite que você escreva testes de forma simples e direta, utilizando uma sintaxe familiar para quem já está acostumado com frameworks como o Jest.
+## 1. Single Responsibility Principle (SRP) – Princípio da Responsabilidade Única
 
-#### Configuração Básica do Vitest
+**"Uma classe deve ter apenas uma razão para mudar."**
 
-Primeiramente, você precisa instalar o **Vitest** no seu projeto. Para isso, execute o seguinte comando:
+Esse princípio prega que uma classe deve ter **apenas uma responsabilidade bem definida**. Ou seja, ela deve ser coesa e especializada em uma única tarefa. Isso torna o código mais fácil de manter e testar.
 
-```bash
-npm install --save-dev vitest
-```
+### Exemplo ruim:
 
-Em seguida, crie ou edite o arquivo `vitest.config.ts` na raiz do projeto, caso seja necessário. Para a maioria dos casos, a configuração padrão já é suficiente.
-
-Agora, vamos criar um simples teste unitário. Suponha que você tenha a seguinte função no seu backend:
-
-```ts
-function soma(a: number, b: number): number {
-  return a + b;
-}
-```
-
-O teste para essa função ficaria assim:
-
-```ts
-import { describe, it, expect } from 'vitest';
-import { soma } from './soma';
-
-describe('Função soma', () => {
-  it('deve somar dois números corretamente', () => {
-    expect(soma(2, 3)).toBe(5);
-  });
-});
-```
-
-Este é um teste simples que verifica se a função `soma` está retornando o resultado esperado. Com o Vitest, o processo é direto e eficiente, permitindo que você escreva testes de unidade rapidamente.
-
-### O que é o Supertest?
-
-**Supertest** é uma biblioteca que facilita a realização de testes de integração em APIs HTTP. Ela permite que você simule requisições HTTP, como `GET`, `POST`, `PUT` e `DELETE`, e verifique se as respostas da API estão corretas. Com o Supertest, você pode testar endpoints RESTful de forma simples e eficaz, garantindo que sua API esteja funcionando corretamente.
-
-#### Configuração do Supertest
-
-Para utilizar o Supertest, você precisa instalá-lo:
-
-```bash
-npm install --save-dev supertest
-```
-
-Com o Supertest instalado, você pode testar os endpoints da sua API. Vamos supor que você tenha um endpoint `/api/usuario` que retorna os dados de um usuário. A seguir, um exemplo de teste de integração utilizando o Supertest:
-
-```ts
-import request from 'supertest';
-import app from './app'; // Supondo que 'app' seja a instância do seu servidor
-
-describe('GET /api/usuario', () => {
-  it('deve retornar um status 200 e os dados do usuário', async () => {
-    const response = await request(app).get('/api/usuario/1');
-
-    expect(response.status).toBe(200);
-    expect(response.body).toHaveProperty('id', 1);
-    expect(response.body).toHaveProperty('nome');
-  });
-});
-```
-
-Neste exemplo, estamos simulando uma requisição `GET` para o endpoint `/api/usuario/1`. O teste verifica se o status da resposta é 200 e se o corpo da resposta contém os dados esperados.
-
-### Testes Unitários e de Integração Juntos
-
-A combinação de **Vitest** e **Supertest** oferece uma solução completa para testes no backend. Enquanto o Vitest é ideal para testar unidades isoladas de código, como funções e métodos, o Supertest brilha quando o objetivo é testar a interação entre o servidor e a API, simulando requisições HTTP reais.
-
-A prática comum em uma aplicação é escrever testes unitários para as funções de negócio e lógica, enquanto os testes de integração são usados para garantir que as rotas e endpoints da API respondam corretamente a diferentes cenários de requisição.
-
-### Exemplo Completo de Teste
-
-Vamos combinar ambos os tipos de teste em um único fluxo. Suponha que você tenha uma função que soma dois números e, ao ser chamada por um endpoint, retorna o resultado dessa soma. O código da função seria:
-
-```ts
-function soma(a: number, b: number): number {
-  return a + b;
-}
-
-export function calcularSoma(req: Request, res: Response) {
-  const { a, b } = req.query;
-  if (typeof a === 'string' && typeof b === 'string') {
-    return res.status(400).send('Os parâmetros devem ser números');
+```typescript
+class Report {
+  generatePDF() {
+    // gera o PDF
   }
-  return res.json({ resultado: soma(Number(a), Number(b)) });
+
+  saveToDatabase() {
+    // salva no banco
+  }
+
+  sendEmail() {
+    // envia por email
+  }
 }
 ```
 
-Agora, escrevemos os testes. O teste unitário para a função `soma` seria:
+Essa classe viola o SRP porque está fazendo três coisas diferentes: gerar, salvar e enviar. Cada uma tem uma razão distinta para mudar.
 
-```ts
-import { describe, it, expect } from 'vitest';
-import { soma } from './soma';
+### Refatorando com SRP:
 
-describe('Função soma', () => {
-  it('deve somar dois números corretamente', () => {
-    expect(soma(5, 3)).toBe(8);
-  });
-});
+```typescript
+class ReportGenerator {
+  generatePDF() {
+    // gera o PDF
+  }
+}
+
+class ReportRepository {
+  save(report: Report) {
+    // salva no banco
+  }
+}
+
+class EmailService {
+  send(report: Report) {
+    // envia por email
+  }
+}
 ```
 
-E o teste de integração para o endpoint seria:
+Cada classe agora tem uma única responsabilidade. Isso facilita o reuso e reduz o acoplamento.
 
-```ts
-import request from 'supertest';
-import app from './app'; // Supondo que 'app' seja a instância do seu servidor
+---
 
-describe('GET /api/soma', () => {
-  it('deve retornar o resultado da soma', async () => {
-    const response = await request(app).get('/api/soma?a=5&b=3');
+## 2. Open/Closed Principle (OCP) – Princípio Aberto/Fechado
 
-    expect(response.status).toBe(200);
-    expect(response.body).toHaveProperty('resultado', 8);
-  });
+**"Entidades de software devem estar abertas para extensão, mas fechadas para modificação."**
 
-  it('deve retornar 400 se os parâmetros não forem números', async () => {
-    const response = await request(app).get('/api/soma?a=abc&b=3');
+Ou seja, você deve poder **adicionar novos comportamentos sem alterar o código existente**, reduzindo riscos de regressões.
 
-    expect(response.status).toBe(400);
-    expect(response.text).toBe('Os parâmetros devem ser números');
-  });
-});
+### Exemplo ruim:
+
+```typescript
+class Discount {
+  calculate(customerType: string): number {
+    if (customerType === 'premium') {
+      return 0.2;
+    } else if (customerType === 'regular') {
+      return 0.1;
+    }
+    return 0;
+  }
+}
 ```
 
-### Conclusão
+Cada novo tipo de cliente exige modificar essa classe, quebrando o OCP.
 
-A combinação de **Vitest** para testes unitários e **Supertest** para testes de integração é uma solução poderosa para garantir a qualidade do seu backend. Com esses dois frameworks, você pode escrever testes de maneira simples e eficiente, tanto para unidades isoladas quanto para a interação completa da API. Isso melhora a confiabilidade do seu código e reduz a chance de erros, garantindo que sua aplicação funcione corretamente em produção.
+### Refatorando com OCP:
 
-Investir em uma boa cobertura de testes pode ser desafiador no início, mas é um passo crucial para o sucesso de qualquer projeto a longo prazo. Com ferramentas como **Vitest** e **Supertest**, você tem o suporte necessário para criar aplicações mais robustas e seguras.
+```typescript
+interface DiscountStrategy {
+  getDiscount(): number;
+}
+
+class PremiumCustomer implements DiscountStrategy {
+  getDiscount() {
+    return 0.2;
+  }
+}
+
+class RegularCustomer implements DiscountStrategy {
+  getDiscount() {
+    return 0.1;
+  }
+}
+
+class DiscountService {
+  constructor(private strategy: DiscountStrategy) {}
+
+  calculate() {
+    return this.strategy.getDiscount();
+  }
+}
+```
+
+Agora, podemos adicionar novos tipos de clientes apenas criando novas classes, sem modificar o código existente.
+
+---
+
+## 3. Liskov Substitution Principle (LSP) – Princípio da Substituição de Liskov
+
+**"Se S é um subtipo de T, então objetos do tipo T devem poder ser substituídos por objetos do tipo S sem quebrar o programa."**
+
+Esse princípio exige que classes filhas possam ser usadas no lugar das classes pai **sem alterar o comportamento esperado**.
+
+### Exemplo problemático:
+
+```typescript
+class Bird {
+  fly() {
+    console.log("Flying");
+  }
+}
+
+class Ostrich extends Bird {
+  fly() {
+    throw new Error("Ostriches can't fly");
+  }
+}
+```
+
+Aqui, uma avestruz é um "pássaro" na herança, mas não pode voar. Usá-la como um `Bird` quebra a lógica esperada.
+
+### Solução com LSP:
+
+```typescript
+interface Bird {}
+
+interface FlyingBird extends Bird {
+  fly(): void;
+}
+
+class Sparrow implements FlyingBird {
+  fly() {
+    console.log("Flying");
+  }
+}
+
+class Ostrich implements Bird {
+  // não implementa fly
+}
+```
+
+A herança foi substituída por interfaces mais específicas. Agora, só quem realmente voa implementa `fly`.
+
+---
+
+## 4. Interface Segregation Principle (ISP) – Princípio da Segregação de Interface
+
+**"Nenhum cliente deve ser forçado a depender de métodos que não utiliza."**
+
+Esse princípio nos alerta contra interfaces grandes e genéricas. Interfaces devem ser **pequenas e específicas para os clientes** que as consomem.
+
+### Exemplo ruim:
+
+```typescript
+interface Machine {
+  print(): void;
+  scan(): void;
+  fax(): void;
+}
+
+class OldPrinter implements Machine {
+  print() {
+    console.log("Printing");
+  }
+
+  scan() {
+    throw new Error("Not supported");
+  }
+
+  fax() {
+    throw new Error("Not supported");
+  }
+}
+```
+
+A `OldPrinter` é forçada a implementar métodos que não fazem sentido.
+
+### Refatorando com ISP:
+
+```typescript
+interface Printer {
+  print(): void;
+}
+
+class SimplePrinter implements Printer {
+  print() {
+    console.log("Printing");
+  }
+}
+```
+
+Interfaces mais enxutas evitam implementações desnecessárias.
+
+---
+
+## 5. Dependency Inversion Principle (DIP) – Princípio da Inversão de Dependência
+
+**"Módulos de alto nível não devem depender de módulos de baixo nível. Ambos devem depender de abstrações."**
+
+Em outras palavras, devemos **depender de interfaces e abstrações, não de implementações concretas**.
+
+### Exemplo ruim:
+
+```typescript
+class MySQLDatabase {
+  connect() {
+    console.log("Connected to MySQL");
+  }
+}
+
+class UserService {
+  private db = new MySQLDatabase();
+
+  registerUser() {
+    this.db.connect();
+    // lógica de cadastro
+  }
+}
+```
+
+`UserService` depende diretamente de uma implementação específica.
+
+### Refatorando com DIP:
+
+```typescript
+interface Database {
+  connect(): void;
+}
+
+class MySQLDatabase implements Database {
+  connect() {
+    console.log("Connected to MySQL");
+  }
+}
+
+class UserService {
+  constructor(private db: Database) {}
+
+  registerUser() {
+    this.db.connect();
+    // lógica de cadastro
+  }
+}
+```
+
+Agora o `UserService` pode usar qualquer banco que implemente a interface `Database`, como MongoDB ou SQLite.
+
+---
+
+## Conclusão
+
+Os princípios SOLID não são apenas boas práticas teóricas — eles têm impacto direto na qualidade do seu código. Segui-los reduz acoplamento, melhora a testabilidade, facilita a manutenção e prepara o terreno para sistemas mais resilientes e evolutivos.
+
+É claro que aplicar todos os princípios o tempo todo pode gerar complexidade desnecessária, especialmente em projetos pequenos. Mas compreender e saber quando aplicar cada um deles é um diferencial enorme para qualquer desenvolvedor sério.
+
+Lembre-se: SOLID não é uma regra rígida, mas um conjunto de diretrizes que nos ajudam a tomar **melhores decisões de design**.

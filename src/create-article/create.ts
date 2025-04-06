@@ -17,17 +17,17 @@ function convertToKebabCase(title: string): string {
     .replace(/^-|-$|\s/g, '');       // Remove hyphens at the start or end, and spaces
 }
 
-
-
 async function main() {
-  const title = "Testes Unitários e de Integração no Backend com Vitest e Supertest"
+  const title = "Descomplicando os Princípios SOLID: Um Guia Profundo para Desenvolvedores"
+  const urlTitle = convertToKebabCase(title); 
+
   await prisma.post.create({
     data: { 
-      id: 4,
-      coverImage: "https://qwcyhvevwjacjawavqgx.supabase.co/storage/v1/object/public/portfolio//ChatGPT%20Image%205%20de%20abr.%20de%202025,%2014_08_59.png",
+      id: 5,
+      coverImage: `/images/articles/${urlTitle}.png`,
       author: "Gabriel Andrade",
       title,
-      urlTitle: convertToKebabCase(title),
+      urlTitle,
       content: markdownContent
     },
   });

@@ -1,57 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
 
-<url>
-  <loc>https://www.mendoncadev.com.br/</loc>
-  <lastmod>2025-04-06T21:16:28+00:00</lastmod>
-  <priority>1.00</priority>
-</url>
-<url>
-  <loc>https://www.mendoncadev.com.br/sobre</loc>
-  <lastmod>2025-04-06T21:16:29+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.mendoncadev.com.br/artigos</loc>
-  <lastmod>2025-04-06T21:16:30+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.mendoncadev.com.br/contato</loc>
-  <lastmod>2025-04-06T21:16:30+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.mendoncadev.com.br/projetos</loc>
-  <lastmod>2025-04-06T21:16:30+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.mendoncadev.com.br/artigo/prismaorm-guia-completo-para-desenvolvedores-modernos</loc>
-  <lastmod>2025-04-06T21:16:30+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.mendoncadev.com.br/artigo/rabbitmq-o-que-e-como-funciona-e-por-que-usar-em-suas-aplicacoes</loc>
-  <lastmod>2025-04-06T21:16:30+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.mendoncadev.com.br/artigo/testes-unitarios-e-de-integracao-no-backend-com-vitest-e-supertest</loc>
-  <lastmod>2025-04-06T21:16:30+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.mendoncadev.com.br/artigo/por-que-typescript-se-tornou-essencial-para-aplicacoes-modernas</loc>
-  <lastmod>2025-04-06T21:16:30+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
+  <url>
+    <loc>https://www.mendoncadev.com.br/</loc>
+    <lastmod>2025-04-06T21:16:28+00:00</lastmod>
+    <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>https://www.mendoncadev.com.br/sobre</loc>
+    <lastmod>2025-04-06T21:16:29+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://www.mendoncadev.com.br/artigos</loc>
+    <lastmod>2025-04-06T21:16:30+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://www.mendoncadev.com.br/contato</loc>
+    <lastmod>2025-04-06T21:16:30+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://www.mendoncadev.com.br/projetos</loc>
+    <lastmod>2025-04-06T21:16:30+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://www.mendoncadev.com.br/artigo/prismaorm-guia-completo-para-desenvolvedores-modernos</loc>
+    <lastmod>2025-04-06T21:16:30+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>
+      https://www.mendoncadev.com.br/artigo/rabbitmq-o-que-e-como-funciona-e-por-que-usar-em-suas-aplicacoes</loc>
+    <lastmod>2025-04-06T21:16:30+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>
+      https://www.mendoncadev.com.br/artigo/testes-unitarios-e-de-integracao-no-backend-com-vitest-e-supertest</loc>
+    <lastmod>2025-04-06T21:16:30+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>
+      https://www.mendoncadev.com.br/artigo/por-que-typescript-se-tornou-essencial-para-aplicacoes-modernas</loc>
+    <lastmod>2025-04-06T21:16:30+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
 
 
 </urlset>
