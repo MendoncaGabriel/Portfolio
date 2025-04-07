@@ -3,6 +3,7 @@ import { SiFfmpeg } from "react-icons/si";
 
 import { FaGithub, FaNodeJs, FaDocker, FaHtml5, FaYoutube, FaCss3Alt } from "react-icons/fa";
 import { SiTypescript, SiFastify, SiPostgresql, SiPrisma, SiZod, SiTailwindcss, SiJavascript, SiExpress, SiMongodb, SiEjs } from "react-icons/si";
+import { SiMongoose } from "react-icons/si";
 
 const technologyIcons: Record<string, JSX.Element> = {
   "Node.js": <FaNodeJs className="text-green-600" title="Node.js" />,
@@ -13,7 +14,8 @@ const technologyIcons: Record<string, JSX.Element> = {
   "CSS": <FaCss3Alt className="text-blue-500" title="CSS" />,
   "EJS": <SiEjs className="text-pink-200" title="EJS" />,
   "Express": <SiExpress className="text-gray-100" title="Express" />,
-  "Mongoose": <SiMongodb className="text-green-500" title="Mongoose" />,
+  "Mongodb": <SiMongodb className="text-green-500" title="Mongoose" />,
+  "Mongoose": <SiMongoose className="text-red-500" title="Mongoose" />,
   "TailwindCSS": <SiTailwindcss className="text-cyan-400" title="TailwindCSS" />,
   "TypeScript": <SiTypescript className="text-blue-500" title="TypeScript" />,
   "Fastify": <SiFastify className="text-white" title="Fastify" />,
