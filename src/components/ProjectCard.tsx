@@ -1,14 +1,19 @@
-import Image from "next/image";
-import Link from "next/link";
 import { JSX } from "react";
-import { FaGithub, FaNodeJs, FaDocker, FaHtml5, FaJs } from "react-icons/fa";
-import { SiTypescript, SiFastify, SiPostgresql, SiPrisma, SiZod, SiTailwindcss } from "react-icons/si";
+import { SiFfmpeg } from "react-icons/si";
 
-// Update technology icons mapping
+import { FaGithub, FaNodeJs, FaDocker, FaHtml5, FaYoutube, FaCss3Alt } from "react-icons/fa";
+import { SiTypescript, SiFastify, SiPostgresql, SiPrisma, SiZod, SiTailwindcss, SiJavascript, SiExpress, SiMongodb, SiEjs } from "react-icons/si";
+
 const technologyIcons: Record<string, JSX.Element> = {
   "Node.js": <FaNodeJs className="text-green-600" title="Node.js" />,
-  "Javascript": <FaJs className="text-yellow-400" title="Javascript" />,
-  "Html": <FaHtml5 className="text-orange-500" title="HTML" />,
+  "JavaScript": <SiJavascript className="text-yellow-400" title="JavaScript" />,
+  "yt-dlp": <FaYoutube className="text-red-500" title="yt-dlp" />,
+  "ffmpeg": <SiFfmpeg className="text-blue-400" title="ffmpeg" />,
+  "HTML": <FaHtml5 className="text-orange-500" title="HTML" />,
+  "CSS": <FaCss3Alt className="text-blue-500" title="CSS" />,
+  "EJS": <SiEjs className="text-pink-200" title="EJS" />,
+  "Express": <SiExpress className="text-gray-100" title="Express" />,
+  "Mongoose": <SiMongodb className="text-green-500" title="Mongoose" />,
   "TailwindCSS": <SiTailwindcss className="text-cyan-400" title="TailwindCSS" />,
   "TypeScript": <SiTypescript className="text-blue-500" title="TypeScript" />,
   "Fastify": <SiFastify className="text-white" title="Fastify" />,
@@ -41,9 +46,9 @@ export function ProjectCard({
         {technologies.length > 0 && (
           <div className="mt-4">
             <p className="text-lg text-gray-100 mb-2">Tecnologias</p>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-3">
               {technologies.map((tech, index) => (
-                <div key={index} className="text-xl opacity-80 hover:opacity-100 transition-opacity" title={tech}>
+                <div key={index} className="text-2xl hover:text-3xl opacity-80 hover:opacity-100 transition-all duration-200" title={tech}>
                   {technologyIcons[tech] || tech}
                 </div>
               ))}
