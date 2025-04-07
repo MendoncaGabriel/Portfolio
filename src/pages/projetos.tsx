@@ -1,27 +1,28 @@
-import { FaGithub } from "react-icons/fa";
+import { ProjectCard } from "components/ProjectCard";
 
 interface Projeto {
-  nome: string;
-  descricao: string;
-  tecnologias: string[];
-  github: string;
+  title: string;
+  description: string;
+  technologies: string[];
+  githubUrl: string;
+  siteUrl?: string;
 }
 
-export default function projetos (){
+export default function Projetos() {
   const projetos: Projeto[] = [
-    // {
-    //   nome: "Product Manager",
-    //   descricao: "API para gerenciar usuários, produtos e categorias com autenticação e operações CRUD, utilizando Repository e Factory Pattern para uma arquitetura modular.",
-    //   tecnologias: ["Node.js", "Typescript", "Fastify.js", "PostgreSql", "Prisma.js", "Docker", "Zod"],
-    //   github: "https://github.com/MendoncaGabriel/product-manager",
-    // },
+    {
+      title: "COMPRESSÃO GRATUITA DE IMAGENS",
+      description: "Obtenha imagens mais leves, sem perda de qualidade e com facilidade.",
+      technologies: ["Node.js", "Javascript", "Html", "TailwindCSS"],
+      githubUrl: "https://github.com/MendoncaGabriel/Compactar-imagem",
+      siteUrl: "https://mendoncagabriel.github.io/Compactar-imagem/",
+    },
   ];
 
   return (
     <div className="text-gray-50 h-full p-6 sm:p-10">
       <section className="h-full flex flex-col items-center justify-center gap-6">
-        {/* Título da seção */}
-        <div className="text-center">
+        <div className="text-center mb-8">
           <h1 className="text-4xl sm:text-5xl font-bold">Projetos</h1>
           {projetos.length > 0 && (
             <p className="text-lg sm:text-xl text-gray-300 font-light mt-2">
@@ -30,46 +31,27 @@ export default function projetos (){
           )}
         </div>
 
-        {/* Projetos */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 border">
-          {projetos.length !== 0 ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
+          {projetos.length > 0 ? (
             projetos.map((projeto, index) => (
-              <div
+              <ProjectCard
                 key={index}
-                className="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 flex flex-col justify-between"
-              >
-                <h2 className="text-2xl font-semibold text-gray-50">{projeto.nome}</h2>
-                <p className="text-gray-300 mt-2">{projeto.descricao}</p>
-                <p className="text-sm text-gray-400 mt-2">
-                  <b className="text-purple-500 text-lg">Tecnologias:</b> {projeto.tecnologias.join(", ")}
-                </p>
-
-                <div className="mt-4 flex space-x-4">
-                  <a
-                    href={projeto.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-gray-50 ml-auto"
-                  >
-                    <FaGithub className="text-4xl" />
-                  </a>
-                </div>
-              </div>
+                title={projeto.title}
+                description={projeto.description}
+                technologies={projeto.technologies}
+                siteUrl={projeto.siteUrl}
+                githubUrl={projeto.githubUrl}
+              />
             ))
           ) : (
-            <p></p>
+            <div className="col-span-full flex justify-center items-center">
+              <p className="text-center text-gray-300 border p-4">
+                Desculpe, ainda estou trabalhando nisso. Projetos nos quais já trabalhei serão postados em breve.
+              </p>
+            </div>
           )}
         </div>
-
-        {/* Condicional para quando não há projetos */}
-        {projetos.length === 0 && (
-          <div className="flex justify-center items-center w-full h-full">
-            <p className="text-center text-gray-300 border p-4">
-              Desculpe, ainda estou trabalhando nisso. Projetos nos quais já trabalhei serão postados em breve.
-            </p>
-          </div>
-        )}
       </section>
     </div>
   );
-};
+}

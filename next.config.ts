@@ -8,7 +8,8 @@ const nextConfig: NextConfig = {
       'media.licdn.com', 
       'sdmntpritalynorth.oaiusercontent.com', 
       "sdmntprwestus.oaiusercontent.com",
-      "qwcyhvevwjacjawavqgx.supabase.co"
+      "qwcyhvevwjacjawavqgx.supabase.co",
+      "mendoncagabriel.github.io"
     ],
   },
 };
