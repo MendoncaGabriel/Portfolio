@@ -1,24 +1,34 @@
 import { ProjectCard } from "components/ProjectCard";
+import { listProjects } from "./api/project";
 
 interface Projeto {
-  title: string;
-  description: string;
-  technologies: string[];
-  githubUrl: string;
-  siteUrl?: string;
+  id: string,
+  title: string,
+  description: string,        
+  technologies: string[],
+  githubUrl: string,
+  siteUrl: string,
+  createdAt: string,  // Changed from Date to string
+  updatedAt: string   // Changed from Date to string
 }
 
-export default function Projetos() {
-  const projetos: Projeto[] = [
-    {
-      title: "COMPRESSÃO GRATUITA DE IMAGENS",
-      description: "Obtenha imagens mais leves, sem perda de qualidade e com facilidade.",
-      technologies: ["Node.js", "Javascript", "Html", "TailwindCSS"],
-      githubUrl: "https://github.com/MendoncaGabriel/Compactar-imagem",
-      siteUrl: "https://mendoncagabriel.github.io/Compactar-imagem/",
+export async function getServerSideProps() {
+  const data = await listProjects();
+  
+  const projetos = data.map(projeto => ({
+    ...projeto,
+    createdAt: projeto.createdAt.toISOString(),
+    updatedAt: projeto.updatedAt.toISOString()
+  }));
+  
+  return {
+    props: {
+      projetos,
     },
-  ];
+  };
+}
 
+export default function Projetos({ projetos }: { projetos: Projeto[] }) {
   return (
     <div className="text-gray-50 h-full p-6 sm:p-10">
       <section className="h-full flex flex-col items-center justify-center gap-6">
@@ -26,7 +36,7 @@ export default function Projetos() {
           <h1 className="text-4xl sm:text-5xl font-bold">Projetos</h1>
           {projetos.length > 0 && (
             <p className="text-lg sm:text-xl text-gray-300 font-light mt-2">
-              Aqui estão alguns dos projetos em que trabalhei. Clique neles para ver mais detalhes ou visualizar o código.
+              Aqui estão alguns dos projetos em que trabalhei. <br /> Clique neles para ver mais detalhes ou visualizar o código.
             </p>
           )}
         </div>

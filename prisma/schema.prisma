@@ -16,3 +16,14 @@ model Post {
   date       DateTime @default(now())
   coverImage String?
 }
+
+model Project {
+  id           String   @id @default(uuid())
+  title        String
+  description  String
+  technologies String[] 
+  githubUrl    String
+  siteUrl      String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
