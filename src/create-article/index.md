@@ -1,286 +1,186 @@
-A escrita de código limpo e sustentável é um desafio constante para quem trabalha com desenvolvimento de software. À medida que sistemas crescem, aumentam também a complexidade e a necessidade de manutenibilidade. Nesse cenário, os princípios **SOLID** surgem como uma bússola para orientar decisões arquitetônicas e promover a criação de softwares mais robustos, legíveis e fáceis de evoluir.
+O **Repository Pattern** é um daqueles padrões de projeto que, quando bem aplicados, elevam a arquitetura de uma aplicação. Embora seja bastante comum em projetos Java e .NET, ele também se encaixa perfeitamente em aplicações modernas escritas em **TypeScript**, especialmente quando falamos de **APIs com responsabilidade bem definida**.
 
-Mas o que de fato são esses princípios? De onde vieram? E por que tantos desenvolvedores os consideram fundamentais? Vamos explorar em detalhes cada um dos cinco pilares do SOLID, com exemplos práticos, interpretações reais e armadilhas comuns.
-
----
-
-## O que é SOLID?
-
-**SOLID** é um acrônimo para cinco princípios da programação orientada a objetos. Foi popularizado por **Robert C. Martin (Uncle Bob)** e serve como base para um design de software mais limpo, modular e escalável. Esses princípios são:
-
-- **S** – *Single Responsibility Principle* (Princípio da Responsabilidade Única)  
-- **O** – *Open/Closed Principle* (Princípio Aberto/Fechado)  
-- **L** – *Liskov Substitution Principle* (Princípio da Substituição de Liskov)  
-- **I** – *Interface Segregation Principle* (Princípio da Segregação de Interface)  
-- **D** – *Dependency Inversion Principle* (Princípio da Inversão de Dependência)
-
-Vamos destrinchar cada um.
+Neste artigo, vamos explorar o que é o Repository Pattern, por que você deveria usá-lo, e como implementá-lo de maneira clara e prática com TypeScript — sem mágica, sem abstração desnecessária, apenas um código limpo, reutilizável e fácil de testar.
 
 ---
 
-## 1. Single Responsibility Principle (SRP) – Princípio da Responsabilidade Única
+## 📦 O que é o Repository Pattern?
 
-**"Uma classe deve ter apenas uma razão para mudar."**
+O Repository Pattern atua como uma **camada de abstração entre a lógica de negócios e a camada de acesso a dados**. Em vez de o seu serviço ou controlador conversar diretamente com o banco de dados (ou ORM), essa responsabilidade fica encapsulada dentro de um repositório.
 
-Esse princípio prega que uma classe deve ter **apenas uma responsabilidade bem definida**. Ou seja, ela deve ser coesa e especializada em uma única tarefa. Isso torna o código mais fácil de manter e testar.
+A ideia é clara: **desacoplar** sua aplicação da tecnologia usada para persistência (como Prisma, TypeORM, Sequelize, MongoDB, etc) e, ao mesmo tempo, tornar os testes mais simples e o código mais organizado.
 
-### Exemplo ruim:
+---
 
-```typescript
-class Report {
-  generatePDF() {
-    // gera o PDF
+## 🎯 Por que usar Repository Pattern?
+
+Aqui estão alguns motivos sólidos:
+
+- **Organização**: separa a lógica de acesso a dados da lógica de negócios.
+- **Reutilização**: os métodos do repositório podem ser usados por múltiplas partes do sistema.
+- **Testabilidade**: facilita a criação de *mocks* para testes unitários.
+- **Flexibilidade**: trocar o ORM, o banco de dados ou até ir para uma API externa se torna mais fácil.
+- **Leitura e manutenção**: o código fica mais limpo e com responsabilidades claras.
+
+---
+
+## 🧱 Estrutura básica de um Repository em TypeScript
+
+Vamos implementar um repositório simples para a entidade `User`. Suponha que estamos usando o Prisma como ORM, mas o foco é que o serviço nem saiba disso.
+
+### 1. Definindo a entidade
+
+```ts
+// src/entities/User.ts
+export interface User {
+  id: string
+  name: string
+  email: string
+  createdAt: Date
+}
+```
+
+### 2. Definindo o contrato do repositório
+
+```ts
+// src/repositories/UserRepository.ts
+import { User } from '@/entities/User'
+
+export interface UserRepository {
+  findById(id: string): Promise<User | null>
+  findByEmail(email: string): Promise<User | null>
+  create(user: Omit<User, 'id' | 'createdAt'>): Promise<User>
+}
+```
+
+Essa interface define o contrato que qualquer implementação de repositório de usuários deve seguir.
+
+### 3. Implementando com Prisma
+
+```ts
+// src/repositories/prisma/PrismaUserRepository.ts
+import { prisma } from '@/lib/prisma'
+import { UserRepository } from '../UserRepository'
+import { User } from '@/entities/User'
+
+export class PrismaUserRepository implements UserRepository {
+  async findById(id: string): Promise<User | null> {
+    return prisma.user.findUnique({ where: { id } })
   }
 
-  saveToDatabase() {
-    // salva no banco
+  async findByEmail(email: string): Promise<User | null> {
+    return prisma.user.findUnique({ where: { email } })
   }
 
-  sendEmail() {
-    // envia por email
+  async create(data: Omit<User, 'id' | 'createdAt'>): Promise<User> {
+    return prisma.user.create({
+      data,
+    })
   }
 }
 ```
 
-Essa classe viola o SRP porque está fazendo três coisas diferentes: gerar, salvar e enviar. Cada uma tem uma razão distinta para mudar.
-
-### Refatorando com SRP:
-
-```typescript
-class ReportGenerator {
-  generatePDF() {
-    // gera o PDF
-  }
-}
-
-class ReportRepository {
-  save(report: Report) {
-    // salva no banco
-  }
-}
-
-class EmailService {
-  send(report: Report) {
-    // envia por email
-  }
-}
-```
-
-Cada classe agora tem uma única responsabilidade. Isso facilita o reuso e reduz o acoplamento.
+A camada de serviço nem precisa saber que Prisma está sendo usado. Ela apenas interage com a interface.
 
 ---
 
-## 2. Open/Closed Principle (OCP) – Princípio Aberto/Fechado
+## 💡 Aplicando no serviço
 
-**"Entidades de software devem estar abertas para extensão, mas fechadas para modificação."**
+```ts
+// src/services/CreateUserService.ts
+import { UserRepository } from '@/repositories/UserRepository'
+import { User } from '@/entities/User'
 
-Ou seja, você deve poder **adicionar novos comportamentos sem alterar o código existente**, reduzindo riscos de regressões.
+interface CreateUserDTO {
+  name: string
+  email: string
+}
 
-### Exemplo ruim:
+export class CreateUserService {
+  constructor(private userRepository: UserRepository) {}
 
-```typescript
-class Discount {
-  calculate(customerType: string): number {
-    if (customerType === 'premium') {
-      return 0.2;
-    } else if (customerType === 'regular') {
-      return 0.1;
+  async execute(data: CreateUserDTO): Promise<User> {
+    const existingUser = await this.userRepository.findByEmail(data.email)
+
+    if (existingUser) {
+      throw new Error('User already exists.')
     }
-    return 0;
+
+    return this.userRepository.create(data)
   }
 }
 ```
 
-Cada novo tipo de cliente exige modificar essa classe, quebrando o OCP.
-
-### Refatorando com OCP:
-
-```typescript
-interface DiscountStrategy {
-  getDiscount(): number;
-}
-
-class PremiumCustomer implements DiscountStrategy {
-  getDiscount() {
-    return 0.2;
-  }
-}
-
-class RegularCustomer implements DiscountStrategy {
-  getDiscount() {
-    return 0.1;
-  }
-}
-
-class DiscountService {
-  constructor(private strategy: DiscountStrategy) {}
-
-  calculate() {
-    return this.strategy.getDiscount();
-  }
-}
-```
-
-Agora, podemos adicionar novos tipos de clientes apenas criando novas classes, sem modificar o código existente.
+Agora temos um serviço que pode ser facilmente testado com um *mock* do `UserRepository`, sem precisar de banco ou ORM.
 
 ---
 
-## 3. Liskov Substitution Principle (LSP) – Princípio da Substituição de Liskov
+## 🧪 E nos testes?
 
-**"Se S é um subtipo de T, então objetos do tipo T devem poder ser substituídos por objetos do tipo S sem quebrar o programa."**
+```ts
+// src/repositories/in-memory/InMemoryUserRepository.ts
+import { UserRepository } from '../UserRepository'
+import { User } from '@/entities/User'
+import { randomUUID } from 'crypto'
 
-Esse princípio exige que classes filhas possam ser usadas no lugar das classes pai **sem alterar o comportamento esperado**.
+export class InMemoryUserRepository implements UserRepository {
+  private users: User[] = []
 
-### Exemplo problemático:
-
-```typescript
-class Bird {
-  fly() {
-    console.log("Flying");
+  async findById(id: string): Promise<User | null> {
+    return this.users.find(user => user.id === id) || null
   }
-}
 
-class Ostrich extends Bird {
-  fly() {
-    throw new Error("Ostriches can't fly");
+  async findByEmail(email: string): Promise<User | null> {
+    return this.users.find(user => user.email === email) || null
+  }
+
+  async create(data: Omit<User, 'id' | 'createdAt'>): Promise<User> {
+    const user: User = {
+      ...data,
+      id: randomUUID(),
+      createdAt: new Date(),
+    }
+    this.users.push(user)
+    return user
   }
 }
 ```
 
-Aqui, uma avestruz é um "pássaro" na herança, mas não pode voar. Usá-la como um `Bird` quebra a lógica esperada.
+No teste, basta injetar esse repositório fake no serviço:
 
-### Solução com LSP:
+```ts
+// tests/CreateUserService.spec.ts
+import { InMemoryUserRepository } from '@/repositories/in-memory/InMemoryUserRepository'
+import { CreateUserService } from '@/services/CreateUserService'
 
-```typescript
-interface Bird {}
+test('deve criar um novo usuário', async () => {
+  const repo = new InMemoryUserRepository()
+  const service = new CreateUserService(repo)
 
-interface FlyingBird extends Bird {
-  fly(): void;
-}
+  const user = await service.execute({
+    name: 'Alice',
+    email: 'alice@example.com',
+  })
 
-class Sparrow implements FlyingBird {
-  fly() {
-    console.log("Flying");
-  }
-}
-
-class Ostrich implements Bird {
-  // não implementa fly
-}
+  expect(user).toHaveProperty('id')
+  expect(user.email).toBe('alice@example.com')
+})
 ```
-
-A herança foi substituída por interfaces mais específicas. Agora, só quem realmente voa implementa `fly`.
 
 ---
 
-## 4. Interface Segregation Principle (ISP) – Princípio da Segregação de Interface
+## 📌 Considerações finais
 
-**"Nenhum cliente deve ser forçado a depender de métodos que não utiliza."**
+O Repository Pattern é uma abordagem poderosa e elegante que se encaixa muito bem com o ecossistema TypeScript, especialmente em projetos backend com Node.js. Ele ajuda a manter o código limpo, testável e preparado para crescer.
 
-Esse princípio nos alerta contra interfaces grandes e genéricas. Interfaces devem ser **pequenas e específicas para os clientes** que as consomem.
-
-### Exemplo ruim:
-
-```typescript
-interface Machine {
-  print(): void;
-  scan(): void;
-  fax(): void;
-}
-
-class OldPrinter implements Machine {
-  print() {
-    console.log("Printing");
-  }
-
-  scan() {
-    throw new Error("Not supported");
-  }
-
-  fax() {
-    throw new Error("Not supported");
-  }
-}
-```
-
-A `OldPrinter` é forçada a implementar métodos que não fazem sentido.
-
-### Refatorando com ISP:
-
-```typescript
-interface Printer {
-  print(): void;
-}
-
-class SimplePrinter implements Printer {
-  print() {
-    console.log("Printing");
-  }
-}
-```
-
-Interfaces mais enxutas evitam implementações desnecessárias.
+Se você está construindo APIs com NestJS, Fastify, Express, ou mesmo Next.js com camada backend, considere seriamente adotar esse padrão. Ele pode parecer um pouco “cerimonial” no início, mas os benefícios em médio e longo prazo compensam — e muito.
 
 ---
 
-## 5. Dependency Inversion Principle (DIP) – Princípio da Inversão de Dependência
+## 🧭 Próximos passos
 
-**"Módulos de alto nível não devem depender de módulos de baixo nível. Ambos devem depender de abstrações."**
+- Implemente repositórios genéricos (base repository).
+- Aplique o padrão em projetos com múltiplos bancos (ex: Mongo e Postgres).
+- Combine com outros padrões, como Factory e Service.
 
-Em outras palavras, devemos **depender de interfaces e abstrações, não de implementações concretas**.
-
-### Exemplo ruim:
-
-```typescript
-class MySQLDatabase {
-  connect() {
-    console.log("Connected to MySQL");
-  }
-}
-
-class UserService {
-  private db = new MySQLDatabase();
-
-  registerUser() {
-    this.db.connect();
-    // lógica de cadastro
-  }
-}
-```
-
-`UserService` depende diretamente de uma implementação específica.
-
-### Refatorando com DIP:
-
-```typescript
-interface Database {
-  connect(): void;
-}
-
-class MySQLDatabase implements Database {
-  connect() {
-    console.log("Connected to MySQL");
-  }
-}
-
-class UserService {
-  constructor(private db: Database) {}
-
-  registerUser() {
-    this.db.connect();
-    // lógica de cadastro
-  }
-}
-```
-
-Agora o `UserService` pode usar qualquer banco que implemente a interface `Database`, como MongoDB ou SQLite.
-
----
-
-## Conclusão
-
-Os princípios SOLID não são apenas boas práticas teóricas — eles têm impacto direto na qualidade do seu código. Segui-los reduz acoplamento, melhora a testabilidade, facilita a manutenção e prepara o terreno para sistemas mais resilientes e evolutivos.
-
-É claro que aplicar todos os princípios o tempo todo pode gerar complexidade desnecessária, especialmente em projetos pequenos. Mas compreender e saber quando aplicar cada um deles é um diferencial enorme para qualquer desenvolvedor sério.
-
-Lembre-se: SOLID não é uma regra rígida, mas um conjunto de diretrizes que nos ajudam a tomar **melhores decisões de design**.
+Se quiser, posso te ajudar a criar uma estrutura de projeto completa usando Repository Pattern com Fastify ou outro framework à sua escolha.

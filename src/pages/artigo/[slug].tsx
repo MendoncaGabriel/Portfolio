@@ -3,7 +3,6 @@
   import Markdown from "react-markdown";
   import Head from 'next/head';
 
-
   type ArticleProps = {
     title: string;
     content: string;
@@ -75,12 +74,17 @@
     );
   }
 
+  // descomplicando-os-principios-solid-um-guia-profundo-para-desenvolvedores
+  // descomplicando-os-princpios-solid-um-guia-profundo-para-desenvolvedores
+
   export const getServerSideProps: GetServerSideProps = async (context) => {
     const slug = context.params?.slug as string;
     console.log(">>> SLUG: ", slug)
-  
+    
     try {
       const result = await GETByURLTitle(slug);
+      console.log(">>> result: ", result)
+
   
       const data = result
         ? {
