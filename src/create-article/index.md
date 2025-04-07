@@ -174,13 +174,3 @@ test('deve criar um novo usuário', async () => {
 O Repository Pattern é uma abordagem poderosa e elegante que se encaixa muito bem com o ecossistema TypeScript, especialmente em projetos backend com Node.js. Ele ajuda a manter o código limpo, testável e preparado para crescer.
 
 Se você está construindo APIs com NestJS, Fastify, Express, ou mesmo Next.js com camada backend, considere seriamente adotar esse padrão. Ele pode parecer um pouco “cerimonial” no início, mas os benefícios em médio e longo prazo compensam — e muito.
-
----
-
-## 🧭 Próximos passos
-
-- Implemente repositórios genéricos (base repository).
-- Aplique o padrão em projetos com múltiplos bancos (ex: Mongo e Postgres).
-- Combine com outros padrões, como Factory e Service.
-
-Se quiser, posso te ajudar a criar uma estrutura de projeto completa usando Repository Pattern com Fastify ou outro framework à sua escolha.

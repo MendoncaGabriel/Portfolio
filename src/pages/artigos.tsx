@@ -33,21 +33,22 @@ type Props = {
 export default function ArtigosPage({ articles }: Props) {
   return (
     <div className="text-gray-50 h-full p-6 sm:p-10">
-      <section className="h-full flex flex-col items-center justify-center gap-6">
+      <section className="flex flex-col items-center gap-6">
         <div className="text-center">
           <h1 className="text-4xl sm:text-5xl font-bold">Últimos Artigos</h1>
-          <div className="grid md:grid-cols-4 gap-4 my-5 p-4">
-            {articles.map((article, key) => (
-              <ArticleCard
-                key={key}
-                title={article.title}
-                description={getPreview(article.content)}
-                imageUrl={article.coverImage!}
-                author={article.author}
-                date={formatDate(new Date(article.date!))}
-              />
-            ))}
-          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-rows-fr w-full">
+          {articles.map((article, key) => (
+            <ArticleCard
+              key={key}
+              title={article.title}
+              description={getPreview(article.content)}
+              imageUrl={article.coverImage!}
+              author={article.author}
+              date={formatDate(new Date(article.date!))}
+            />
+          ))}
         </div>
       </section>
     </div>
@@ -69,4 +70,3 @@ export const getStaticProps: GetStaticProps = async () => {
     revalidate: 60 * 5,
   };
 };
-

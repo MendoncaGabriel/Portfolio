@@ -30,7 +30,7 @@ export function ArticleCard({
   return (
     <Link
       href={`/artigo/${slug}`}
-      className="cursor-pointer max-w-md bg-white rounded-md overflow-hidden  duration-200 ease-in-out hover:scale-[101%]"
+      className="border border-black cursor-pointer max-w-md h-full flex flex-col bg-gray-50 rounded-md overflow-hidden transition-transform duration-200 ease-in-out hover:scale-[101%] transform-gpu backface-hidden"
     >
       {imageUrl && (
         <div className="w-full aspect-square relative">
@@ -43,13 +43,12 @@ export function ArticleCard({
           />
         </div>
       )}
-      <div className="p-2">
+      <div className="p-2 flex flex-col flex-grow">
         <h2 className="text-lg font-semibold text-gray-800 mb-2">{title}</h2>
-        <p className="text-sm text-gray-500 mb-4 line-clamp-3">
-          {description}
-        </p>
+        <p className="text-sm text-gray-500 mb-4 line-clamp-3">{description}</p>
+
         {(author || date) && (
-          <div className="text-xs text-gray-400 flex justify-between">
+          <div className="mt-auto text-xs text-gray-400 flex justify-between">
             {author && <span>Por {author}</span>}
             {date && <span>{date}</span>}
           </div>

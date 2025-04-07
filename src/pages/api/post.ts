@@ -14,6 +14,10 @@ export async function GETByURLTitle(urlTitle: string) {
   return post
 }
 export async function ListArticles() {
-  const posts = await prisma.post.findMany()
+  const posts = await prisma.post.findMany({
+    orderBy: {
+      date: 'desc'
+    }
+  })
   return posts
 }
