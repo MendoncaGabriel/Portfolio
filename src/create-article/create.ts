@@ -18,12 +18,12 @@ function convertToKebabCase(title: string): string {
 }
 
 async function main() {
-  const title = "Repository Pattern com TypeScript: separando responsabilidades de forma elegante"
+  const title = "Cache com Redis: Por que todo dev precisa entender isso"
   const urlTitle = convertToKebabCase(title); 
 
   await prisma.post.create({
     data: { 
-      id: 6,
+      id: 7,
       coverImage: `/images/articles/${urlTitle}.png`,
       author: "Gabriel Andrade",
       title,
