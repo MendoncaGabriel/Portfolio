@@ -1,188 +1,115 @@
-Se você está em busca de uma alternativa leve, rápida e moderna ao Express, o **Fastify** merece sua atenção. E se você é fã de **TypeScript**, aí é que a combinação fica ainda mais interessante.
+Se você é desenvolvedor, não basta apenas saber "dar um commit". Git e GitHub são como o idioma que falamos no mundo do código colaborativo. Mas a verdade é que muitos desenvolvedores ainda usam essas ferramentas só no básico, deixando de lado recursos poderosos como branches bem planejadas, rebase estratégico, stash salvador de commits perdidos, pull requests com code reviews eficazes, e até GitHub Actions para automação de tarefas.
 
-Neste artigo, vamos explorar como usar Fastify com TypeScript de forma eficiente, destacando os benefícios reais que essa stack oferece para quem está construindo APIs escaláveis e bem tipadas.
-
----
-
-## Por que Fastify?
-
-O Express é ótimo, mas vamos ser sinceros: ele já está um pouco cansado. Claro, funciona, tem uma comunidade enorme e resolve 90% dos casos. Mas quando o foco é **performance**, **escalabilidade** e **developer experience**, o Fastify brilha.
-
-O Fastify é um framework web focado em performance. Ele é construído sobre Node.js com uma arquitetura orientada a plugins, suporte nativo a JSON Schema e uma API inspirada no Express (mas muito mais moderna).
-
-Alguns motivos para considerar o Fastify:
-
-- ⚡ **Performance absurda**: benchmarks mostram o Fastify sendo até 2x mais rápido que o Express.
-- 📦 **Sistema de plugins** muito bem pensado, facilitando a organização do projeto.
-- 📊 **Validação de schemas** embutida, com suporte a JSON Schema (sem precisar de middleware extra).
-- 🔌 **Suporte a hooks**, decorators e outras features que ajudam no controle fino da aplicação.
+Neste artigo, vamos além do "add, commit, push" e mergulhamos em tudo que você precisa dominar para se destacar de verdade num time de desenvolvimento moderno.
 
 ---
 
-## E onde entra o TypeScript?
+## Entendendo de verdade as branches
 
-A tipagem do TypeScript encaixa perfeitamente com o Fastify. Ao contrário de muitos frameworks que têm uma tipagem "mais ou menos", o Fastify **abraça o TypeScript de verdade**.
+Branches não são apenas ramificações do seu código — são a base para um fluxo de trabalho organizado. Trabalhar com a `main` diretamente é como fazer cirurgia sem luvas.
 
-Você pode tipar:
+A ideia é simples: cada feature, bugfix ou experimento deve acontecer numa branch isolada. Isso evita conflitos, facilita testes e garante que a `main` esteja sempre em estado estável (idealmente pronta para produção).
 
-- O corpo da requisição
-- Os parâmetros da rota
-- Os headers
-- As queries
-- E até as respostas
-
-Isso significa **autocompletar real**, com tipagem precisa no seu editor — menos erro em produção, mais confiança durante o desenvolvimento.
+### Exemplo de estratégia de branches:
+- `main`: código estável em produção
+- `develop`: integração de novas features antes de subir para produção
+- `feature/nome-da-feature`: cada funcionalidade em uma branch separada
+- `hotfix/ajuste-crítico`: correções urgentes direto da `main`
 
 ---
 
-## Setup básico: Fastify com TypeScript
+## Merge vs Rebase: qual usar?
 
-Vamos ver como começar um projeto Fastify com TypeScript do zero:
+Ambos servem para integrar mudanças, mas com comportamentos e propósitos diferentes.
 
-### 1. Inicializando o projeto
+- **Merge** junta duas branches e preserva o histórico completo. Ideal para manter rastreabilidade e transparência em projetos com muitos colaboradores.
+- **Rebase** "regrava" o histórico da branch como se ela tivesse nascido da base mais atual. Útil para manter um histórico mais linear e limpo, mas exige cuidado para evitar reescrever commits públicos.
+
+**Regra de ouro:** use `merge` para integração entre branches de times e `rebase` para limpar sua branch local antes de subir.
+
+---
+
+## Git stash: o salvador da produtividade
+
+Está mexendo no código, mas surge uma urgência para mudar de branch? Com `git stash`, você guarda suas alterações temporariamente sem precisar fazer commit.
 
 ```bash
-npm init -y
-npm install fastify
-npm install -D typescript ts-node @types/node
+git stash        # guarda as alterações
+git checkout main
+git stash pop    # recupera o que estava guardado
 ```
 
-Crie um `tsconfig.json`:
-
-```json
-{
-  "compilerOptions": {
-    "target": "ES2020",
-    "module": "commonjs",
-    "strict": true,
-    "esModuleInterop": true,
-    "outDir": "dist"
-  },
-  "include": ["src"]
-}
-```
-
-### 2. Criando o servidor Fastify
-
-```ts
-// src/server.ts
-import Fastify from 'fastify';
-
-const app = Fastify();
-
-app.get('/ping', async (request, reply) => {
-  return { pong: 'it works!' };
-});
-
-app.listen({ port: 3000 }, (err, address) => {
-  if (err) {
-    app.log.error(err);
-    process.exit(1);
-  }
-  console.log(`🚀 Server running at ${address}`);
-});
-```
-
-Rode com:
-
-```bash
-npx ts-node src/server.ts
-```
+Simples, eficaz e salva vidas quando você precisa pausar algo sem perder o progresso.
 
 ---
 
-## Tipando as rotas com Request e Reply
+## Pull Requests: colaboração com qualidade
 
-Um dos grandes diferenciais é poder tipar as rotas com precisão. Olha esse exemplo:
+Um pull request (PR) é mais do que "juntar código". Ele é o momento de revisar, aprender, ensinar e garantir qualidade.
 
-```ts
-import { FastifyRequest, FastifyReply } from 'fastify';
-
-interface HelloParams {
-  name: string;
-}
-
-app.get<{
-  Params: HelloParams;
-}>('/hello/:name', async (request: FastifyRequest<{ Params: HelloParams }>, reply: FastifyReply) => {
-  return { message: `Hello, ${request.params.name}` };
-});
-```
-
-Com isso, o TypeScript já entende que `request.params.name` é uma `string` — sem precisar de `as string` ou `any`.
+### Boas práticas para PRs:
+- Faça commits pequenos e descritivos
+- Escreva uma boa descrição no PR (o quê, por quê, como)
+- Use comentários claros no code review
+- Respeite feedbacks, revise com calma
+- Automatize testes para rodar no PR (falaremos disso com GitHub Actions)
 
 ---
 
-## Validação com Schema (e inferência de tipos!)
+## Code Review: feedback que constrói
 
-Um recurso de ouro no Fastify é o uso de **schemas JSON** para validação das requisições. E o mais legal? Dá pra gerar os **tipos automaticamente** com TypeScript!
+Code review é um hábito que define equipes maduras. Serve para:
+- Evitar bugs
+- Compartilhar conhecimento
+- Padronizar o código
+- Melhorar design de soluções
 
-```ts
-const helloSchema = {
-  params: {
-    type: 'object',
-    properties: {
-      name: { type: 'string' }
-    },
-    required: ['name']
-  }
-} as const;
-
-app.get('/hello/:name', {
-  schema: helloSchema,
-  handler: async (request, reply) => {
-    return { message: `Hello, ${request.params.name}` };
-  }
-});
-```
-
-Se quiser usar Zod, Ajv, ou outras libs — também é possível com plugins.
+Evite críticas pessoais. Foque em legibilidade, lógica e propósito. Uma boa pergunta para fazer é: **"Eu entenderia isso daqui a 6 meses?"**
 
 ---
 
-## Organização por módulos com plugins
+## GitHub Actions: CI/CD sem complicações
 
-Outro ponto positivo é a arquitetura baseada em **plugins**. Cada rota ou grupo de rotas pode ser isolado em um módulo:
+Se antes CI/CD exigia Jenkins ou ferramentas externas, agora podemos automatizar tarefas direto no GitHub com o **GitHub Actions**.
 
-```ts
-// routes/user.ts
-import { FastifyInstance } from 'fastify';
+### Como funciona:
+Um arquivo `.yml` dentro do diretório `.github/workflows/` define quando e como executar ações.
 
-export async function userRoutes(app: FastifyInstance) {
-  app.get('/users', async () => {
-    return [{ id: 1, name: 'Alice' }];
-  });
-}
+### Estrutura básica:
+```yaml
+name: CI Pipeline
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Instalar dependências
+        run: npm install
+      - name: Rodar testes
+        run: npm test
 ```
 
-E no `server.ts`:
+### Conceitos principais:
+- **Eventos (`on`)**: Disparam o workflow (ex: `push`, `pull_request`, `schedule`, etc.)
+- **Jobs**: Conjunto de tarefas a serem executadas
+- **Steps**: Passos dentro de cada job (como instalar dependências, rodar testes, gerar builds)
 
-```ts
-import { userRoutes } from './routes/user';
-
-app.register(userRoutes);
-```
-
-Simples, limpo e escalável.
+### Exemplos de uso:
+- Rodar testes automaticamente a cada PR
+- Fazer deploy para Vercel/Netlify/Heroku
+- Gerar builds de produção
+- Checar formatação com linters
 
 ---
 
-## Conclusão: vale a pena usar Fastify com TypeScript?
+## Conclusão
 
-Sim. Se você está construindo APIs modernas e quer extrair o máximo de performance, confiabilidade e produtividade, o combo Fastify + TypeScript é uma escolha excelente.
+Dominar Git e GitHub é mais do que saber comandos: é entender os *porquês* por trás das boas práticas. Branches bem gerenciadas evitam dor de cabeça. Rebase e stash otimizam seu fluxo. Pull requests e code reviews constroem código melhor em equipe. E GitHub Actions leva sua automação para outro nível — sem sair do repositório.
 
-Você ganha:
+Então, da próxima vez que abrir o terminal, pense: o que eu posso fazer hoje que vai deixar o código mais limpo, mais seguro e o trabalho do meu time mais fluido?
 
-- Tipagem forte de ponta a ponta
-- Validação integrada
-- Código limpo e escalável
-- Melhor performance que o Express
-- E uma curva de aprendizado super tranquila
-
-Se ainda está no Express, experimenta migrar um projeto pequeno. A chance de você se apaixonar é grande.
-
----
-
-## Palavras-chave para SEO:
-
-**Fastify com TypeScript**, **framework Node.js moderno**, **API com TypeScript**, **Fastify vs Express**, **como usar Fastify**, **backend performático com TypeScript**, **validação no Fastify**, **roteamento tipado com TypeScript**, **Fastify JSON Schema**, **plugin system no Fastify**
+Seja um dev que domina o fluxo, não um passageiro dele.

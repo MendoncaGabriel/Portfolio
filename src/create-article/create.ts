@@ -18,12 +18,12 @@ function convertToKebabCase(title: string): string {
 }
 
 async function main() {
-  const title = "Fastify com TypeScript: performance, tipagem e produtividade no backend"
+  const title = "Git e GitHub: Da linha de comando ao CI/CD moderno"
   const urlTitle = convertToKebabCase(title); 
 
   await prisma.post.create({
     data: { 
-      id: 8,
+      id: 9,
       coverImage: `/images/articles/${urlTitle}.png`,
       author: "Gabriel Andrade",
       title,
