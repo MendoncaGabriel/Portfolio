@@ -25,7 +25,30 @@ function formatDate(dataISO: string): string {
   };
 
   return data.toLocaleDateString('pt-BR', opcoes);
-}
+};
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const slug = context.params?.slug as string;
+  const result = await GETByURLTitle(slug.replace("/artigo/", ""));
+
+  if (!result) return {
+    props: {
+      data: null,
+    },
+  };
+
+  const data = {
+    ...result,
+    content: result?.content.replace(/\\n/g, '\n'),
+    date: result?.date instanceof Date ? result.date.toISOString() : result?.date,
+  }
+
+  return {
+    props: {
+      data,
+    },
+  };
+};
 
 export default function ArticlePage({ data }: Props) {
   if (!data) {
@@ -73,36 +96,4 @@ export default function ArticlePage({ data }: Props) {
       </article>
     </div>
   );
-}
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const slug = context.params?.slug as string;
-
-  try {
-    const result = await GETByURLTitle(slug);
-
-    const data = result
-      ? {
-        ...result,
-        content: result.content.replace(/\\n/g, '\n'),
-        date:
-          result.date instanceof Date
-            ? result.date.toISOString()
-            : result.date,
-      }
-      : null;
-
-    return {
-      props: {
-        data,
-      },
-    };
-  } catch (error) {
-    console.error("Erro ao buscar artigo:", error);
-    return {
-      props: {
-        data: null,
-      },
-    };
-  }
 };
