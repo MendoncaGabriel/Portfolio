@@ -1,115 +1,90 @@
-Se você é desenvolvedor, não basta apenas saber "dar um commit". Git e GitHub são como o idioma que falamos no mundo do código colaborativo. Mas a verdade é que muitos desenvolvedores ainda usam essas ferramentas só no básico, deixando de lado recursos poderosos como branches bem planejadas, rebase estratégico, stash salvador de commits perdidos, pull requests com code reviews eficazes, e até GitHub Actions para automação de tarefas.
+Se você já se perguntou por que o `setTimeout` com zero milissegundos não executa imediatamente, ou por que seu `console.log` aparece antes de uma `Promise`, este artigo é pra você. A resposta está no coração da execução do JavaScript: o **Event Loop**.
 
-Neste artigo, vamos além do "add, commit, push" e mergulhamos em tudo que você precisa dominar para se destacar de verdade num time de desenvolvimento moderno.
+## JavaScript é Single-Threaded, mas...
 
----
+Antes de entrar no loop em si, vamos esclarecer uma coisa: **JavaScript é single-threaded**, ou seja, ele executa uma instrução por vez, numa única thread. Isso quer dizer que ele não faz várias coisas ao mesmo tempo... ou faz?
 
-## Entendendo de verdade as branches
+Na prática, parece que sim — e isso acontece graças a um mecanismo elegante por trás dos bastidores: o **event loop**, junto com a **call stack**, a **Web API** (em ambientes como browsers), e a **task queue** (ou fila de tarefas).
 
-Branches não são apenas ramificações do seu código — são a base para um fluxo de trabalho organizado. Trabalhar com a `main` diretamente é como fazer cirurgia sem luvas.
+## O Que É o Event Loop?
 
-A ideia é simples: cada feature, bugfix ou experimento deve acontecer numa branch isolada. Isso evita conflitos, facilita testes e garante que a `main` esteja sempre em estado estável (idealmente pronta para produção).
+O **event loop** é o orquestrador. Ele observa a **call stack** (a pilha de execução) e a **fila de tarefas**. Quando a pilha está vazia, ele pega a próxima tarefa da fila e a coloca na pilha para ser executada.
 
-### Exemplo de estratégia de branches:
-- `main`: código estável em produção
-- `develop`: integração de novas features antes de subir para produção
-- `feature/nome-da-feature`: cada funcionalidade em uma branch separada
-- `hotfix/ajuste-crítico`: correções urgentes direto da `main`
+Parece simples, mas essa mecânica resolve um problema enorme: como fazer código assíncrono parecer síncrono.
 
----
+Vamos ver um exemplo prático:
 
-## Merge vs Rebase: qual usar?
+```javascript
+console.log('Início');
 
-Ambos servem para integrar mudanças, mas com comportamentos e propósitos diferentes.
+setTimeout(() => {
+  console.log('Timeout');
+}, 0);
 
-- **Merge** junta duas branches e preserva o histórico completo. Ideal para manter rastreabilidade e transparência em projetos com muitos colaboradores.
-- **Rebase** "regrava" o histórico da branch como se ela tivesse nascido da base mais atual. Útil para manter um histórico mais linear e limpo, mas exige cuidado para evitar reescrever commits públicos.
-
-**Regra de ouro:** use `merge` para integração entre branches de times e `rebase` para limpar sua branch local antes de subir.
-
----
-
-## Git stash: o salvador da produtividade
-
-Está mexendo no código, mas surge uma urgência para mudar de branch? Com `git stash`, você guarda suas alterações temporariamente sem precisar fazer commit.
-
-```bash
-git stash        # guarda as alterações
-git checkout main
-git stash pop    # recupera o que estava guardado
+console.log('Fim');
 ```
 
-Simples, eficaz e salva vidas quando você precisa pausar algo sem perder o progresso.
-
----
-
-## Pull Requests: colaboração com qualidade
-
-Um pull request (PR) é mais do que "juntar código". Ele é o momento de revisar, aprender, ensinar e garantir qualidade.
-
-### Boas práticas para PRs:
-- Faça commits pequenos e descritivos
-- Escreva uma boa descrição no PR (o quê, por quê, como)
-- Use comentários claros no code review
-- Respeite feedbacks, revise com calma
-- Automatize testes para rodar no PR (falaremos disso com GitHub Actions)
-
----
-
-## Code Review: feedback que constrói
-
-Code review é um hábito que define equipes maduras. Serve para:
-- Evitar bugs
-- Compartilhar conhecimento
-- Padronizar o código
-- Melhorar design de soluções
-
-Evite críticas pessoais. Foque em legibilidade, lógica e propósito. Uma boa pergunta para fazer é: **"Eu entenderia isso daqui a 6 meses?"**
-
----
-
-## GitHub Actions: CI/CD sem complicações
-
-Se antes CI/CD exigia Jenkins ou ferramentas externas, agora podemos automatizar tarefas direto no GitHub com o **GitHub Actions**.
-
-### Como funciona:
-Um arquivo `.yml` dentro do diretório `.github/workflows/` define quando e como executar ações.
-
-### Estrutura básica:
-```yaml
-name: CI Pipeline
-
-on: [push, pull_request]
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-      - name: Instalar dependências
-        run: npm install
-      - name: Rodar testes
-        run: npm test
+### Saída:
+```
+Início
+Fim
+Timeout
 ```
 
-### Conceitos principais:
-- **Eventos (`on`)**: Disparam o workflow (ex: `push`, `pull_request`, `schedule`, etc.)
-- **Jobs**: Conjunto de tarefas a serem executadas
-- **Steps**: Passos dentro de cada job (como instalar dependências, rodar testes, gerar builds)
+Você esperava que o `"Timeout"` viesse logo após o `"Início"`? É comum pensar assim, mas o que acontece aqui é que o `setTimeout` é enviado para a Web API. Após o tempo (mesmo que zero), ele é jogado para a **fila de tarefas**. O **event loop** só vai executá-lo **depois que a stack estiver vazia**, ou seja, depois do `"Fim"`.
 
-### Exemplos de uso:
-- Rodar testes automaticamente a cada PR
-- Fazer deploy para Vercel/Netlify/Heroku
-- Gerar builds de produção
-- Checar formatação com linters
+## Call Stack, Web APIs e Fila de Tarefas
 
----
+Vamos dar nome aos bois:
+
+- **Call Stack**: onde seu código é executado, função por função.
+- **Web APIs**: funcionalidades assíncronas oferecidas pelo ambiente (como o browser ou Node.js), como `setTimeout`, `fetch`, `DOM events`.
+- **Task Queue (ou Callback Queue)**: fila onde eventos assíncronos esperam sua vez.
+- **Event Loop**: fica de olho. Se a stack estiver livre, ele envia a próxima tarefa da fila pra execução.
+
+## E o Microtask Queue? Promises Entra em Cena
+
+Além da fila de tarefas (macrotasks), existe uma outra fila menos falada, mas super importante: a **fila de microtarefas**. Promises vão pra lá.
+
+```javascript
+console.log('Início');
+
+Promise.resolve().then(() => {
+  console.log('Promise');
+});
+
+setTimeout(() => {
+  console.log('Timeout');
+}, 0);
+
+console.log('Fim');
+```
+
+### Saída:
+```
+Início
+Fim
+Promise
+Timeout
+```
+
+Notou que `Promise` vem antes do `Timeout`? Isso é porque microtarefas têm **prioridade** sobre macrotarefas. O event loop esvazia todas as microtarefas antes de pegar a próxima macrotarefa da fila.
+
+## Por Que Isso Importa?
+
+Se você está lidando com chamadas assíncronas, `setTimeout`, Promises, ou até eventos de clique, **entender o event loop é essencial para prever o comportamento do seu código**.
+
+Você já teve um bug que desaparecia quando colocava um `console.log()` no meio? Pode ser uma pista de que você está enfrentando uma corrida entre tarefas assíncronas. Conhecer o event loop te ajuda a evitar essas armadilhas.
+
+## Dicas Rápidas
+
+- `setTimeout(fn, 0)` **não** executa imediatamente. Ele espera o stack esvaziar.
+- Promises são executadas **antes** de qualquer `setTimeout`.
+- `await` pausa a execução de uma `async function`, mas **não bloqueia o event loop**.
+- Código síncrono mal estruturado pode travar a UI de aplicações web — cuidado com loops pesados.
 
 ## Conclusão
 
-Dominar Git e GitHub é mais do que saber comandos: é entender os *porquês* por trás das boas práticas. Branches bem gerenciadas evitam dor de cabeça. Rebase e stash otimizam seu fluxo. Pull requests e code reviews constroem código melhor em equipe. E GitHub Actions leva sua automação para outro nível — sem sair do repositório.
+O **event loop** pode parecer um detalhe técnico obscuro, mas ele é a engrenagem que faz o JavaScript parecer mais mágico do que é. Quando você entende como ele funciona, passa a escrever código mais previsível, mais eficiente e menos propenso a bugs estranhos.
 
-Então, da próxima vez que abrir o terminal, pense: o que eu posso fazer hoje que vai deixar o código mais limpo, mais seguro e o trabalho do meu time mais fluido?
-
-Seja um dev que domina o fluxo, não um passageiro dele.
+Ficou curioso? Brinque com o [Loupe](http://latentflip.com/loupe/), uma ferramenta visual que mostra o event loop em ação. Você vai se surpreender.

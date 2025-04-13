@@ -18,12 +18,12 @@ function convertToKebabCase(title: string): string {
 }
 
 async function main() {
-  const title = "Git e GitHub: Da linha de comando ao CI/CD moderno"
+  const title = "Entendendo o Event Loop em JavaScript: Por Que Seu Código Não É Tão Síncrono Quanto Parece"
   const urlTitle = convertToKebabCase(title); 
 
   await prisma.post.create({
     data: { 
-      id: 9,
+      id: 10,
       coverImage: `/images/articles/${urlTitle}.png`,
       author: "Gabriel Andrade",
       title,
