@@ -31,7 +31,7 @@ Fim
 Timeout
 ```
 
-Você esperava que o `"Timeout"` viesse logo após o `"Início"`? É comum pensar assim, mas o que acontece aqui é que o `setTimeout` é enviado para a Web API. Após o tempo (mesmo que zero), ele é jogado para a **fila de tarefas**. O **event loop** só vai executá-lo **depois que a stack estiver vazia**, ou seja, depois do `"Fim"`.
+Você esperava que o "Timeout" viesse logo após o "Início"? É comum pensar assim, mas o que acontece aqui é que o `setTimeout` é enviado para a Web API. Após o tempo (mesmo que zero), ele é jogado para a **fila de tarefas**. O **event loop** só vai executá-lo **depois que a stack estiver vazia**, ou seja, depois do "Fim".
 
 ## Call Stack, Web APIs e Fila de Tarefas
 

@@ -11,7 +11,7 @@ const markdownContent = fs.readFileSync(markdownPath, "utf-8");
 async function main() {
   await prisma.post.update({
     where: {
-      id: 8,
+      id: 10,
     },
     data: { 
       content: markdownContent
