@@ -10,8 +10,8 @@ export function FloatingReadButton() {
   const indexRef = useRef(0);
   const paragraphsRef = useRef<Element[]>([]);
   const previousParagraph = useRef<Element | null>(null);
+  const isReadingRef = useRef(false); // ajuda a manter estado mesmo fora do React lifecycle
 
-  // Carrega vozes disponíveis
   useEffect(() => {
     if (!("speechSynthesis" in window)) {
       alert("Este navegador não suporta leitura de texto.");
@@ -20,77 +20,62 @@ export function FloatingReadButton() {
 
     const loadVoices = () => {
       const voices = window.speechSynthesis.getVoices();
-      voicesRef.current = voices.filter((voice) => voice.lang === "pt-BR");
+      voicesRef.current = voices.filter((v) => v.lang === "pt-BR");
     };
 
     window.speechSynthesis.onvoiceschanged = loadVoices;
     loadVoices();
 
-    // Retomar se estava lendo
-    const wasReading = localStorage.getItem("wasReading") === "true";
-    const savedIndex = parseInt(localStorage.getItem("lastParagraphIndex") || "0");
-    if (wasReading) {
-      const article = document.getElementById("article-content");
-      if (article) {
-        const paragraphs = Array.from(article.querySelectorAll("p, h2"));
-        paragraphsRef.current = paragraphs;
-        indexRef.current = savedIndex;
-        setReading(true);
-        setPaused(false);
-        readNext();
-      }
-    }
-
-    // Retomar leitura ao voltar para aba
     const handleVisibilityChange = () => {
-      if (!document.hidden && reading && paused) {
-        resumeReading();
+      if (document.hidden && isReadingRef.current && !window.speechSynthesis.paused) {
+        pauseReading();
       }
     };
 
     document.addEventListener("visibilitychange", handleVisibilityChange);
-    return () => {
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
-    };
+    return () => document.removeEventListener("visibilitychange", handleVisibilityChange);
   }, []);
 
-  const readNext = () => {
+  const speakParagraph = (text: string, index: number) => {
+    return new Promise<void>((resolve) => {
+      window.speechSynthesis.cancel(); // evita sobreposição de falas no iOS
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = "pt-BR";
+      utterance.rate = 1.1;
+      utterance.pitch = 1.3;
+      utterance.volume = 1;
+      if (voicesRef.current.length > 0) {
+        utterance.voice = voicesRef.current[0];
+      }
+
+      utterance.onend = () => resolve();
+      window.speechSynthesis.speak(utterance);
+    });
+  };
+
+  const readNext = async () => {
     const paragraphs = paragraphsRef.current;
-    let index = indexRef.current;
+    while (indexRef.current < paragraphs.length && isReadingRef.current) {
+      const paragraph = paragraphs[indexRef.current];
+      if (!paragraph) break;
 
-    if (index < paragraphs.length) {
-      const paragraph = paragraphs[index];
-      const text = paragraph.textContent || "";
-
+      // Destaque visual
       if (previousParagraph.current) {
         previousParagraph.current.classList.remove("highlight-paragraph");
       }
-
       paragraph.classList.add("highlight-paragraph");
+      paragraph.scrollIntoView({ behavior: "smooth", block: "center" });
       previousParagraph.current = paragraph;
-      setCurrentParagraph(index);
+      setCurrentParagraph(indexRef.current);
 
-      const speech = new SpeechSynthesisUtterance(text);
-      speech.lang = "pt-BR";
-      speech.rate = 1.2;
-      speech.pitch = 1.5;
-      speech.volume = 1;
+      await speakParagraph(paragraph.textContent || "", indexRef.current);
 
-      if (voicesRef.current.length > 0) {
-        speech.voice = voicesRef.current[0];
-      }
+      if (!isReadingRef.current) break;
 
-      speech.onend = () => {
-        setCurrentParagraph(null);
-        indexRef.current += 1;
-        localStorage.setItem("lastParagraphIndex", indexRef.current.toString());
-        readNext();
-      };
-
-      window.speechSynthesis.speak(speech);
-    } else {
-      stopReading();
+      indexRef.current += 1;
     }
+
+    stopReading();
   };
 
   const startReading = () => {
@@ -102,34 +87,31 @@ export function FloatingReadButton() {
 
     paragraphsRef.current = paragraphs;
     indexRef.current = 0;
-    localStorage.setItem("wasReading", "true");
-    localStorage.setItem("lastParagraphIndex", "0");
+    isReadingRef.current = true;
+
     setReading(true);
     setPaused(false);
     readNext();
   };
 
   const pauseReading = () => {
-    if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
-      window.speechSynthesis.pause();
-      setPaused(true);
-    }
+    window.speechSynthesis.pause();
+    setPaused(true);
   };
 
   const resumeReading = () => {
-    if (window.speechSynthesis.paused) {
-      window.speechSynthesis.resume();
-      setPaused(false);
-    }
+    window.speechSynthesis.resume();
+    setPaused(false);
   };
 
   const stopReading = () => {
     window.speechSynthesis.cancel();
+    isReadingRef.current = false;
     setReading(false);
     setPaused(false);
     setCurrentParagraph(null);
-    localStorage.removeItem("wasReading");
-    localStorage.removeItem("lastParagraphIndex");
+    indexRef.current = 0;
+
     if (previousParagraph.current) {
       previousParagraph.current.classList.remove("highlight-paragraph");
     }
