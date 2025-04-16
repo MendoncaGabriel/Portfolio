@@ -2,6 +2,7 @@ import { GetServerSideProps } from "next";
 import { GETByURLTitle } from "pages/api/post";
 import Markdown from "react-markdown";
 import Head from 'next/head';
+import { FloatingReadButton } from "components/FloatingReadButton";
 
 type ArticleProps = {
   title: string;
@@ -78,6 +79,8 @@ export default function ArticlePage({ data }: Props) {
         <meta property="og:author" content={data.author || "Desconhecido"} />
       </Head>
 
+      <FloatingReadButton />
+
       <h1 className="text-2xl md:text-4xl font-extrabold text-gray-100 leading-tight mb-4">
         {data.title}
       </h1>
@@ -98,7 +101,7 @@ export default function ArticlePage({ data }: Props) {
         {data.date && <span>{formatDate(data.date)}</span>}
       </div>
 
-      <article className="prose prose-invert prose-slate max-w-none text-gray-300 text-lg">
+      <article id="article-content" className="prose prose-invert prose-slate max-w-none text-gray-300 text-lg">
         <Markdown>{data.content}</Markdown>
       </article>
     </div>
