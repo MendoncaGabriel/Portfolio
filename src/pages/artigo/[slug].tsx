@@ -59,12 +59,19 @@ export default function ArticlePage({ data }: Props) {
     );
   }
 
+  function limitedDescription(texto: string, limite = 110): string {
+    return texto.length > limite
+      ? texto.slice(0, limite - 3).trimEnd() + "..."
+      : texto;
+  }
+  
+
   return (
     <div className="max-w-3xl mx-auto px-4 py-10 pt-0 md:pt-10">
       <Head>
         <title>{data.title}</title>
         <meta property="og:title" content={data.title} />
-        <meta property="og:description" content={data.title} />
+        <meta property="og:description" content={limitedDescription(data.content, 100)} />
         <meta property="og:image" content={data.coverImage || "default-image-url"} />
         <meta property="og:type" content="article" />
         <meta property="og:locale" content="pt_BR" />
