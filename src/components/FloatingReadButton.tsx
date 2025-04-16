@@ -5,18 +5,53 @@ export function FloatingReadButton() {
   const [reading, setReading] = useState(false);
   const [paused, setPaused] = useState(false);
   const [currentParagraph, setCurrentParagraph] = useState<number | null>(null);
+
   const voicesRef = useRef<SpeechSynthesisVoice[]>([]);
   const indexRef = useRef(0);
   const paragraphsRef = useRef<Element[]>([]);
   const previousParagraph = useRef<Element | null>(null);
 
+  // Carrega vozes disponíveis
   useEffect(() => {
+    if (!("speechSynthesis" in window)) {
+      alert("Este navegador não suporta leitura de texto.");
+      return;
+    }
+
     const loadVoices = () => {
       const voices = window.speechSynthesis.getVoices();
       voicesRef.current = voices.filter((voice) => voice.lang === "pt-BR");
     };
+
     window.speechSynthesis.onvoiceschanged = loadVoices;
     loadVoices();
+
+    // Retomar se estava lendo
+    const wasReading = localStorage.getItem("wasReading") === "true";
+    const savedIndex = parseInt(localStorage.getItem("lastParagraphIndex") || "0");
+    if (wasReading) {
+      const article = document.getElementById("article-content");
+      if (article) {
+        const paragraphs = Array.from(article.querySelectorAll("p, h2"));
+        paragraphsRef.current = paragraphs;
+        indexRef.current = savedIndex;
+        setReading(true);
+        setPaused(false);
+        readNext();
+      }
+    }
+
+    // Retomar leitura ao voltar para aba
+    const handleVisibilityChange = () => {
+      if (!document.hidden && reading && paused) {
+        resumeReading();
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
   }, []);
 
   const readNext = () => {
@@ -27,10 +62,10 @@ export function FloatingReadButton() {
       const paragraph = paragraphs[index];
       const text = paragraph.textContent || "";
 
-      // Highlight atual
       if (previousParagraph.current) {
         previousParagraph.current.classList.remove("highlight-paragraph");
       }
+
       paragraph.classList.add("highlight-paragraph");
       previousParagraph.current = paragraph;
       setCurrentParagraph(index);
@@ -48,6 +83,7 @@ export function FloatingReadButton() {
       speech.onend = () => {
         setCurrentParagraph(null);
         indexRef.current += 1;
+        localStorage.setItem("lastParagraphIndex", indexRef.current.toString());
         readNext();
       };
 
@@ -61,13 +97,13 @@ export function FloatingReadButton() {
     const article = document.getElementById("article-content");
     if (!article) return;
 
-    const paragraphs = Array.from(
-      article.querySelectorAll("p, h2")
-    );
+    const paragraphs = Array.from(article.querySelectorAll("p, h2"));
     if (paragraphs.length === 0) return;
 
     paragraphsRef.current = paragraphs;
     indexRef.current = 0;
+    localStorage.setItem("wasReading", "true");
+    localStorage.setItem("lastParagraphIndex", "0");
     setReading(true);
     setPaused(false);
     readNext();
@@ -92,13 +128,14 @@ export function FloatingReadButton() {
     setReading(false);
     setPaused(false);
     setCurrentParagraph(null);
+    localStorage.removeItem("wasReading");
+    localStorage.removeItem("lastParagraphIndex");
     if (previousParagraph.current) {
       previousParagraph.current.classList.remove("highlight-paragraph");
     }
   };
 
   return (
-    
     <div className="fixed bottom-6 right-6 z-50 flex gap-2">
       {!reading && (
         <button
@@ -151,4 +188,3 @@ export function FloatingReadButton() {
     </div>
   );
 }
-
