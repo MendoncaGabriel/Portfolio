@@ -34,7 +34,7 @@ export function FloatingReadButton() {
 
         const speech = new SpeechSynthesisUtterance(text);
         speech.lang = "pt-BR";
-        speech.rate = 1.3; // Velocidade
+        speech.rate = 1.2; // Velocidade
         speech.pitch = 1.5; // Tom
         speech.volume = 1; // Volume máximo
 
@@ -70,7 +70,7 @@ export function FloatingReadButton() {
     <button
       onClick={handleRead}
       className={`fixed bottom-6 right-6 bg-gradient-to-r bg-black text-white p-4 rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 z-50 flex items-center justify-center ${
-        reading ? 'animate-pulse' : ''
+        reading ? 'bg-white text-black' : 'bg-black text-white'
       }`}
       title={reading ? "Parar narração" : "Ouvir artigo"}
     >
