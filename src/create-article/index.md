@@ -1,90 +1,54 @@
-Se você já se perguntou por que o `setTimeout` com zero milissegundos não executa imediatamente, ou por que seu `console.log` aparece antes de uma `Promise`, este artigo é pra você. A resposta está no coração da execução do JavaScript: o **Event Loop**.
+Imagine construir uma casa sem conversar com quem vai morar nela. Você pode até levantar paredes, instalar janelas e pintar tudo de branco. Mas e se a pessoa preferisse uma varanda, odiasse a cor branca e quisesse uma cozinha americana? O mesmo acontece no desenvolvimento de software. Antes de começar a codar, é essencial entender o que o usuário realmente precisa — e é aí que entra o **levantamento de requisitos**.
 
-## JavaScript é Single-Threaded, mas...
+## O que é o levantamento de requisitos?
 
-Antes de entrar no loop em si, vamos esclarecer uma coisa: **JavaScript é single-threaded**, ou seja, ele executa uma instrução por vez, numa única thread. Isso quer dizer que ele não faz várias coisas ao mesmo tempo... ou faz?
+O levantamento de requisitos é uma das primeiras e mais importantes etapas do desenvolvimento de software. É o momento em que a equipe busca compreender as necessidades, expectativas e limitações do projeto, diretamente com as partes interessadas. Pode parecer simples, mas esse processo vai muito além de “anotar o que o cliente quer”.
 
-Na prática, parece que sim — e isso acontece graças a um mecanismo elegante por trás dos bastidores: o **event loop**, junto com a **call stack**, a **Web API** (em ambientes como browsers), e a **task queue** (ou fila de tarefas).
+Requisitos mal definidos ou incompletos são uma das principais causas de falha em projetos de software. E falhar aqui significa perder tempo, dinheiro e, muitas vezes, a confiança do cliente.
 
-## O Que É o Event Loop?
+## Engenharia de Requisitos: mais do que um formulário a ser preenchido
 
-O **event loop** é o orquestrador. Ele observa a **call stack** (a pilha de execução) e a **fila de tarefas**. Quando a pilha está vazia, ele pega a próxima tarefa da fila e a coloca na pilha para ser executada.
+A **engenharia de requisitos** é o campo da engenharia de software que se dedica a sistematizar essa etapa. Ela envolve quatro atividades principais:
 
-Parece simples, mas essa mecânica resolve um problema enorme: como fazer código assíncrono parecer síncrono.
+1. **Elicitação de Requisitos**  
+   É o processo de descobrir o que realmente é necessário. Isso pode envolver entrevistas, questionários, workshops, observação direta e até análise de sistemas existentes. Um bom engenheiro de requisitos precisa saber ouvir, interpretar e, às vezes, até ler nas entrelinhas.
 
-Vamos ver um exemplo prático:
+2. **Análise de Requisitos**  
+   Aqui, o foco é entender se os requisitos fazem sentido, se estão completos, se não entram em conflito entre si. Um erro comum é aceitar tudo o que o cliente diz sem questionar. Mas nem sempre o que ele pede é o que ele realmente precisa.
 
-```javascript
-console.log('Início');
+3. **Especificação de Requisitos**  
+   Após a análise, os requisitos são formalmente documentados. Isso pode ser feito em linguagem natural estruturada, modelos UML, diagramas de caso de uso, protótipos e outros formatos, dependendo do nível de detalhe e da familiaridade da equipe.
 
-setTimeout(() => {
-  console.log('Timeout');
-}, 0);
+4. **Validação de Requisitos**  
+   Por fim, é preciso garantir que os requisitos documentados estão corretos, claros e validados pelas partes interessadas. Isso evita mal-entendidos lá na frente, quando o sistema já estiver em desenvolvimento ou até em produção.
 
-console.log('Fim');
-```
+## Tipos de requisitos: nem todos são funcionais
 
-### Saída:
-```
-Início
-Fim
-Timeout
-```
+Um erro comum é pensar que requisito é só aquilo que o sistema “tem que fazer”. Mas na prática, eles se dividem em duas grandes categorias:
 
-Você esperava que o "Timeout" viesse logo após o "Início"? É comum pensar assim, mas o que acontece aqui é que o `setTimeout` é enviado para a Web API. Após o tempo (mesmo que zero), ele é jogado para a **fila de tarefas**. O **event loop** só vai executá-lo **depois que a stack estiver vazia**, ou seja, depois do "Fim".
+- **Requisitos Funcionais:** descrevem funcionalidades específicas, como “o sistema deve permitir o cadastro de novos usuários”.
+- **Requisitos Não Funcionais:** tratam de aspectos como desempenho, segurança, usabilidade, portabilidade. Por exemplo, “o sistema deve responder em até dois segundos” ou “deve estar disponível 99,9% do tempo”.
 
-## Call Stack, Web APIs e Fila de Tarefas
+Ignorar requisitos não funcionais pode transformar um sistema funcionalmente correto em uma catástrofe na experiência do usuário.
 
-Vamos dar nome aos bois:
+## Dificuldades e desafios reais
 
-- **Call Stack**: onde seu código é executado, função por função.
-- **Web APIs**: funcionalidades assíncronas oferecidas pelo ambiente (como o browser ou Node.js), como `setTimeout`, `fetch`, `DOM events`.
-- **Task Queue (ou Callback Queue)**: fila onde eventos assíncronos esperam sua vez.
-- **Event Loop**: fica de olho. Se a stack estiver livre, ele envia a próxima tarefa da fila pra execução.
+Se fosse fácil, qualquer um faria. Um dos maiores desafios do levantamento de requisitos é lidar com a **ambiguidade**. Muitas vezes o cliente nem sabe exatamente o que quer, ou muda de ideia no meio do caminho. Por isso, mais do que coletar dados, essa etapa exige empatia, escuta ativa e uma comunicação muito clara.
 
-## E o Microtask Queue? Promises Entra em Cena
+Outro ponto importante é envolver todas as partes interessadas, e não apenas uma pessoa da empresa. Às vezes o gerente tem uma visão, mas quem usa o sistema no dia a dia é o operador — e as necessidades são bem diferentes.
 
-Além da fila de tarefas (macrotasks), existe uma outra fila menos falada, mas super importante: a **fila de microtarefas**. Promises vão pra lá.
+## Dicas práticas de quem vive isso no dia a dia
 
-```javascript
-console.log('Início');
+1. **Faça protótipos**: uma imagem vale mais do que mil palavras. Um wireframe simples já pode evitar muita retrabalho.
 
-Promise.resolve().then(() => {
-  console.log('Promise');
-});
+2. **Documente tudo com clareza**: use uma linguagem simples, evite jargões e valide cada ponto com o cliente.
 
-setTimeout(() => {
-  console.log('Timeout');
-}, 0);
+3. **Questione mais do que ouça passivamente**: não se contente com respostas vagas como “o sistema precisa ser fácil de usar”. Pergunte: “o que significa fácil de usar para você?”
 
-console.log('Fim');
-```
+4. **Trabalhe em ciclos curtos**: usar abordagens ágeis ajuda a validar requisitos com mais frequência e se adaptar a mudanças com menos dor de cabeça.
 
-### Saída:
-```
-Início
-Fim
-Promise
-Timeout
-```
-
-Notou que `Promise` vem antes do `Timeout`? Isso é porque microtarefas têm **prioridade** sobre macrotarefas. O event loop esvazia todas as microtarefas antes de pegar a próxima macrotarefa da fila.
-
-## Por Que Isso Importa?
-
-Se você está lidando com chamadas assíncronas, `setTimeout`, Promises, ou até eventos de clique, **entender o event loop é essencial para prever o comportamento do seu código**.
-
-Você já teve um bug que desaparecia quando colocava um `console.log()` no meio? Pode ser uma pista de que você está enfrentando uma corrida entre tarefas assíncronas. Conhecer o event loop te ajuda a evitar essas armadilhas.
-
-## Dicas Rápidas
-
-- `setTimeout(fn, 0)` **não** executa imediatamente. Ele espera o stack esvaziar.
-- Promises são executadas **antes** de qualquer `setTimeout`.
-- `await` pausa a execução de uma `async function`, mas **não bloqueia o event loop**.
-- Código síncrono mal estruturado pode travar a UI de aplicações web — cuidado com loops pesados.
+---
 
 ## Conclusão
 
-O **event loop** pode parecer um detalhe técnico obscuro, mas ele é a engrenagem que faz o JavaScript parecer mais mágico do que é. Quando você entende como ele funciona, passa a escrever código mais previsível, mais eficiente e menos propenso a bugs estranhos.
-
-Ficou curioso? Brinque com o [Loupe](http://latentflip.com/loupe/), uma ferramenta visual que mostra o event loop em ação. Você vai se surpreender.
+O levantamento de requisitos é uma arte e uma ciência. Não é apenas um checklist antes de começar o código, mas sim uma etapa estratégica que define os rumos do projeto. Quando feito com atenção, cuidado e diálogo, ele se transforma em um mapa confiável para toda a jornada de desenvolvimento. Ignorá-lo, por outro lado, é navegar no escuro — e torcer para chegar ao destino certo.

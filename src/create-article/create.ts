@@ -18,12 +18,13 @@ function convertToKebabCase(title: string): string {
 }
 
 async function main() {
-  const title = "Entendendo o Event Loop em JavaScript: Por Que Seu Código Não É Tão Síncrono Quanto Parece"
+  const title = "Levantamento de Requisitos: A Base de um Software Bem-Sucedido"
   const urlTitle = convertToKebabCase(title); 
+  console.log(urlTitle);
 
   await prisma.post.create({
     data: { 
-      id: 10,
+      id: 11,
       coverImage: `/images/articles/${urlTitle}.png`,
       author: "Gabriel Andrade",
       title,
