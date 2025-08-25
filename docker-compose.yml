@@ -1,0 +1,10 @@
+services:
+  hefesto-front:
+    container_name: Portfolio
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3009:3000"
+    restart: on-failure
+
