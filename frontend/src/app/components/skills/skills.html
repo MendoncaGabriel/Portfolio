@@ -1,0 +1,82 @@
+<section class="bg-gray-950 text-gray-200 min-h-screen py-20 px-6">
+  <h1 class="text-center text-3xl font-bold mb-16">Habilidades</h1>
+
+  <!-- Frontend -->
+  <div class="max-w-7xl mx-auto mb-20">
+    <h2 class="text-xl font-semibold mb-6">Frontend</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+      @for (tech of frontend; track $index) {
+        <div class="flex flex-col items-center bg-gray-900 rounded-xl p-4 hover:scale-105 transition">
+          <img [src]="tech.img" [alt]="tech.nome" class="w-12 h-12 mb-2" />
+          <span class="text-sm font-medium">{{ tech.nome }}</span>
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- Backend -->
+  <div class="max-w-7xl mx-auto mb-20">
+    <h2 class="text-xl font-semibold mb-6">Backend</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+      @for (tech of backend; track $index) {
+        <div class="flex flex-col items-center bg-gray-900 rounded-xl p-4 hover:scale-105 transition">
+          <img [src]="tech.img" [alt]="tech.nome" class="w-12 h-12 mb-2" />
+          <span class="text-sm font-medium">{{ tech.nome }}</span>
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- Banco de Dados -->
+  <div class="max-w-7xl mx-auto mb-20">
+    <h2 class="text-xl font-semibold mb-6">Banco de Dados</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+      @for (tech of banco; track $index) {
+        <div class="flex flex-col items-center bg-gray-900 rounded-xl p-4 hover:scale-105 transition">
+          <img [src]="tech.img" [alt]="tech.nome" class="w-12 h-12 mb-2" />
+          <span class="text-sm font-medium">{{ tech.nome }}</span>
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- Infraestrutura -->
+  <div class="max-w-7xl mx-auto mb-20">
+    <h2 class="text-xl font-semibold mb-6">Infraestrutura & Arquitetura</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+      @for (tech of infra; track $index) {
+        <div class="flex flex-col items-center bg-gray-900 rounded-xl p-4 hover:scale-105 transition">
+          <img [src]="tech.img" [alt]="tech.nome" class="w-12 h-12 mb-2" />
+          <span class="text-sm font-medium">{{ tech.nome }}</span>
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- Tempo Real / IoT -->
+  <div class="max-w-7xl mx-auto mb-20">
+    <h2 class="text-xl font-semibold mb-6">Tempo Real & IoT</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+      @for (tech of realtime; track $index) {
+        <div class="flex flex-col items-center bg-gray-900 rounded-xl p-4 hover:scale-105 transition">
+          <img [src]="tech.img" [alt]="tech.nome" class="w-12 h-12 mb-2" />
+          <span class="text-sm font-medium">{{ tech.nome }}</span>
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- Testes -->
+  <div class="max-w-7xl mx-auto">
+    <h2 class="text-xl font-semibold mb-6">Testes</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+      @for (tech of testes; track $index) {
+        <div class="flex flex-col items-center bg-gray-900 rounded-xl p-4 hover:scale-105 transition">
+          <img [src]="tech.img" [alt]="tech.nome" class="w-12 h-12 mb-2" />
+          <span class="text-sm font-medium">{{ tech.nome }}</span>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
