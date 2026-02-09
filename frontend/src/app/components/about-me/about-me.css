@@ -1,0 +1,10 @@
+.link {
+  color: #3b82f6;           /* azul padrão link */
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.link:hover {
+  color: #2563eb;           /* azul mais escuro no hover */
+  text-decoration: none;
+}
